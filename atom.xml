@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://oldaz.github.io/"/>
-  <updated>2020-04-13T05:35:43.114Z</updated>
+  <updated>2020-04-13T06:32:02.817Z</updated>
   <id>https://oldaz.github.io/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://oldaz.github.io/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/"/>
     <id>https://oldaz.github.io/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</id>
     <published>2020-04-12T12:08:26.000Z</published>
-    <updated>2020-04-13T05:35:43.114Z</updated>
+    <updated>2020-04-13T06:32:02.817Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2223999780,610748571&fm=26&gp=0.jpg" alt="JAVA" title="JAVA"><br>&lt;<strong>细说安装JDK和配置环境</strong>&gt;</p><a id="more"></a><h1 id="Java的特点"><a href="#Java的特点" class="headerlink" title="Java的特点"></a>Java的特点</h1><p>Java是目前使用最为广泛的网络语言之一，它具有语法简单，面向对象，稳定，与平台无关，动态，多线程等特点。Java<strong>与平台无关</strong>是最初风靡世界的最重要的原因。</p><p>Java要实现  “编译一次，处处运行” （Write once ，run anywhere）的目标，就必须提供相应的Java运行环境，即运行Java程序的平台。</p><h1 id="由于图片过多，博客会反应很慢，后面请移步我的csdn"><a href="#由于图片过多，博客会反应很慢，后面请移步我的csdn" class="headerlink" title="由于图片过多，博客会反应很慢，后面请移步我的csdn"></a>由于图片过多，博客会反应很慢，后面请移步我的csdn</h1><h1 id="我的CSDN"><a href="#我的CSDN" class="headerlink" title="我的CSDN"></a><a href="https://blog.csdn.net/qq_43370892/article/details/88879871?utm_source=app" target="_blank" rel="noopener">我的CSDN</a></h1>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2223999780,610748571&fm=26&gp=0.jpg" alt="JAVA" title="JAVA">&lt;<strong>细说安装JDK和配置环境</strong>&gt;</p><a id="more"></a><h1 id="Java的特点"><a href="#Java的特点" class="headerlink" title="Java的特点"></a>Java的特点</h1><p>Java是目前使用最为广泛的网络语言之一，它具有语法简单，面向对象，稳定，与平台无关，动态，多线程等特点。Java<strong>与平台无关</strong>是最初风靡世界的最重要的原因。</p><p>Java要实现  “编译一次，处处运行” （Write once ，run anywhere）的目标，就必须提供相应的Java运行环境，即运行Java程序的平台。</p><h1 id="由于图片过多，博客会反应很慢，后面请移步我的csdn"><a href="#由于图片过多，博客会反应很慢，后面请移步我的csdn" class="headerlink" title="由于图片过多，博客会反应很慢，后面请移步我的csdn"></a>由于图片过多，博客会反应很慢，后面请移步我的csdn</h1><h1 id="我的CSDN"><a href="#我的CSDN" class="headerlink" title="我的CSDN"></a><a href="https://blog.csdn.net/qq_43370892/article/details/88879871?utm_source=app" target="_blank" rel="noopener">我的CSDN</a></h1>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2223999780,610748571&amp;fm=26&amp;gp=0.jpg&quot; alt=&quot;JAVA&quot; title=&quot;JAVA&quot;&gt;&lt;br&gt;&amp;lt;&lt;strong&gt;细说安装JDK和配置环境&lt;/strong&gt;&amp;gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2223999780,610748571&amp;fm=26&amp;gp=0.jpg&quot; alt=&quot;JAVA&quot; title=&quot;JAVA&quot;&gt;&amp;lt;&lt;strong&gt;细说安装JDK和配置环境&lt;/strong&gt;&amp;gt;&lt;/p&gt;
     
     </summary>
     
@@ -44,9 +44,16 @@
     <link href="https://oldaz.github.io/2020/04/12/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95/"/>
     <id>https://oldaz.github.io/2020/04/12/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95/</id>
     <published>2020-04-12T12:02:19.000Z</published>
-    <updated>2020-04-12T12:03:04.593Z</updated>
+    <updated>2020-04-13T06:31:26.117Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="G:%5CIcon%5Cic_ali_mail_147456.png" alt="JAVA">)<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2223999780,610748571&fm=26&gp=0.jpg" alt="666"></p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;G:%5CIcon%5Cic_ali_mail_147456.png&quot; alt=&quot;JAVA&quot;&gt;)&lt;img src=&quot;https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2223999780,
+      
     
     </summary>
     
