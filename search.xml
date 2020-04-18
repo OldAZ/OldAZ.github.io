@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>HTML基础_4</title>
+      <link href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/"/>
+      <url>/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/</url>
+      
+        <content type="html"><![CDATA[<p> <img src="https://img-blog.csdnimg.cn/20200418203501584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="HTML基础_4"><br> <strong>这一部分介绍一下几个关于HTML的重要的基本信息</strong><br> <a id="more"></a></p><h1 id="HTML-统一资源定位器"><a href="#HTML-统一资源定位器" class="headerlink" title="HTML 统一资源定位器"></a>HTML 统一资源定位器</h1><p>   <strong><em>URL 也被称为网址。</em></strong><br>    <strong>URL - Uniform Resource Locator</strong><br>当您点击 HTML 页面中的某个链接时，对应的 <strong>&#60;a&gt;</strong> 标签指向万维网上的一个地址。<br>    统一资源定位器（URL）用于定位万维网上的文档（或其他数据）。<br>    网址，比如 <a href="http://www.baidu.com，遵守以下的语法规则：">http://www.baidu.com，遵守以下的语法规则：</a><br>    scheme://host.domain:port/path/filename<br>    解释：</p><blockquote><p>scheme - 定义因特网服务的类型。最常见的类型是 http<br>    host - 定义域主机（http 的默认主机是 www）<br>    domain - 定义因特网域名，比如 w3school.com.cn<br>    :port - 定义主机上的端口号（http 的默认端口号是 80）<br>    path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。<br>    filename - 定义文档/资源的名称</p></blockquote><h1 id="HTML-URL-字符编码"><a href="#HTML-URL-字符编码" class="headerlink" title="HTML URL 字符编码"></a>HTML URL 字符编码</h1><blockquote><p>URL 编码会将字符转换为可通过因特网传输的格式。<br>URL 编码<br>URL 只能使用 ASCII 字符集来通过因特网进行发送。<br>由于 URL 常常会包含 ASCII 集合之外的字符，URL 必须转换为有效的 ASCII 格式。<br>URL 编码使用 “%” 其后跟随两位的十六进制数来替换非 ASCII 字符。<br>URL 不能包含空格。URL 编码通常使用 + 来替换空格。</p></blockquote><h1 id="HTML-Web-Server"><a href="#HTML-Web-Server" class="headerlink" title="HTML Web Server"></a>HTML Web Server</h1><p><strong><em>如果希望向世界发布您的网站，那么您必须把它存放在 web 服务器上。<br>托管自己的网站</em></strong></p><p>在自己的服务器上托管网站始终是一个选项。有几点需要考虑：</p><ol><li><strong>硬件支出</strong><br>如果要运行“真正”的网站，您不得不购买强大的服务器硬件。不要指望低价的 PC 能够应付这些工作。<code>您还需要稳定的（一天 24 小时）高速连接。</code></li><li>软件支出<br>请记住，服务器授权通常比客户端授权更昂贵。同时请注意，服务器授权也许有用户数量限制。</li><li><strong>人工费</strong><br>不要指望低廉的人工费用。您必须安装自己的硬件和软件。您同时要处理漏洞和病毒，以确保您的服务器时刻正常地运行于一个“任何事都可能发生”的环境中。<br>使用因特网服务提供商（ISP）<br>从 ISP 租用服务器也很常见。<br>大多数小公司会把网站存放到由 ISP 提供的服务器上。其优势有以下几点：</li><li><strong>连接速度</strong><br>大多数 ISP 都拥有连接因特网的高速连接。</li><li><strong>强大的硬件</strong><br>ISP 的 web 服务器通常强大到能够由若干网站分享资源。您还要看一下 ISP 是否提供高效的负载平衡，以及必要的备份服务器。</li><li><strong>安全性和可靠性</strong><br>ISP 是网站托管方面的专家。他们应该提供 99% 以上的在线时间，最新的软件补丁，以及最好的病毒防护。</li></ol><p><strong>选择 ISP 时的注意事项</strong> </p><ul><li>24 小时支持<br><code>确保 ISP 提供 24 小时支持。</code>不要使自己置于无法解决严重问题的尴尬境地，同时还必须等待第二个工作日。如果您不希望支付长途电话费，那么免费电话服务也是必要的。<ul><li>每日备份<br>确保 ISP 会执行每日备份的例行工作，否则您有可能损失有价值的数据。</li><li>流量<br><code>研究一下 ISP 的流量限制。</code>如果出现由于网站受欢迎而激增的不可预期的访问量，那么您要确保不会因此支付额外费用。</li><li>带宽或内容限制<br><code>研究一下 ISP 的带宽和内容限制。</code>如果您计划发布图片或播出视频或音频，请确保您有此权限。</li><li>E-mail 功能<br><code>请确保 ISP 支持您需要的 e-mail 功能。</code></li><li>数据库访问<br>如果您计划使用网站数据库中的数据，那么请<code>确保您的 ISP 支持您需要的数据库访问。</code></li></ul></li></ul><h1 id="HTML-60-DOCTYPE-gt"><a href="#HTML-60-DOCTYPE-gt" class="headerlink" title="HTML &#60;!DOCTYPE&gt;"></a>HTML &#60;!DOCTYPE&gt;</h1><p><strong>*&lt;!DOCTYPE&gt; 声明<br>Web 世界中存在许多不同的文档。只有了解文档的类型，浏览器才能正确地显示文档。*</strong><br>HTML 也有多个不同的版本，只有完全明白页面中使用的确切 HTML 版本，浏览器才能完全正确地显示出 HTML 页面。这就是 &lt;!DOCTYPE&gt; 的用处。</p><p>==<strong>&#60;!DOCTYPE&gt; 不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。</strong>==</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> HTML </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>安卓开发之线性布局（超级详细属性）</title>
       <link href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/"/>
       <url>/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/</url>
