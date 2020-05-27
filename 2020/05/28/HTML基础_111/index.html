@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>HTML基础_11 | Mr.AZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTML 多媒体Web 上的多媒体指的是音效、音乐、视频和动画。 现代网络浏览器已支持很多多媒体格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML基础_11">
+<meta property="og:url" content="https://oldaz.github.io/2020/05/28/HTML%E5%9F%BA%E7%A1%80_111/index.html">
+<meta property="og:site_name" content="Mr.AZ">
+<meta property="og:description" content="HTML 多媒体Web 上的多媒体指的是音效、音乐、视频和动画。 现代网络浏览器已支持很多多媒体格式">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200528000223912.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-05-27T16:04:05.000Z">
+<meta property="article:modified_time" content="2020-05-27T16:04:57.945Z">
+<meta property="article:author" content="Mr.AZ">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200528000223912.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Mr.AZ</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/Java">迷路Java</a></li>
+                        
+                            <li><a  href="/categories/HTML">挑战前端</a></li>
+                        
+                            <li><a  href="/categories/Algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/categories/Android">Android</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 10px;">经验之谈</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.csdn.net/qq_43370892">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">还未毕业，勇敢向前。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Mr.AZ</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Mr.AZ</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/Java">迷路Java</a></li>
+                
+                    <li><a href="/categories/HTML">挑战前端</a></li>
+                
+                    <li><a href="/categories/Algorithm">算法学习</a></li>
+                
+                    <li><a href="/categories/Android">Android</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-HTML基础_111" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_111/" class="article-date">
+      <time datetime="2020-05-27T16:04:05.000Z" itemprop="datePublished">2020-05-28</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML基础_11
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="https://img-blog.csdnimg.cn/20200528000223912.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="HTML基础_11"></p>
+<h1 id="HTML-多媒体"><a href="#HTML-多媒体" class="headerlink" title="HTML 多媒体"></a>HTML 多媒体</h1><pre><code>Web 上的多媒体指的是音效、音乐、视频和动画。
+现代网络浏览器已支持很多多媒体格式</code></pre><a id="more"></a>
+<h2 id="什么是多媒体？"><a href="#什么是多媒体？" class="headerlink" title="什么是多媒体？"></a>什么是多媒体？</h2><pre><code>多媒体来自多种不同的格式。它可以是您听到或看到的任何内容，
+          文字、图片、音乐、音效、录音、电影、动画等等。</code></pre><p>在因特网上，您会经常发现嵌入网页中的多媒体元素，现代浏览器已支持多种多媒体格式。<br>在本篇文章中，您将了解到不同的多媒体格式，以及如何在您的网页中使用它们。</p>
+<h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><pre><code>第一款因特网浏览器只支持文本，而且即使是对文本的支持也仅限于单一字体
+和单一颜色。随后诞生了支持颜色、字体和文本样式的浏览器，
+图片支持也被加入。
+不同的浏览器以不同的方式处理对音效、动画和视频的支持。
+某些元素能够以内联的方式处理，而某些则需要额外的插件。</code></pre><h2 id="多媒体格式"><a href="#多媒体格式" class="headerlink" title="多媒体格式"></a>多媒体格式</h2><pre><code>多媒体元素（比如视频和音频）存储于媒体文件中。
+确定媒体类型的最常用的方法是查看文件扩展名。
+当浏览器得到文件扩展名 .htm 或 .html 时，它会假定该文件是 HTML 页面。
+.xml 扩展名指示 XML 文件，而 .css 扩展名指示样式表。
+图片格式则通过 .gif 或 .jpg 来识别。
+多媒体元素元素也拥有带有不同扩展名的文件格式，
+比如 .swf、.wmv、.mp3 以及 .mp4。</code></pre><h2 id="视频格式"><a href="#视频格式" class="headerlink" title="视频格式"></a>视频格式</h2><pre><code>MP4 格式是一种新的即将普及的因特网视频格式。
+HTML5 、Flash 播放器以及优酷等视频网站均支持它。</code></pre><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>文件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AVI</td>
+<td>.avi</td>
+<td>AVI (Audio Video Interleave) 格式是由微软开发的。所有运行 Windows 的计算机都支持 AVI 格式。它是因特网上很常见的格式，但非 Windows 计算机并不总是能够播放。</td>
+</tr>
+<tr>
+<td>WMV</td>
+<td>.wmv</td>
+<td>Windows Media 格式是由微软开发的。Windows Media 在因特网上很常见，但是如果未安装额外的（免费）组件，就无法播放 Windows Media 电影。一些后期的 Windows Media 电影在所有非 Windows 计算机上都无法播放，因为没有合适的播放器。</td>
+</tr>
+<tr>
+<td>MPEG</td>
+<td>.mpg .mpeg</td>
+<td>MPEG (Moving Pictures Expert Group) 格式是因特网上最流行的格式。它是跨平台的，得到了所有最流行的浏览器的支持。</td>
+</tr>
+<tr>
+<td>QuickTime</td>
+<td>.mov</td>
+<td>QuickTime 格式是由苹果公司开发的。QuickTime 是因特网上常见的格式，但是 QuickTime 电影不能在没有安装额外的（免费）组件的 Windows 计算机上播放。</td>
+</tr>
+<tr>
+<td>RealVideo</td>
+<td>.rm .ram</td>
+<td>RealVideo 格式是由 Real Media 针对因特网开发的。该格式允许低带宽条件下（在线视频、网络电视）的视频流。由于是低带宽优先的，质量常会降低。</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>.swf  .flv</td>
+<td>Flash (Shockwave) 格式是由 Macromedia 开发的。Shockwave 格式需要额外的组件来播放。但是该组件会预装到 Firefox 或 IE 之类的浏览器上。</td>
+</tr>
+<tr>
+<td>Mpeg-4</td>
+<td>.mp4</td>
+<td>Mpeg-4 (with H.264 video compression) 是一种针对因特网的新格式。事实上，YouTube 推荐使用 MP4。YouTube 接收多种格式，然后全部转换为 .flv 或 .mp4 以供分发。越来越多的视频发布者转到 MP4，将其作为 Flash 播放器和 HTML5 的因特网共享格式。</td>
+</tr>
+</tbody></table>
+<h2 id="声音格式"><a href="#声音格式" class="headerlink" title="声音格式"></a>声音格式</h2><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>文件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MIDI</td>
+<td>.mid  .midi</td>
+<td>MIDI (Musical Instrument Digital Interface) 是一种针对电子音乐设备（比如合成器和声卡）的格式。MIDI 文件不含有声音，但包含可被电子产品（比如声卡）播放的数字音乐指令。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RealAudio</td>
+<td>.rm .ram</td>
+<td>RealAudio 格式是由 Real Media 针对因特网开发的。该格式也支持视频。该格式允许低带宽条件下的音频流（在线音乐、网络音乐）。由于是低带宽优先的，质量常会降低。</td>
+</tr>
+<tr>
+<td>Wave</td>
+<td>.wav</td>
+<td>Wave (waveform) 格式是由 IBM 和微软开发的。所有运行 Windows 的计算机和所有网络浏览器（除了 Google Chrome）都支持它。</td>
+</tr>
+<tr>
+<td>WMA</td>
+<td>.wma</td>
+<td>WMA 格式 (Windows Media Audio)，质量优于 MP3，兼容大多数播放器，除了 iPod。WMA 文件可作为连续的数据流来传输，这使它对于网络电台或在线音乐很实用。</td>
+</tr>
+<tr>
+<td>MP3</td>
+<td>.mp3 .mpga</td>
+<td>MP3 文件实际上是 MPEG 文件的声音部分。MPEG 格式最初是由运动图像专家组开发的。MP3 是其中最受欢迎的针对音乐的声音格式。期待未来的软件系统都支持它。</td>
+</tr>
+</tbody></table>
+<h2 id="使用哪种格式？"><a href="#使用哪种格式？" class="headerlink" title="使用哪种格式？"></a>使用哪种格式？</h2><ol>
+<li>WAVE 是因特网上最受欢迎的无压缩声音格式，所有流行的浏览器都支持它。如果您需要未经压缩的声音（音乐或演讲），那么您应该使用 WAVE 格式。</li>
+</ol>
+<ol start="2">
+<li>MP3 是最新的压缩录制音乐格式。MP3 这个术语已经成为数字音乐的代名词。如果您的网址从事录制音乐，那么 MP3 是一个选项。</li>
+</ol>
+<h1 id="HTML-Object-元素"><a href="#HTML-Object-元素" class="headerlink" title="HTML Object 元素"></a>HTML Object 元素</h1><pre><code>&lt;object&gt; 的作用是支持 HTML 助手（插件）。</code></pre><h2 id="HTML-助手（插件）"><a href="#HTML-助手（插件）" class="headerlink" title="HTML 助手（插件）"></a>HTML 助手（插件）</h2><ol>
+<li>辅助应用程序（helper application）是可由浏览器启动的程序。</li>
+<li>辅助应用程序也称为插件。</li>
+<li>辅助程序可用于播放音频和视频（以及其他）。</li>
+<li>辅助程序是使用 <object> 标签来加载的。</li>
+</ol>
+<p>使用辅助程序播放视频和音频的一个优势是，<br>您能够允许用户来控制部分或全部播放设置。<br>大多数辅助应用程序允许对音量设置和播放功能（比如后退、暂停、停止和播放）的手工（或程序的）控制。</p>
+<h2 id="HTML-音频"><a href="#HTML-音频" class="headerlink" title="HTML 音频"></a>HTML 音频</h2><p> 在 HTML 中播放声音的方法有很多种。</p>
+<pre><code>问题，问题，以及解决方法
+在 HTML 中播放音频并不容易！
+您需要谙熟大量技巧，以确保您的音频文件在所有浏览器中
+（Internet Explorer, Chrome, Firefox, Safari, Opera）
+和所有硬件上（PC, Mac , iPad, iPhone）都能够播放。</code></pre><h2 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h2><pre><code>浏览器插件是一种扩展浏览器标准功能的小型计算机程序。
+插件有很多用途：播放音乐、显示地图、验证银行账号，控制输入等等。
+可使用 &lt;object&gt; 或 &lt;embed&gt; 标签来将插件添加到 HTML 页面。</code></pre><p>这些标签定义资源（通常非 HTML 资源）的容器，根据类型，它们即会由浏览器显示，也会由外部插件显示。</p>
+<h2 id="使用-60-embed-gt-元素"><a href="#使用-60-embed-gt-元素" class="headerlink" title="使用 &#60;embed&gt; 元素"></a>使用 &#60;embed&gt; 元素</h2><pre><code>&lt;embed&gt; 标签定义外部（非 HTML）内容的容器。（这是一个 HTML5 标签，
+在 HTML4 中是非法的，但是所有浏览器中都有效）。</code></pre><p>下面的代码片段能够显示嵌入网页中的 MP3 文件：<br>实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;embed height=<span class="string">"100"</span> width=<span class="string">"100"</span> src=<span class="string">"song.mp3"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>问题：</p>
+<pre><code>&lt;embed&gt; 标签在 HTML 4 中是无效的。页面无法通过 HTML 4 验证。
+不同的浏览器对音频格式的支持也不同。
+如果浏览器不支持该文件格式，没有插件的话就无法播放该音频。
+如果用户的计算机未安装插件，无法播放音频。
+如果把该文件转换为其他格式，仍然无法在所有浏览器中播放。</code></pre><p>注释：使用 &#60;!DOCTYPE html&gt; (HTML5) 解决验证问题。</p>
+<h2 id="使用-60-object-gt-元素"><a href="#使用-60-object-gt-元素" class="headerlink" title="使用 &#60;object&gt; 元素"></a>使用 &#60;object&gt; 元素</h2><pre><code>&lt;object tag&gt; 标签也可以定义外部（非 HTML）内容的容器。</code></pre><p>   下面的代码片段能够显示嵌入网页中的 MP3 文件：<br>    实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;object height=<span class="string">"100"</span> width=<span class="string">"100"</span> data=<span class="string">"song.mp3"</span>&gt;&lt;<span class="regexp">/object&gt;</span></span><br></pre></td></tr></table></figure>
+<p>问题：</p>
+<pre><code>不同的浏览器对音频格式的支持也不同。
+如果浏览器不支持该文件格式，没有插件的话就无法播放该音频。
+如果用户的计算机未安装插件，无法播放音频。
+如果把该文件转换为其他格式，仍然无法在所有浏览器中播放。</code></pre><h2 id="使用-HTML5-元素"><a href="#使用-HTML5-元素" class="headerlink" title="使用 HTML5  元素"></a>使用 HTML5 <audio> 元素</h2><pre><code>&lt;audio&gt; 元素是一个 HTML5 元素，
+在 HTML 4 中是非法的，但在所有浏览器中都有效。</code></pre><p> 实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=<span class="string">"controls"</span>&gt;</span><br><span class="line">     &lt;source src=<span class="string">"song.mp3"</span> type=<span class="string">"audio/mp3"</span> /&gt;</span><br><span class="line">     &lt;source src=<span class="string">"song.ogg"</span> type=<span class="string">"audio/ogg"</span> /&gt;</span><br><span class="line">   Your browser does not support <span class="keyword">this</span> audio format.</span><br><span class="line">   &lt;<span class="regexp">/audio&gt;</span></span><br></pre></td></tr></table></figure>
+<p>   问题：</p>
+<pre><code> &lt;audio&gt; 标签在 HTML 4 中是无效的。您的页面无法通过 HTML 4 验证。
+您必须把音频文件转换为不同的格式。
+ &lt;audio&gt; 元素在老式浏览器中不起作用。</code></pre><p>   注释：使用 <!DOCTYPE html> (HTML5) 解决验证问题。</p>
+<h2 id="向网站添加音频的最简单方法"><a href="#向网站添加音频的最简单方法" class="headerlink" title="向网站添加音频的最简单方法"></a>向网站添加音频的最简单方法</h2><p><strong>向网页添加音频的最简单的方法是什么？</strong></p>
+<pre><code>雅虎的媒体播放器绝对算其中之一。</code></pre><p> 使用雅虎媒体播放器是一个不同的途径。您只需简单地让雅虎来完成歌曲播放的工作就好了。</p>
+<p>它能播放 mp3 以及一系列其他格式。通过一行简单的代码，您就可以把它添加到网页中，轻松地将 HTML 页面转变为专业的播放列表。</p>
+<p><strong>雅虎媒体播放器</strong><br>实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"song.mp3"</span>&gt;Play Sound&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">" src="</span>http:<span class="comment">//mediaplayer.yahoo.com/js"&gt;</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用雅虎播放器是免费的。如需使用它，您需要把这段 JavaScript 插入网页底部：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://mediaplayer.yahoo.com/js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后只需简单地把 MP3 文件链接到您的 HTML 中，JavaScript 会自动地为每首歌创建播放按钮：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"song1.mp3"</span>&gt;Play Song <span class="number">1</span>&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;a href="song2.mp3"&gt;Play Song 2&lt;/</span>a&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>雅虎媒体播放器为您的用户提供的是一个小型的播放按钮，而不是完整的播放器。不过，当您点击该按钮，会弹出完整的播放器。<br>请注意，这个播放器始终停靠在窗框底部。只需点击它，就可将其滑出。</p>
+<h2 id="使用超链接"><a href="#使用超链接" class="headerlink" title="使用超链接"></a>使用超链接</h2><pre><code>如果网页包含指向媒体文件的超链接，大多数浏览器会使用“辅助应用程序”来播放文件。</code></pre><p>以下代码片段显示指向 mp3 文件的链接。如果用户点击该链接，浏览器会启动“辅助应用程序”来播放该文件：</p>
+<p>实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"song.mp3"</span>&gt;Play the sound&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="内联的声音"><a href="#内联的声音" class="headerlink" title="内联的声音"></a>内联的声音</h2><p>当您在网页中包含声音，或者作为网页的组成部分时，它被称为内联声音。</p>
+<pre><code>如果您打算在 web 应用程序中使用内联声音，
+您需要意识到很多人都觉得内联声音令人恼火。
+同时请注意，用户可能已经关闭了浏览器中的内联声音选项。
+我们最好的建议是只在用户希望听到内联声音的地方包含它们。
+一个正面的例子是，在用户需要听到录音并点击某个链接时，
+会打开页面然后播放录音。</code></pre><h2 id="HTML-4-01-多媒体标签"><a href="#HTML-4-01-多媒体标签" class="headerlink" title="HTML 4.01 多媒体标签"></a>HTML 4.01 多媒体标签</h2><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#60;applet&gt;</td>
+<td>不赞成。定义内嵌 applet。</td>
+</tr>
+<tr>
+<td>&#60;embed&gt;</td>
+<td>HTML4 中不赞成，HTML5 中允许。定义内嵌对象。</td>
+</tr>
+<tr>
+<td>&#60;object&gt;</td>
+<td>定义内嵌对象。</td>
+</tr>
+<tr>
+<td>&#60;param&gt;</td>
+<td>定义对象的参数。</td>
+</tr>
+</tbody></table>
+<h2 id="HTML-5-多媒体标签"><a href="#HTML-5-多媒体标签" class="headerlink" title="HTML 5 多媒体标签"></a>HTML 5 多媒体标签</h2><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#60;audio&gt;</td>
+<td>标签定义声音，比如音乐或其他音频流。</td>
+</tr>
+<tr>
+<td>&#60;embed&gt;</td>
+<td>标签定义嵌入的内容，比如插件。</td>
+</tr>
+</tbody></table>
+<h1 id="HTML-视频"><a href="#HTML-视频" class="headerlink" title="HTML 视频"></a>HTML 视频</h1><pre><code>在 HTML 中播放视频的方法有很多种。</code></pre><h2 id="使用-60-embed-gt-标签"><a href="#使用-60-embed-gt-标签" class="headerlink" title="使用 &#60;embed&gt; 标签"></a>使用 &#60;embed&gt; 标签</h2><pre><code>&lt;embed&gt; 标签的作用是在 HTML 页面中嵌入多媒体元素。
+下面的 HTML 代码显示嵌入网页的 Flash 视频：</code></pre><p>   实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;embed src=<span class="string">"movie.swf"</span> height=<span class="string">"200"</span> width=<span class="string">"200"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>问题</p>
+<pre><code>HTML4 无法识别 &lt;embed&gt; 标签。您的页面无法通过验证。
+如果浏览器不支持 Flash，那么视频将无法播放
+iPad 和 iPhone 不能显示 Flash 视频。
+如果您将视频转换为其他格式，那么它仍然不能在所有浏览器中播放。</code></pre><h2 id="使用-60-video-gt-标签"><a href="#使用-60-video-gt-标签" class="headerlink" title="使用 &#60;video&gt; 标签"></a>使用 &#60;video&gt; 标签</h2><pre><code>&lt;video&gt; 是 HTML 5 中的新标签。</code></pre><p>   &#60;video&gt; 标签的作用是在 HTML 页面中嵌入视频元素。<br>    以下 HTML 片段会显示一段嵌入网页的 ogg、mp4 或 webm 格式的视频：</p>
+<p>实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=<span class="string">"320"</span> height=<span class="string">"240"</span> controls=<span class="string">"controls"</span>&gt;</span><br><span class="line">  &lt;source src=<span class="string">"movie.mp4"</span> type=<span class="string">"video/mp4"</span> /&gt;</span><br><span class="line">  &lt;source src=<span class="string">"movie.ogg"</span> type=<span class="string">"video/ogg"</span> /&gt;</span><br><span class="line">  &lt;source src=<span class="string">"movie.webm"</span> type=<span class="string">"video/webm"</span> /&gt;</span><br><span class="line">Your browser does not support the video tag.</span><br><span class="line">&lt;<span class="regexp">/video&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>   您必须把视频转换为很多不同的格式。</p>
+<pre><code>&lt;video&gt; 元素在老式浏览器中无效。
+&lt;video&gt; 元素无法通过 HTML 4 和 XHTML 验证</code></pre><h1 id="最好的-HTML-解决方法"><a href="#最好的-HTML-解决方法" class="headerlink" title="最好的 HTML 解决方法"></a>最好的 HTML 解决方法</h1><pre><code>HTML 5 + &lt;object&gt; + &lt;embed&gt;</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=<span class="string">"320"</span> height=<span class="string">"240"</span> controls=<span class="string">"controls"</span>&gt;</span><br><span class="line">     &lt;source src=<span class="string">"movie.mp4"</span> type=<span class="string">"video/mp4"</span> /&gt;</span><br><span class="line">     &lt;source src=<span class="string">"movie.ogg"</span> type=<span class="string">"video/ogg"</span> /&gt;</span><br><span class="line">     &lt;source src=<span class="string">"movie.webm"</span> type=<span class="string">"video/webm"</span> /&gt;</span><br><span class="line">     &lt;object data=<span class="string">"movie.mp4"</span> width=<span class="string">"320"</span> height=<span class="string">"240"</span>&gt;</span><br><span class="line">       &lt;embed src=<span class="string">"movie.swf"</span> width=<span class="string">"320"</span> height=<span class="string">"240"</span> /&gt;</span><br><span class="line">     &lt;<span class="regexp">/object&gt;</span></span><br><span class="line"><span class="regexp">   &lt;/</span>video&gt;</span><br></pre></td></tr></table></figure>
+
+<pre><code>上例中使用了 4 中不同的视频格式。
+HTML 5 &lt;video&gt; 元素会尝试播放以 mp4、ogg 或
+ webm 格式中的一种来播放视频。如果均失败，则回退到 &lt;embed&gt; 元素。</code></pre><p>问题:</p>
+<pre><code>您必须把视频转换为很多不同的格式
+&lt;video&gt; 元素无法通过 HTML 4 和 XHTML 验证。
+&lt;embed&gt; 元素无法通过 HTML 4 和 XHTML 验证。</code></pre><p>注释：使用 &#60;!DOCTYPE html&gt; (HTML5) 解决验证问题。</p>
+<h2 id="优酷解决方案"><a href="#优酷解决方案" class="headerlink" title="优酷解决方案"></a>优酷解决方案</h2><pre><code>在 HTML 中显示视频的最简单的方法是使用优酷等视频网站。</code></pre><p> 如果您希望在网页中播放视频，那么您可以把视频上传到优酷等视频网站，然后在您的网页中插入 HTML 代码即可播放视频：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;embed src=<span class="string">"http://player.youku.com/player.php/sid/XMzI2NTc4NTMy/v.swf"</span> </span><br><span class="line">  width=<span class="string">"480"</span> height=<span class="string">"400"</span> </span><br><span class="line">  type=<span class="string">"application/x-shockwave-flash"</span>&gt;</span><br><span class="line">  &lt;<span class="regexp">/embed&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用超链接-1"><a href="#使用超链接-1" class="headerlink" title="使用超链接"></a>使用超链接</h2><pre><code>如果网页包含指向媒体文件的超链接，大多数浏览器会使用“辅助应用程序”来播放文件。
+以下代码片段显示指向 AVI 文件的链接。如果用户点击该链接，浏览器会启动“辅助应用程序”，比如 Windows Media Player 来播放这个 AVI 文件：</code></pre><p>   实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"movie.swf"</span>&gt;Play a video file&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="关于内联视频的一段注释"><a href="#关于内联视频的一段注释" class="headerlink" title="关于内联视频的一段注释"></a>关于内联视频的一段注释</h2><pre><code>当视频被包含在网页中时，它被称为内联视频。
+ 如果您打算在 web 应用程序中使用内联视频，
+ 您需要意识到很多人都觉得内联视频令人恼火。</code></pre><p>   同时请注意，用户可能已经关闭了浏览器中的内联视频选项。<br>    我们最好的建议是只在用户希望看到内联视频的地方包含它们。<br>    一个正面的例子是，在用户需要看到视频并点击某个链接时，<br>    会打开页面然后播放视频。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_111/">HTML基础_11</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
+        <p><span>发布时间:</span>2020年05月28日 - 00时04分</p>
+        <p><span>最后更新:</span>2020年05月28日 - 00时04分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_111/" title="HTML基础_11">https://oldaz.github.io/2020/05/28/HTML%E5%9F%BA%E7%A1%80_111/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/05/28/HTML%E5%9F%BA%E7%A1%80_111/　　作者: Mr.AZ" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML基础_11</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-多媒体"><span class="toc-number">1.</span> <span class="toc-text">HTML 多媒体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是多媒体？"><span class="toc-number">1.1.</span> <span class="toc-text">什么是多媒体？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器支持"><span class="toc-number">1.2.</span> <span class="toc-text">浏览器支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多媒体格式"><span class="toc-number">1.3.</span> <span class="toc-text">多媒体格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频格式"><span class="toc-number">1.4.</span> <span class="toc-text">视频格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#声音格式"><span class="toc-number">1.5.</span> <span class="toc-text">声音格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用哪种格式？"><span class="toc-number">1.6.</span> <span class="toc-text">使用哪种格式？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-Object-元素"><span class="toc-number">2.</span> <span class="toc-text">HTML Object 元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-助手（插件）"><span class="toc-number">2.1.</span> <span class="toc-text">HTML 助手（插件）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-音频"><span class="toc-number">2.2.</span> <span class="toc-text">HTML 音频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用插件"><span class="toc-number">2.3.</span> <span class="toc-text">使用插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-60-embed-gt-元素"><span class="toc-number">2.4.</span> <span class="toc-text">使用 &amp;#60;embed&gt; 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-60-object-gt-元素"><span class="toc-number">2.5.</span> <span class="toc-text">使用 &amp;#60;object&gt; 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-HTML5-元素"><span class="toc-number">2.6.</span> <span class="toc-text">使用 HTML5  元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#向网站添加音频的最简单方法"><span class="toc-number">2.7.</span> <span class="toc-text">向网站添加音频的最简单方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用超链接"><span class="toc-number">2.8.</span> <span class="toc-text">使用超链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内联的声音"><span class="toc-number">2.9.</span> <span class="toc-text">内联的声音</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-4-01-多媒体标签"><span class="toc-number">2.10.</span> <span class="toc-text">HTML 4.01 多媒体标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-5-多媒体标签"><span class="toc-number">2.11.</span> <span class="toc-text">HTML 5 多媒体标签</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-视频"><span class="toc-number">3.</span> <span class="toc-text">HTML 视频</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-60-embed-gt-标签"><span class="toc-number">3.1.</span> <span class="toc-text">使用 &amp;#60;embed&gt; 标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-60-video-gt-标签"><span class="toc-number">3.2.</span> <span class="toc-text">使用 &amp;#60;video&gt; 标签</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最好的-HTML-解决方法"><span class="toc-number">4.</span> <span class="toc-text">最好的 HTML 解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优酷解决方案"><span class="toc-number">4.1.</span> <span class="toc-text">优酷解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用超链接-1"><span class="toc-number">4.2.</span> <span class="toc-text">使用超链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于内联视频的一段注释"><span class="toc-number">4.3.</span> <span class="toc-text">关于内联视频的一段注释</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/" title="下一篇: HTML基础_11">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_111/">HTML基础_11</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/">HTML基础_11</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_10/">HTML基础_10</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_9/">HTML基础_9</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_8/">HTML基础_8</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/">HTML基础_7</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/">HTML基础_6</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/">HTML基础_5</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/">安卓开发之线性布局（超级详细属性）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/HTML%E5%9F%BA%E7%A1%80_3/">HTML基础_3</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/HTML%E5%9F%BA%E7%A1%80_2/">HTML基础_2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/HTML%E5%9F%BA%E7%A1%80_1/">HTML基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Java安装jdk和配置环境</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Mr.AZ
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 3;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
