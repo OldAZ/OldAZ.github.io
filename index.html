@@ -281,6 +281,151 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-HTML基础_14" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/" class="article-date">
+      <time datetime="2020-05-28T16:11:34.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/">HTML基础_14</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="https://img-blog.csdnimg.cn/20200529000957933.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="HTML基础_14"></p>
+<h1 id="HTML-Web-Workers"><a href="#HTML-Web-Workers" class="headerlink" title="HTML Web Workers"></a>HTML Web Workers</h1><pre><code>Web worker 是运行在后台的 JavaScript，不会影响页面的性能。</code></pre><h2 id="什么是-Web-Worker？"><a href="#什么是-Web-Worker？" class="headerlink" title="什么是 Web Worker？"></a>什么是 Web Worker？</h2><pre><code>当在 HTML 页面中执行脚本时，页面是不可响应的，直到脚本已完成。
+&lt;!--more--&gt;
+Web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。
+您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 运行在后台。</code></pre><h2 id="检测-Web-Worker-支持"><a href="#检测-Web-Worker-支持" class="headerlink" title="检测 Web Worker 支持"></a>检测 Web Worker 支持</h2><pre><code>在创建 web worker 之前，请检测用户浏览器是否支持它：</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span>(Worker) !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">       <span class="comment">// 是的！支持 Web worker！</span></span><br><span class="line">       <span class="comment">// 一些代码.....</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="comment">// 抱歉！不支持 Web Worker！</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建-Web-Worker-文件"><a href="#创建-Web-Worker-文件" class="headerlink" title="创建 Web Worker 文件"></a>创建 Web Worker 文件</h2><pre><code>现在，让我们在一个外部 JavaScript 文件中创建我们的 web worker。</code></pre><p>   在此处，我们创建了计数脚本。该脚本存储于 “demo_workers.js” 文件中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timedCount</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">    postMessage(i);</span><br><span class="line">    setTimeout(<span class="string">"timedCount()"</span>,<span class="number">500</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">timedCount();</span><br></pre></td></tr></table></figure>
+<pre><code>以上代码中重要的部分是 postMessage() 方法 - 它用于向 HTML 页面传回一段消息。</code></pre><p>   注释: web worker 通常不用于如此简单的脚本，而是用于更耗费 CPU 资源的任务。</p>
+<h2 id="创建-Web-Worker-对象"><a href="#创建-Web-Worker-对象" class="headerlink" title="创建 Web Worker 对象"></a>创建 Web Worker 对象</h2><pre><code>现在我们已经有了 web worker 文件，我们需要从 HTML 页面调用它。</code></pre><p>   下面的代码行检测是否存在 worker，如果不存在，- 它会创建一个新的 web worker 对象，然后运行 “demo_workers.js” 中的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span>(w) == <span class="string">"undefined"</span>) &#123;</span><br><span class="line">      w = <span class="keyword">new</span> Worker(<span class="string">"demo_workers.js"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  然后我们就可以从 web worker 发生和接收消息了。</span><br><span class="line">  向 web worker 添加一个 <span class="string">"onmessage"</span> 事件监听器：</span><br><span class="line">  w.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">document</span>.getElementById(<span class="string">"result"</span>).innerHTML = event.data;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>当 web worker 传送消息时，会执行事件监听器中的代码。
+来自 web worker 的数据会存储于 event.data 中。</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span>(w) == <span class="string">"undefined"</span>) &#123;</span><br><span class="line">       w = <span class="keyword">new</span> Worker(<span class="string">"demo_workers.js"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>   然后我们就可以从 web worker 发生和接收消息了。<br>    向 web worker 添加一个 “onmessage” 事件监听器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">     <span class="built_in">document</span>.getElementById(<span class="string">"result"</span>).innerHTML = event.data;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<p>   当 web worker 传送消息时，会执行事件监听器中的代码。来自 web worker 的数据会存储于 event.data 中。</p>
+<h2 id="终止-Web-Worker"><a href="#终止-Web-Worker" class="headerlink" title="终止 Web Worker"></a>终止 Web Worker</h2><ul>
+<li>当创建 web worker 后，它会继续监听消息（即使在外部脚本完成后）直到其被终止为止。</li>
+<li>如需终止 web worker，并释放浏览器/计算机资源，请使用 terminate() 方法：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w.terminate();</span><br></pre></td></tr></table></figure>
+<h2 id="复用-Web-Worker"><a href="#复用-Web-Worker" class="headerlink" title="复用 Web Worker"></a>复用 Web Worker</h2><p>   如果您把 worker 变量设置为 undefined，在其被终止后，可以重复使用该代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Web-Worker-和-DOM"><a href="#Web-Worker-和-DOM" class="headerlink" title="Web Worker 和 DOM"></a>Web Worker 和 DOM</h1><p>   由于 web worker 位于外部文件中，它们无法访问下例 JavaScript 对象：</p>
+<ul>
+<li>window 对象</li>
+<li>document 对象</li>
+<li>parent 对象</li>
+</ul>
+<h1 id="HTML-Server-Sent-事件"><a href="#HTML-Server-Sent-事件" class="headerlink" title="HTML Server-Sent 事件"></a>HTML Server-Sent 事件</h1><pre><code>Server-Sent 事件允许网页从服务器获得更新。
+Server-Sent 事件 - One Way Messaging</code></pre><p>Server-Sent 事件指的是网页自动从服务器获得更新。<br>以前也可能做到这一点，前提是网页不得不询问是否有可用的更新。<br>通过 Server-Sent 事件，更新能够自动到达。</p>
+<p>例如：Facebook/Twitter 更新、股价更新、新的博文、赛事结果，等等。</p>
+<h2 id="接收-Server-Sent-事件通知"><a href="#接收-Server-Sent-事件通知" class="headerlink" title="接收 Server-Sent 事件通知"></a>接收 Server-Sent 事件通知</h2><pre><code>EventSource 对象用于接收服务器发送事件通知：</code></pre><p>实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source = <span class="keyword">new</span> EventSource(<span class="string">"demo_sse.php"</span>);</span><br><span class="line">source.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"result"</span>).innerHTML += event.data + <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>例子解释：</p>
+<pre><code>创建一个新的 EventSource 对象，
+然后规定发送更新的页面的 URL（本例中是 &quot;demo_sse.php&quot;）
+
+每当接收到一次更新，就会发生 onmessage 事件
+当 onmessage 事件发生时，把已接收的数据推入 id 为 &quot;result&quot; 的元素中</code></pre><h2 id="检测-Server-Sent-事件支持"><a href="#检测-Server-Sent-事件支持" class="headerlink" title="检测 Server-Sent 事件支持"></a>检测 Server-Sent 事件支持</h2><p>在 TIY 实例中，我们编写了一段额外的代码来检测服务器发送事件的浏览器支持：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(EventSource) !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">    <span class="comment">// 是的！支持服务器发送事件！</span></span><br><span class="line">    <span class="comment">// 一些代码.....</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 抱歉！不支持服务器发送事件！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="服务器端代码实例"><a href="#服务器端代码实例" class="headerlink" title="服务器端代码实例"></a>服务器端代码实例</h2><pre><code>为了使上例运行，您需要能够发送数据更新的服务器（比如 PHP 或 ASP）。</code></pre><p>服务器端事件流的语法非常简单。请把 “Content-Type” 报头设置为 “text/event-stream”。现在，您可以开始发送事件流了。</p>
+<p>PHP 中的代码 (demo_sse.php)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(<span class="string">'Content-Type: text/event-stream'</span>);</span><br><span class="line">header(<span class="string">'Cache-Control: no-cache'</span>);</span><br><span class="line"></span><br><span class="line">$time = date(<span class="string">'r'</span>);</span><br><span class="line">echo <span class="string">"data: The server time is: &#123;$time&#125;\n\n"</span>;</span><br><span class="line">flush();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ASP 中的代码 (VB) (demo_sse.asp)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">Response.ContentType = <span class="string">"text/event-stream"</span></span><br><span class="line">Response.Expires = <span class="number">-1</span></span><br><span class="line">Response.Write(<span class="string">"data: The server time is: "</span> &amp; now())</span><br><span class="line">Response.Flush()</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<p>代码解释：</p>
+<ul>
+<li>把报头 “Content-Type” 设置为 “text/event-stream”</li>
+<li>规定不对页面进行缓存</li>
+<li>输出要发送的日期（始终以 “data: “ 开头）</li>
+<li>向网页刷新输出数据</li>
+</ul>
+<h1 id="EventSource-对象"><a href="#EventSource-对象" class="headerlink" title="EventSource 对象"></a>EventSource 对象</h1><p>在上例中，我们使用 onmessage 事件来获取消息。不过还可以使用其他事件：</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onopen</td>
+<td>当通往服务器的连接被打开</td>
+</tr>
+<tr>
+<td>onmessage</td>
+<td>当接收到消息</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>当发生错误</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-HTML基础_13" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -894,72 +1039,6 @@ canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的�
       
         <p class="article-more-link">
           <a   href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于华为云的域名认证问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/" class="article-date">
-      <time datetime="2020-04-26T13:11:44.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="关于华为云的域名认证问题"><a href="#关于华为云的域名认证问题" class="headerlink" title="关于华为云的域名认证问题"></a>关于华为云的域名认证问题</h1><p>最近的华为域名福利大放送 ，top域名只需要一元就能使用一年。<br>搭建博客的话只需要实名认证，不需要备案就可以用！真香！！</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" rel="tag">经验之谈</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/#more">查看全文 >></a>
         </p>
       
       <div class="clearfix"></div>
