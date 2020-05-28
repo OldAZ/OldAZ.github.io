@@ -9,16 +9,16 @@
   
   <title>HTML基础_14 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTML Web WorkersWeb worker 是运行在后台的 JavaScript，不会影响页面的性能。什么是 Web Worker？当在 HTML 页面中执行脚本时，页面是不可响应的，直到脚本已完成。 &lt;!--more--&gt; Web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。 您可以继续做任何愿意做的事情：点击、选取内容等等，而">
+  <meta name="description" content="HTML Web WorkersWeb worker 是运行在后台的 JavaScript，不会影响页面的性能。什么是 Web Worker？当在 HTML 页面中执行脚本时，页面是不可响应的，直到脚本已完成。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML基础_14">
 <meta property="og:url" content="https://oldaz.github.io/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="HTML Web WorkersWeb worker 是运行在后台的 JavaScript，不会影响页面的性能。什么是 Web Worker？当在 HTML 页面中执行脚本时，页面是不可响应的，直到脚本已完成。 &lt;!--more--&gt; Web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。 您可以继续做任何愿意做的事情：点击、选取内容等等，而">
+<meta property="og:description" content="HTML Web WorkersWeb worker 是运行在后台的 JavaScript，不会影响页面的性能。什么是 Web Worker？当在 HTML 页面中执行脚本时，页面是不可响应的，直到脚本已完成。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200529000957933.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-05-28T16:11:34.000Z">
-<meta property="article:modified_time" content="2020-05-28T16:12:32.054Z">
+<meta property="article:modified_time" content="2020-05-28T16:17:08.151Z">
 <meta property="article:author" content="Mr.AZ">
 <meta property="article:tag" content="HTML">
 <meta name="twitter:card" content="summary">
@@ -328,9 +328,8 @@
       
           
         <p><img src="https://img-blog.csdnimg.cn/20200529000957933.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="HTML基础_14"></p>
-<h1 id="HTML-Web-Workers"><a href="#HTML-Web-Workers" class="headerlink" title="HTML Web Workers"></a>HTML Web Workers</h1><pre><code>Web worker 是运行在后台的 JavaScript，不会影响页面的性能。</code></pre><h2 id="什么是-Web-Worker？"><a href="#什么是-Web-Worker？" class="headerlink" title="什么是 Web Worker？"></a>什么是 Web Worker？</h2><pre><code>当在 HTML 页面中执行脚本时，页面是不可响应的，直到脚本已完成。
-&lt;!--more--&gt;
-Web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。
+<h1 id="HTML-Web-Workers"><a href="#HTML-Web-Workers" class="headerlink" title="HTML Web Workers"></a>HTML Web Workers</h1><pre><code>Web worker 是运行在后台的 JavaScript，不会影响页面的性能。</code></pre><h2 id="什么是-Web-Worker？"><a href="#什么是-Web-Worker？" class="headerlink" title="什么是 Web Worker？"></a>什么是 Web Worker？</h2><pre><code>当在 HTML 页面中执行脚本时，页面是不可响应的，直到脚本已完成。</code></pre><a id="more"></a>
+<pre><code>Web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。
 您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 运行在后台。</code></pre><h2 id="检测-Web-Worker-支持"><a href="#检测-Web-Worker-支持" class="headerlink" title="检测 Web Worker 支持"></a>检测 Web Worker 支持</h2><pre><code>在创建 web worker 之前，请检测用户浏览器是否支持它：</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span>(Worker) !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">       <span class="comment">// 是的！支持 Web worker！</span></span><br><span class="line">       <span class="comment">// 一些代码.....</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="comment">// 抱歉！不支持 Web Worker！</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="创建-Web-Worker-文件"><a href="#创建-Web-Worker-文件" class="headerlink" title="创建 Web Worker 文件"></a>创建 Web Worker 文件</h2><pre><code>现在，让我们在一个外部 JavaScript 文件中创建我们的 web worker。</code></pre><p>   在此处，我们创建了计数脚本。该脚本存储于 “demo_workers.js” 文件中：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timedCount</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">    postMessage(i);</span><br><span class="line">    setTimeout(<span class="string">"timedCount()"</span>,<span class="number">500</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">timedCount();</span><br></pre></td></tr></table></figure>
@@ -418,7 +417,7 @@ Server-Sent 事件 - One Way Messaging</code></pre><p>Server-Sent 事件指的�
         <p><span>本文标题:</span><a  href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/">HTML基础_14</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
         <p><span>发布时间:</span>2020年05月29日 - 00时11分</p>
-        <p><span>最后更新:</span>2020年05月29日 - 00时12分</p>
+        <p><span>最后更新:</span>2020年05月29日 - 00时17分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/" title="HTML基础_14">https://oldaz.github.io/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/</a>
             <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/　　作者: Mr.AZ" title=""></span>
