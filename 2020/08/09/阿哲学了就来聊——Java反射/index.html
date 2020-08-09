@@ -9,12 +9,12 @@
   
   <title>阿哲学了就来聊——Java反射 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概念reflect 反射 ，反转 权力的转让 类中有很多的方法和属性，方法的调用权限，属性的赋值权限，属于对象的。 让对象把这些权力交出来，交给Class和其它反射类（Field,Method,Contructor）管理。Class类 的范围就是天下所有的字节码文件，每一个类被编译成字节码文件后，都可以看成是Class类的对象   与Java反射相关的类如下：     类名 用途    Class">
+  <meta name="description" content="概念reflect 反射 ，反转 权力的转让 类中有很多的方法和属性，方法的调用权限，属性的赋值权限，属于对象的。 让对象把这些权力交出来，交给Class和其它反射类（Field,Method,Contructor）管理。 &lt;!--more--&gt;Class类 的范围就是天下所有的字节码文件，每一个类被编译成字节码文件后，都可以看成是Class类的对象   与Java反射相关的类如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿哲学了就来聊——Java反射">
 <meta property="og:url" content="https://oldaz.github.io/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="概念reflect 反射 ，反转 权力的转让 类中有很多的方法和属性，方法的调用权限，属性的赋值权限，属于对象的。 让对象把这些权力交出来，交给Class和其它反射类（Field,Method,Contructor）管理。Class类 的范围就是天下所有的字节码文件，每一个类被编译成字节码文件后，都可以看成是Class类的对象   与Java反射相关的类如下：     类名 用途    Class">
+<meta property="og:description" content="概念reflect 反射 ，反转 权力的转让 类中有很多的方法和属性，方法的调用权限，属性的赋值权限，属于对象的。 让对象把这些权力交出来，交给Class和其它反射类（Field,Method,Contructor）管理。 &lt;!--more--&gt;Class类 的范围就是天下所有的字节码文件，每一个类被编译成字节码文件后，都可以看成是Class类的对象   与Java反射相关的类如下：">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200808124514232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200809134612880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200809135144525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200809135555587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-08-09T06:02:58.000Z">
-<meta property="article:modified_time" content="2020-08-09T06:06:23.172Z">
+<meta property="article:modified_time" content="2020-08-09T06:08:35.785Z">
 <meta property="article:author" content="Mr.AZ">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="反射">
@@ -334,7 +334,8 @@
           
         <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><pre><code>reflect 反射 ，反转 权力的转让
 类中有很多的方法和属性，方法的调用权限，属性的赋值权限，属于对象的。
-让对象把这些权力交出来，交给Class和其它反射类（Field,Method,Contructor）管理。</code></pre><p>Class类 的范围就是天下所有的字节码文件，每一个类被编译成字节码文件后，都可以看成是Class类的对象</p>
+让对象把这些权力交出来，交给Class和其它反射类（Field,Method,Contructor）管理。
+&lt;!--more--&gt;</code></pre><p>Class类 的范围就是天下所有的字节码文件，每一个类被编译成字节码文件后，都可以看成是Class类的对象</p>
 <p><img src="https://img-blog.csdnimg.cn/20200808124514232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="反射"></p>
 <ul>
 <li>与Java反射相关的类如下：</li>
@@ -536,7 +537,7 @@
         <p><span>本文标题:</span><a  href="/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/">阿哲学了就来聊——Java反射</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
         <p><span>发布时间:</span>2020年08月09日 - 14时02分</p>
-        <p><span>最后更新:</span>2020年08月09日 - 14时06分</p>
+        <p><span>最后更新:</span>2020年08月09日 - 14时08分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/" title="阿哲学了就来聊——Java反射">https://oldaz.github.io/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/</a>
             <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/　　作者: Mr.AZ" title=""></span>
