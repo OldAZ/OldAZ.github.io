@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>来看看XML到底是个啥--xml约束文档 | Mr.AZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概念规定xml文档的书写规则      * 作为框架的使用者（程序员）        1.能够在xml中引入约束文档        2.能够简单的读懂约束文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="来看看XML到底是个啥--xml约束文档">
+<meta property="og:url" content="https://oldaz.github.io/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="Mr.AZ">
+<meta property="og:description" content="概念规定xml文档的书写规则      * 作为框架的使用者（程序员）        1.能够在xml中引入约束文档        2.能够简单的读懂约束文档">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://oldaz.github.io/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/20200811055813664.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811160148642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200811164408212.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-08-11T09:54:10.000Z">
+<meta property="article:modified_time" content="2020-08-11T09:58:23.073Z">
+<meta property="article:author" content="Mr.AZ">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="xml">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oldaz.github.io/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/20200811055813664.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Mr.AZ</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/Java">迷路Java</a></li>
+                        
+                            <li><a  href="/categories/HTML">挑战前端</a></li>
+                        
+                            <li><a  href="/categories/Algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/categories/Android">Android</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/xml/" style="font-size: 13.33px;">xml</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" style="font-size: 10px;">快速入门</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 10px;">经验之谈</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.csdn.net/qq_43370892">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">还未毕业，勇敢向前。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Mr.AZ</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Mr.AZ</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/Java">迷路Java</a></li>
+                
+                    <li><a href="/categories/HTML">挑战前端</a></li>
+                
+                    <li><a href="/categories/Algorithm">算法学习</a></li>
+                
+                    <li><a href="/categories/Android">Android</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-来看看XML到底是个啥--xml约束文档" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/" class="article-date">
+      <time datetime="2020-08-11T09:54:10.000Z" itemprop="datePublished">2020-08-11</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      来看看XML到底是个啥--xml约束文档
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xml/" rel="tag">xml</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/20200811055813664.png" alt=""></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><pre><code>规定xml文档的书写规则
+     * 作为框架的使用者（程序员）
+       1.能够在xml中引入约束文档
+       2.能够简单的读懂约束文档</code></pre> <a id="more"></a>
+<h1 id="逻辑图"><a href="#逻辑图" class="headerlink" title="逻辑图"></a>逻辑图</h1><p>以下是约束文档的的作用和逻辑关系的图解：<br>   <img src="https://img-blog.csdnimg.cn/20200811160148642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="约束"></p>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><h2 id="DTD"><a href="#DTD" class="headerlink" title="DTD"></a>DTD</h2><pre><code>一种简单的约束文档</code></pre><h3 id="student-dtd"><a href="#student-dtd" class="headerlink" title="student.dtd"></a>student.dtd</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!ELEMENT <span class="meta-keyword">students</span> (<span class="meta-keyword">student</span>*) &gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="meta-keyword">student</span> (<span class="meta-keyword">name</span>,<span class="meta-keyword">age</span>,<span class="meta-keyword">sex</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="meta-keyword">name</span> (<span class="meta-keyword">#PCDATA</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="meta-keyword">age</span> (<span class="meta-keyword">#PCDATA</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT <span class="meta-keyword">sex</span> (<span class="meta-keyword">#PCDATA</span>)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ATTLIST <span class="meta-keyword">student</span> <span class="meta-keyword">number</span> <span class="meta-keyword">ID</span> <span class="meta-keyword">#REQUIRED</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是对于约束文档的说明：<br><img src="https://img-blog.csdnimg.cn/20200811164408212.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="解释"></p>
+<h3 id="引入约束文档"><a href="#引入约束文档" class="headerlink" title="引入约束文档"></a>引入约束文档</h3><p>1.内部dtd文档</p>
+<pre><code>将约束规则定义在xml文档中（不常用）
+&lt;!DOCTYPE students [
+                        里面书写约束文档 
+                   ]&gt;</code></pre><p>2.外部dtd文档</p>
+<pre><code>将约束文档定义在外部dtd文件中  
+   1.本地的
+   &lt;!DOCTYPE 根标签 SYSTEM &quot;外部的dtd文件&quot;&gt;
+
+   2.网络的
+    &lt;!DOCTYPE 根标签 PUBLIC &quot;dtd文件的名字&quot; &quot;外部的dtd文件URL&quot;&gt;</code></pre><h3 id="dtd实例"><a href="#dtd实例" class="headerlink" title="dtd实例"></a>dtd实例</h3><p>根据上面的约束文档书写的xml文档</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">students</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">"student.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">students</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">student</span> <span class="attr">number</span>=<span class="string">"itcast_0001"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>tom<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">age</span>&gt;</span>18<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">sex</span>&gt;</span>male<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">students</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><pre><code>一种复杂的约束技术
+弥补了dtd约束文档的缺陷（dtd定义的标签里面的值不能进行限制）。</code></pre><h3 id="student-xsd"><a href="#student-xsd" class="headerlink" title="student.xsd"></a>student.xsd</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="comment">&lt;!--schema文档本身就是xml文档--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">xsd:schema</span> <span class="attr">xmlns</span>=<span class="string">"http://www.itcast.cn/xml"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:xsd</span>=<span class="string">"http://www.w3.org/2001/XMLSchema"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetNamespace</span>=<span class="string">"http://www.itcast.cn/xml"</span> <span class="attr">elementFormDefault</span>=<span class="string">"qualified"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--    定义元素，名字叫做students;元素的类型为studentsType ，自定义的studentsType需要在下面声明--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xsd:element</span> <span class="attr">name</span>=<span class="string">"students"</span> <span class="attr">type</span>=<span class="string">"studentsType"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--    声明类型studentsType    complex：组合类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xsd:complexType</span> <span class="attr">name</span>=<span class="string">"studentsType"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        sequence表示按顺序出现 student元素  为studentType类型  最少出现0次   最多出现（未绑定）无数次--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">xsd:sequence</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:element</span> <span class="attr">name</span>=<span class="string">"student"</span> <span class="attr">type</span>=<span class="string">"studentType"</span> <span class="attr">minOccurs</span>=<span class="string">"0"</span> <span class="attr">maxOccurs</span>=<span class="string">"unbounded"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">xsd:sequence</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">xsd:complexType</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--    声明类型studentType  complex：组合类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xsd:complexType</span> <span class="attr">name</span>=<span class="string">"studentType"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        按顺序出现里面声明的标签--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">xsd:sequence</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:element</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"xsd:string"</span>/&gt;</span> <span class="comment">&lt;!--字符串--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:element</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">type</span>=<span class="string">"ageType"</span> /&gt;</span> <span class="comment">&lt;!--自定义类型--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:element</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">type</span>=<span class="string">"sexType"</span> /&gt;</span><span class="comment">&lt;!--自定义类型--&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">xsd:sequence</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--        属性名为number，类型为自定义类型numberType，必须出现--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">xsd:attribute</span> <span class="attr">name</span>=<span class="string">"number"</span> <span class="attr">type</span>=<span class="string">"numberType"</span> <span class="attr">use</span>=<span class="string">"required"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">xsd:complexType</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--           声明sex类型   simple：简单类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xsd:simpleType</span> <span class="attr">name</span>=<span class="string">"sexType"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        类型为String--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">xsd:restriction</span> <span class="attr">base</span>=<span class="string">"xsd:string"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            必须二选一--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:enumeration</span> <span class="attr">value</span>=<span class="string">"male"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:enumeration</span> <span class="attr">value</span>=<span class="string">"female"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">xsd:restriction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">xsd:simpleType</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--           声明age类型   simple：简单类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xsd:simpleType</span> <span class="attr">name</span>=<span class="string">"ageType"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">xsd:restriction</span> <span class="attr">base</span>=<span class="string">"xsd:integer"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            最小值为0--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:minInclusive</span> <span class="attr">value</span>=<span class="string">"0"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            最大值为256--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:maxInclusive</span> <span class="attr">value</span>=<span class="string">"256"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">xsd:restriction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">xsd:simpleType</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--           声明number类型   simple：简单类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xsd:simpleType</span> <span class="attr">name</span>=<span class="string">"numberType"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        类型为String--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">xsd:restriction</span> <span class="attr">base</span>=<span class="string">"xsd:string"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            命名规则--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">xsd:pattern</span> <span class="attr">value</span>=<span class="string">"xml_\d&#123;4&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">xsd:restriction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">xsd:simpleType</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xsd:schema</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="引入schema文档"><a href="#引入schema文档" class="headerlink" title="引入schema文档"></a>引入schema文档</h3><p>1.填写xml文档的根元素<br>2.引入xsi前缀.  xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>3.引入xsd文件命名空间.  xsi:schemaLocation=”<a href="http://www.itcast.cn/xml" target="_blank" rel="noopener">http://www.itcast.cn/xml</a>  student.xsd”<br>4.为每一个xsd约束声明一个前缀,作为标识  xmlns=”<a href="http://www.itcast.cn/xml&quot;" target="_blank" rel="noopener">http://www.itcast.cn/xml&quot;</a> </p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><pre><code>这是一个只有一个约束文档的实例</code></pre><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">students</span>   <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag"> 			 <span class="attr">xmlns</span>=<span class="string">"http://www.itcast.cn/xml"</span> </span></span><br><span class="line"><span class="tag"> 			</span></span><br><span class="line"><span class="tag"> 		   <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.itcast.cn/xml  student.xsd"</span></span></span><br><span class="line"><span class="tag"> 		    &gt;</span> </span><br><span class="line"> 		    <span class="comment">&lt;!-- 当有多个约束文档时可加前缀  xmlns：a(前缀)--&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">student</span> <span class="attr">number</span>=<span class="string">"heima_0001"</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">name</span>&gt;</span>tom<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">age</span>&gt;</span>18<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">sex</span>&gt;</span>male<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">students</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code>以下是多个约束文档的实例（spring框架的配置文件）</code></pre><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context </span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/mvc</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/mvc/spring-mvc.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">context:annotation-config</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"cn.cisol.mvcdemo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">context:include-filter</span> <span class="attr">type</span>=<span class="string">"annotation"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">expression</span>=<span class="string">"org.springframework.stereotype.Controller"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">mapping</span>=<span class="string">"/resources/**"</span> <span class="attr">location</span>=<span class="string">"/resources/"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"order"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mediaTypes"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"json"</span> <span class="attr">value</span>=<span class="string">"application/json"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"xml"</span> <span class="attr">value</span>=<span class="string">"application/xml"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"htm"</span> <span class="attr">value</span>=<span class="string">"text/html"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultViews"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">                </span><br><span class="line">                <span class="tag">&lt;<span class="name">bean</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.json.MappingJackson2JsonView"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ignoreAcceptHeader"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">value</span>=<span class="string">"org.springframework.web.servlet.view.JstlView"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/jsps/"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"209715200"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"resolveLazily"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/">来看看XML到底是个啥--xml约束文档</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
+        <p><span>发布时间:</span>2020年08月11日 - 17时54分</p>
+        <p><span>最后更新:</span>2020年08月11日 - 17时58分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/" title="来看看XML到底是个啥--xml约束文档">https://oldaz.github.io/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/　　作者: Mr.AZ" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">来看看XML到底是个啥--xml快速入门</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#逻辑图"><span class="toc-number">2.</span> <span class="toc-text">逻辑图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分类"><span class="toc-number">3.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DTD"><span class="toc-number">3.1.</span> <span class="toc-text">DTD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#student-dtd"><span class="toc-number">3.1.1.</span> <span class="toc-text">student.dtd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引入约束文档"><span class="toc-number">3.1.2.</span> <span class="toc-text">引入约束文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dtd实例"><span class="toc-number">3.1.3.</span> <span class="toc-text">dtd实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Schema"><span class="toc-number">3.2.</span> <span class="toc-text">Schema</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#student-xsd"><span class="toc-number">3.2.1.</span> <span class="toc-text">student.xsd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引入schema文档"><span class="toc-number">3.2.2.</span> <span class="toc-text">引入schema文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">3.2.3.</span> <span class="toc-text">实例</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="下一篇: 来看看XML到底是个啥--xml快速入门">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/">来看看XML到底是个啥--xml约束文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">来看看XML到底是个啥--xml快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/">阿哲学了就来聊——Java反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JavaScript%E5%9F%BA%E7%A1%80_1/">JavaScript基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/">HTML基础_14</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_13/">HTML基础_13</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_12/">HTML基础_12</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/">HTML基础_11</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_10/">HTML基础_10</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_9/">HTML基础_9</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_8/">HTML基础_8</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/">HTML基础_7</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/">HTML基础_6</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/">HTML基础_5</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/">安卓开发之线性布局（超级详细属性）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/HTML%E5%9F%BA%E7%A1%80_3/">HTML基础_3</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/HTML%E5%9F%BA%E7%A1%80_2/">HTML基础_2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/HTML%E5%9F%BA%E7%A1%80_1/">HTML基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Java安装jdk和配置环境</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Mr.AZ
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 3;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
