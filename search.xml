@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>来看看XML到底是个啥--xml解析</title>
+      <link href="/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/"/>
+      <url>/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20200812163705788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="xml解析"></p><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>操作xml文档，将文档中的数据读取到内存中。</p><pre><code>操作xml文档：     1.解析（读取）：将文档中的数据读取到内存中              2.写入：将内存中的数据写到xml文档中。持久化的存储。</code></pre><a id="more"></a><h1 id="解析xml的方式"><a href="#解析xml的方式" class="headerlink" title="解析xml的方式"></a>解析xml的方式</h1><p>两种思想</p><ul><li><p>DOM思想（服务器端）</p><pre><code>将标记语言文档一次性加入内存中，在内存中形成dom树       优点：操作方便，可以对文档进行CRUD（增删改查）的所有操作       缺点：占内存（一次性读取，形成的dom树是文档大小的上千倍）</code></pre></li><li><p>SAX思想（移动端）</p><pre><code>逐行读取，基于事件驱动的   优点：不占内存   缺点：只能读取（不能增删改） </code></pre><p><img src="https://img-blog.csdnimg.cn/2020081216133641.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="SAXs思想"></p><h1 id="xml常见的解析器"><a href="#xml常见的解析器" class="headerlink" title="xml常见的解析器"></a>xml常见的解析器</h1></li></ul><ol><li><p>JAXP</p><pre><code>sun公司提供的解析器，支持dom和sax两种思想* 性能不好，一般不会使用，了解即可</code></pre></li><li><p>DOM4J</p><pre><code>基于DOM思想的解析器*一款很优秀的解析器，使用于服务器端。   </code></pre></li><li><p>Jsounp</p><pre><code>jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。*由于xml刚开始就是为了代替html的，因此可以通过Jsoup解析xml。</code></pre></li><li><p>PULL</p><pre><code>安卓内置的解析器，sax方式的</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> xml </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>来看看XML到底是个啥--xml约束文档</title>
       <link href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/"/>
       <url>/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/</url>
