@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>xml解析--Jsoup快速入门 | Mr.AZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概念 Jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xml解析--Jsoup快速入门">
+<meta property="og:url" content="https://oldaz.github.io/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Mr.AZ">
+<meta property="og:description" content="概念 Jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200813143329389.png#pic_center">
+<meta property="article:published_time" content="2020-08-13T06:35:50.000Z">
+<meta property="article:modified_time" content="2020-08-13T06:36:54.946Z">
+<meta property="article:author" content="Mr.AZ">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="xml">
+<meta property="article:tag" content="快速入门">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200813143329389.png#pic_center">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Mr.AZ</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/Java">迷路Java</a></li>
+                        
+                            <li><a  href="/categories/HTML">挑战前端</a></li>
+                        
+                            <li><a  href="/categories/Algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/categories/Android">Android</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/xml/" style="font-size: 15px;">xml</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" style="font-size: 12.5px;">快速入门</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 10px;">经验之谈</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.csdn.net/qq_43370892">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">还未毕业，勇敢向前。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Mr.AZ</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Mr.AZ</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/Java">迷路Java</a></li>
+                
+                    <li><a href="/categories/HTML">挑战前端</a></li>
+                
+                    <li><a href="/categories/Algorithm">算法学习</a></li>
+                
+                    <li><a href="/categories/Android">Android</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-xml解析--Jsoup快速入门" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="article-date">
+      <time datetime="2020-08-13T06:35:50.000Z" itemprop="datePublished">2020-08-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      xml解析--Jsoup快速入门
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xml/" rel="tag">xml</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="tag">快速入门</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="https://img-blog.csdnimg.cn/20200813143329389.png#pic_center" alt="jsoup"></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p> Jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。</p>
+<a id="more"></a>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>导入jar包</p>
+<pre><code>jsoup-1.11.2.jar</code></pre></li>
+<li><p>获取Document</p>
+</li>
+<li><p>获取对应的标签Element对象</p>
+</li>
+<li><p>获取数据</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xml.jsoup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsoup.Jsoup;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Document;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Element;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.select.Elements;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> * Jsoup快速入门</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//2.获取Document对象,根据xml文档来获取</span></span><br><span class="line">        <span class="comment">//2.1 获取student。xml的路径</span></span><br><span class="line">        String path = JsoupDemo1.class.getResource("student.xml").getPath();</span><br><span class="line">        <span class="comment">//2.2解析xml文档，加载文档进入内存，获取dom树--&gt;Document</span></span><br><span class="line">        Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">//3.获取元素对象</span></span><br><span class="line">        Elements elements = document.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line">        System.out.println(elements.size());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.1获取第一个name的element对象</span></span><br><span class="line">        Element element = elements.get(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.2获取数据</span></span><br><span class="line">        String name = element.text();</span><br><span class="line">        System.out.println(name);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="对象的使用"><a href="#对象的使用" class="headerlink" title="对象的使用"></a>对象的使用</h1><ol>
+<li>Jsoup：工具类，可以解析html或者xml文档返回给Document对象。</li>
+<li>Document：文档对象，代表内存中的dom树</li>
+<li>Elements：元素Element对象的集合。可以当作ArrayList<Element>来使用</li>
+<li>Element：元素对象</li>
+<li>Node：节点对象<h2 id="Jsoup对象"><a href="#Jsoup对象" class="headerlink" title="Jsoup对象"></a>Jsoup对象</h2><ul>
+<li>parse：解析html或者xml文档，返回Document<ul>
+<li>parse(File in,String charsetName) :解析html或者xml文件的</li>
+<li>parse(String html):解析xml或者html字符串的</li>
+<li>parse(URL url ,int timeoutMillis):通过网络路径获取指定的HTML和xml的文档对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xml.jsoup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsoup.Jsoup;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Document;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Element;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.select.Elements;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> * Jsoup对象功能</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//2.1 获取student。xml的路径</span></span><br><span class="line">        String path = JsoupDemo2.class.getResource("student.xml").getPath();</span><br><span class="line">        <span class="comment">//2.2解析xml文档，加载文档进入内存，获取dom树--&gt;Document</span></span><br><span class="line"><span class="comment">//        Document document = Jsoup.parse(new File(path), "utf-8");</span></span><br><span class="line"><span class="comment">//        System.out.println(document);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//parse(String html):解析xml或者html字符串的</span></span><br><span class="line">        String str = <span class="string">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\" ?&gt;\n"</span> +</span><br><span class="line">                <span class="string">" &lt;students   xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"</span> +</span><br><span class="line">                <span class="string">" \t\t\t xmlns=\"http://www.itcast.cn/xml\" \n"</span> +</span><br><span class="line">                <span class="string">" \t\t   xsi:schemaLocation=\"http://www.itcast.cn/xml  student.xsd\"\n"</span> +</span><br><span class="line">                <span class="string">" \t\t    &gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t&lt;student number=\"xml_0001\"&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t\t&lt;name&gt;tom&lt;/name&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t\t&lt;age&gt;18&lt;/age&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t\t&lt;sex&gt;male&lt;/sex&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t&lt;/student&gt;\n"</span> +</span><br><span class="line">                <span class="string">"\t&lt;student number=\"xml_0002\"&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t\t&lt;name&gt;mark&lt;/name&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t\t&lt;age&gt;18&lt;/age&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t\t&lt;sex&gt;female&lt;/sex&gt;\n"</span> +</span><br><span class="line">                <span class="string">" \t&lt;/student&gt;\n"</span> +</span><br><span class="line">                <span class="string">"\t\t \n"</span> +</span><br><span class="line">                <span class="string">" &lt;/students&gt;"</span>;</span><br><span class="line">        Document document = Jsoup.parse(str);</span><br><span class="line">        System.out.println(document);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//parse(URL url ,int timeoutMillis):通过网络路径获取指定的HTML和xml的文档对象</span></span><br><span class="line">        <span class="comment">//代表网络中的资源路径</span></span><br><span class="line">        URL url = <span class="keyword">new</span> URL(<span class="string">"http://oldaz.top/"</span>);</span><br><span class="line">        Document document1 = Jsoup.parse(url, <span class="number">10000</span>);</span><br><span class="line">        System.out.println(document1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h2><pre><code>文本对象，代表内存中的dom树</code></pre><h3 id="功能：获取Element对象"><a href="#功能：获取Element对象" class="headerlink" title="功能：获取Element对象"></a>功能：获取Element对象</h3><pre><code>getElementById(id):根据id属性值获取唯一的element对象
+getElementsByTag(String tagName):根据标签名称获取元素对象集合
+getElementsByAttribute(String key):根据属性名称来获取元素元素对象集合
+getElementsByAttribute(String key,String value):
+                     根据对应的属性名和属性值获取元素对象集合。</code></pre><h3 id="案例代码"><a href="#案例代码" class="headerlink" title="案例代码"></a>案例代码</h3><p>xml：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">students</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">student</span> <span class="attr">number</span>=<span class="string">"xml_0001"</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">name</span> <span class="attr">id</span> =<span class="string">"id01"</span>&gt;</span>tom<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">age</span>&gt;</span>18<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">sex</span>&gt;</span>male<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">student</span> <span class="attr">number</span>=<span class="string">"xml_0002"</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">name</span>&gt;</span>mark<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">age</span>&gt;</span>18<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">sex</span>&gt;</span>female<span class="tag">&lt;/<span class="name">sex</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;/<span class="name">student</span>&gt;</span></span><br><span class="line">		 </span><br><span class="line"> <span class="tag">&lt;/<span class="name">students</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>获取Elements对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xml.jsoup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsoup.Jsoup;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Document;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Element;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.select.Elements;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> * Document/Element对象功能</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1 获取student。xml的路径</span></span><br><span class="line">        String path = JsoupDemo2.class.getResource("student.xml").getPath();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.获取Document对象</span></span><br><span class="line">        Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.获取元素对象</span></span><br><span class="line">        <span class="comment">// 3.1获取所有的student对象</span></span><br><span class="line">        Elements elements = document.getElementsByTag(<span class="string">"student"</span>);</span><br><span class="line">        System.out.println(elements);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"----------getEleentsById-----------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.2获取属性名为id的元素对象</span></span><br><span class="line">        Elements elements1 = document.getElementsByAttribute(<span class="string">"id"</span>);</span><br><span class="line">        System.out.println(elements1);</span><br><span class="line">        System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line">        <span class="comment">//3.3获取number属性值为xml_0001的元素对象</span></span><br><span class="line">        Elements elements2 = document.getElementsByAttributeValue(<span class="string">"number"</span>, <span class="string">"xml_0001"</span>);</span><br><span class="line">        System.out.println(elements2);</span><br><span class="line">        System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line">            <span class="comment">//3.4获取id属性值的元素对象</span></span><br><span class="line">        Element id01 = document.getElementById(<span class="string">"id01"</span>);</span><br><span class="line">        System.out.println(id01);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Element对象"><a href="#Element对象" class="headerlink" title="Element对象"></a>Element对象</h2><h3 id="获取子元素对象"><a href="#获取子元素对象" class="headerlink" title="获取子元素对象"></a>获取子元素对象</h3><pre><code>getElementById(id):根据id属性值获取唯一的element对象
+getElementsByTag(String tagName):根据标签名称获取元素对象集合
+getElementsByAttribute(String key):根据属性名称来获取元素元素对象集合
+getElementsByAttribute(String key,String value):
+                     根据对应的属性名和属性值获取元素对象集合。</code></pre><h3 id="获取属性值"><a href="#获取属性值" class="headerlink" title="获取属性值"></a>获取属性值</h3><pre><code>String attr(String key):根据属性名称获取属性值</code></pre><h3 id="获取文本内容"><a href="#获取文本内容" class="headerlink" title="获取文本内容"></a>获取文本内容</h3><pre><code>String text():获取文本内容
+String html():获取标签体的所有内容（包括子标签的字符串内容）</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xml.jsoup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsoup.Jsoup;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Document;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Element;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.select.Elements;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> * Element对象功能</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1 获取student。xml的路径</span></span><br><span class="line">        String path = JsoupDemo2.class.getResource("student.xml").getPath();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.获取Document对象</span></span><br><span class="line">        Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  Element对象</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  获取子元素对象</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">       getElementById(id):根据id属性值获取唯一的element对象</span></span><br><span class="line"><span class="comment">       getElementsByTag(String tagName):根据标签名称获取元素对象集合</span></span><br><span class="line"><span class="comment">       getElementsByAttribute(String key):根据属性名称来获取元素元素对象集合</span></span><br><span class="line"><span class="comment">       getElementsByAttribute(String key,String value):</span></span><br><span class="line"><span class="comment">                            根据对应的属性名和属性值获取元素对象集合。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  获取属性值</span></span><br><span class="line"><span class="comment">    String attr(String key):根据属性名称获取属性值</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  获取文本内容</span></span><br><span class="line"><span class="comment">    String text():获取文本内容</span></span><br><span class="line"><span class="comment">    String html():获取标签体的所有内容（包括子标签的字符串内容）</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//通过document 对象获取name标签，获取所有的name标签   2个</span></span><br><span class="line">        Elements elements = document.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line">        System.out.println(elements.size());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//通过Element对象获取子标签对象</span></span><br><span class="line">        System.out.println(<span class="string">"---------------"</span>);</span><br><span class="line">        Element student_1 = document.getElementsByTag(<span class="string">"student"</span>).get(<span class="number">0</span>);</span><br><span class="line">        Elements stdent_1_name = student_1.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line">        System.out.println(stdent_1_name.size());</span><br><span class="line">            <span class="comment">//获取student对象的属性值</span></span><br><span class="line">        String number = student_1.attr(<span class="string">"number"</span>);</span><br><span class="line">        System.out.println(number);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取文本内容，text只获取纯文本内容，html会获取标签</span></span><br><span class="line">        String text = stdent_1_name.text();</span><br><span class="line">        String html = stdent_1_name.html();</span><br><span class="line">        System.out.println(text);</span><br><span class="line">        System.out.println(html);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Node节点对象"><a href="#Node节点对象" class="headerlink" title="Node节点对象"></a>Node节点对象</h2><pre><code>是Document和Element的父类 
+主要是包含增删改的方法</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">xml解析--Jsoup快速入门</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
+        <p><span>发布时间:</span>2020年08月13日 - 14时35分</p>
+        <p><span>最后更新:</span>2020年08月13日 - 14时36分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="xml解析--Jsoup快速入门">https://oldaz.github.io/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/　　作者: Mr.AZ" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">来看看XML到底是个啥--xml解析</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快速入门"><span class="toc-number">2.</span> <span class="toc-text">快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">2.1.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对象的使用"><span class="toc-number">3.</span> <span class="toc-text">对象的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jsoup对象"><span class="toc-number">3.1.</span> <span class="toc-text">Jsoup对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Document对象"><span class="toc-number">3.2.</span> <span class="toc-text">Document对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#功能：获取Element对象"><span class="toc-number">3.2.1.</span> <span class="toc-text">功能：获取Element对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#案例代码"><span class="toc-number">3.2.2.</span> <span class="toc-text">案例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Element对象"><span class="toc-number">3.3.</span> <span class="toc-text">Element对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取子元素对象"><span class="toc-number">3.3.1.</span> <span class="toc-text">获取子元素对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取属性值"><span class="toc-number">3.3.2.</span> <span class="toc-text">获取属性值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取文本内容"><span class="toc-number">3.3.3.</span> <span class="toc-text">获取文本内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node节点对象"><span class="toc-number">3.4.</span> <span class="toc-text">Node节点对象</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/" title="下一篇: 来看看XML到底是个啥--xml解析">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">xml解析--Jsoup快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/">来看看XML到底是个啥--xml解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/">来看看XML到底是个啥--xml约束文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">来看看XML到底是个啥--xml快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/">阿哲学了就来聊——Java反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JavaScript%E5%9F%BA%E7%A1%80_1/">JavaScript基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/">HTML基础_14</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_13/">HTML基础_13</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_12/">HTML基础_12</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/">HTML基础_11</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_10/">HTML基础_10</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_9/">HTML基础_9</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_8/">HTML基础_8</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/">HTML基础_7</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/">HTML基础_6</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/">HTML基础_5</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/">安卓开发之线性布局（超级详细属性）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/HTML%E5%9F%BA%E7%A1%80_3/">HTML基础_3</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/HTML%E5%9F%BA%E7%A1%80_2/">HTML基础_2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/HTML%E5%9F%BA%E7%A1%80_1/">HTML基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Java安装jdk和配置环境</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Mr.AZ
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 3;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
