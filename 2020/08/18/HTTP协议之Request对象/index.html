@@ -7,26 +7,24 @@
   
   
   
-  <title>速解HTTP协议之请求消息 | Mr.AZ</title>
+  <title>HTTP协议之Request对象 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概念HTTP : Hyper Text Transfer Protocol   超文本传输协议超文本传输协议传输协议：定义了客户端和服务器端通讯时，发送数据的格式">
+  <meta name="description" content="request对象1.request和response对象是由服务器创建的。我们来使用他们 2.request对象是来获取请求消息，response对象是来设置响应消息。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="速解HTTP协议之请求消息">
-<meta property="og:url" content="https://oldaz.github.io/2020/08/16/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/index.html">
+<meta property="og:title" content="HTTP协议之Request对象">
+<meta property="og:url" content="https://oldaz.github.io/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="概念HTTP : Hyper Text Transfer Protocol   超文本传输协议超文本传输协议传输协议：定义了客户端和服务器端通讯时，发送数据的格式">
+<meta property="og:description" content="request对象1.request和response对象是由服务器创建的。我们来使用他们 2.request对象是来获取请求消息，response对象是来设置响应消息。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200816100624670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200815171936872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200816090007260.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200816095517571.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="article:published_time" content="2020-08-16T02:24:09.000Z">
-<meta property="article:modified_time" content="2020-08-16T02:26:08.193Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200816165117123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200816112357668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200816162354892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-08-18T03:16:23.000Z">
+<meta property="article:modified_time" content="2020-08-25T04:01:39.754Z">
 <meta property="article:author" content="Mr.AZ">
-<meta property="article:tag" content="快速入门">
 <meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200816100624670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200816165117123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -208,7 +206,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 12px;">HTTP</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jsoup/" style="font-size: 12px;">Jsoup</a> <a href="/tags/Servlet/" style="font-size: 14px;">Servlet</a> <a href="/tags/xml/" style="font-size: 16px;">xml</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 10px;">工具类</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" style="font-size: 16px;">快速入门</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 12px;">经验之谈</a>
+                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 14.29px;">HTTP</a> <a href="/tags/Java/" style="font-size: 18.57px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jsoup/" style="font-size: 11.43px;">Jsoup</a> <a href="/tags/Servlet/" style="font-size: 12.86px;">Servlet</a> <a href="/tags/xml/" style="font-size: 15.71px;">xml</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 10px;">工具类</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" style="font-size: 17.14px;">快速入门</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 11.43px;">经验之谈</a>
                     </div>
                 </section>
                 
@@ -287,11 +285,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-速解HTTP协议之请求消息" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HTTP协议之Request对象" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/08/16/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/" class="article-date">
-      <time datetime="2020-08-16T02:24:09.000Z" itemprop="datePublished">2020-08-16</time>
+      <a  href="/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/" class="article-date">
+      <time datetime="2020-08-18T03:16:23.000Z" itemprop="datePublished">2020-08-18</time>
 </a>
 
     </div>
@@ -305,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      速解HTTP协议之请求消息
+      HTTP协议之Request对象
     </h1>
   
 
@@ -321,7 +319,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="tag">快速入门</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -331,50 +329,67 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="https://img-blog.csdnimg.cn/20200816100624670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="HTTP"></p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><pre><code>HTTP : Hyper Text Transfer Protocol   超文本传输协议</code></pre><h2 id="超文本传输协议"><a href="#超文本传输协议" class="headerlink" title="超文本传输协议"></a>超文本传输协议</h2><pre><code>传输协议：定义了客户端和服务器端通讯时，发送数据的格式</code></pre><a id="more"></a>
+        <p><img src="https://img-blog.csdnimg.cn/20200816165117123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="request"></p>
+<h1 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h1><pre><code>1.request和response对象是由服务器创建的。我们来使用他们
+2.request对象是来获取请求消息，response对象是来设置响应消息。</code></pre><a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200816112357668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="Request对象继承体系结构"><a href="#Request对象继承体系结构" class="headerlink" title="Request对象继承体系结构"></a>Request对象继承体系结构</h1><pre><code>ServletRequest             --接口
+    继承
+HttpServletRequest        --接口
+    实现
+Org.apache.catalina.connector.RequestFacade 类（tomcat）</code></pre><h1 id="request功能"><a href="#request功能" class="headerlink" title="request功能"></a>request功能</h1><h2 id="1-获取请求消息"><a href="#1-获取请求消息" class="headerlink" title="1.获取请求消息"></a>1.获取请求消息</h2><h3 id="1-1获取请求行数据"><a href="#1-1获取请求行数据" class="headerlink" title="1.1获取请求行数据"></a>1.1获取请求行数据</h3><pre><code>* GET  /day/demo1?name=zhanshan  HTTP/1.1
+* 方法：
+            1.获取请求方式：GET
+                    String getMethod()
+            2.(*)获取虚拟目录： /day
+                    String getContextPath()
+            3.获取Servlet路径：/demo1
+                     String getServletPath()
+            4.获取get方式的请求参数： name=zhanshan
+                     String getQueryString()
+       5.(*)获取请求的URI：/day/demo1
+               String getRequestURI()     :/day/demo1
+               StringBuffer getRequestURL()   :  http://localhost:8080/day/demo1
 
-<p>  <img src="https://img-blog.csdnimg.cn/20200815171936872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><pre><code>1.基于TCP/IP的高级协议
-2. 默认端口号：80
-3. 基于请求/响应模型的：一次请求对应一次响应 
-4. 无状态的：每次请求之间，相互独立，不能交互数据</code></pre><p>历史版本：</p>
-<pre><code>1.0 ：每一次请求都会建立新的连接
-1.1 ：复用连接，对缓存的支持比较好。</code></pre><h1 id="请求消息数据格式"><a href="#请求消息数据格式" class="headerlink" title="请求消息数据格式"></a>请求消息数据格式</h1><p><img src="https://img-blog.csdnimg.cn/20200816090007260.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="请求消息"></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="1-请求行"><a href="#1-请求行" class="headerlink" title="1.请求行"></a>1.请求行</h3><pre><code>请求方式  请求url  请求协议/版本
-GET  /2_Servlet4_0_war_exploded/s3  HTTP/1.1
+           URL:统一资源定位符  
+               URL小于URI  
+           URI：统一资源标识符
 
-   *请求方式：
-       HTTP协议中有7中请求方式，常用的2
-        GET ：
-           1.请求参数在请求行中，在url后
-           2.请求的url长度有限制
-           3.不太安全
-        POST：
-            1.请求参数在请求体中
-            2.请求的url长度没有限制（文件上传）
-            3.相对安全</code></pre><h3 id="2-请求头"><a href="#2-请求头" class="headerlink" title="2.请求头"></a>2.请求头</h3><p> 客户端浏览器告诉服务端的一些信息</p>
-<pre><code>请求头名称 ：请求值
- *常见的请求头：
-      1.User-Agent:浏览器告诉服务器，我访问你时使用的浏览器版本信息
-           *可以在服务器端获取该头的信息，解决浏览器的兼容性问题
-   2.Referer：url
-        *告诉服务器，我（当前请求）从哪里来？
-       作用：
-          1.防盗链
-          2.统计的工作</code></pre><p><img src="https://img-blog.csdnimg.cn/20200816095517571.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="盗链"></p>
-<h3 id="3-请求空行"><a href="#3-请求空行" class="headerlink" title="3.请求空行"></a>3.请求空行</h3><pre><code>空行（分割POST请求的请求头和请求体）</code></pre><h3 id="4-请求体（正文）"><a href="#4-请求体（正文）" class="headerlink" title="4.请求体（正文）"></a>4.请求体（正文）</h3><pre><code>封装POST请求消息的请求参数的</code></pre><h3 id="字符串格式"><a href="#字符串格式" class="headerlink" title="字符串格式"></a>字符串格式</h3><pre><code>GET /2_Servlet4_0_war_exploded/s3 HTTP/1.1
-Host: localhost:8080
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Cookie: Idea-41e9004a=83460dde-8447-48d3-bfc3-ed6bae83b943
-Upgrade-Insecure-Requests: 1
-Cache-Control: max-age=0
+       6.获取协议及版本:HTTP/1.1
+               String getProtocol()        
+       7.获取客户机的IP地址
+               String getRemoteAddr()</code></pre><h3 id="1-2获取请求头数据"><a href="#1-2获取请求头数据" class="headerlink" title="1.2获取请求头数据"></a>1.2获取请求头数据</h3><pre><code>方法：
+        String getHeader(String name):通过请求头的名称获取请求头的值
+        Enumeration&lt;String&gt; getHeaderNames(): 获取所有的请求头名称</code></pre><p> 3.获取请求体数据<br>         请求体：只有POST请求方式，才有请求体，在请求体中封装了请求的请求参数</p>
+<pre><code>步骤：
+        1.获取流对象
+                1.BUfferedReader getHeader()  :获取字符输入流，只能操作字符数据。
+                2.ServletInputStream()  :获取字节流，可以操作所有类型的数据
+        2.再从流对象中拿数据</code></pre><h2 id="2-其他功能"><a href="#2-其他功能" class="headerlink" title="2.其他功能"></a>2.其他功能</h2><h3 id="2-1获取请求参数-的通用方式"><a href="#2-1获取请求参数-的通用方式" class="headerlink" title="2.1获取请求参数 的通用方式"></a>2.1获取请求参数 的通用方式</h3><p>GET和POST请求方式都可以使用以下方法：<br>this.DoPost(request,response)</p>
+<pre><code>1.String getParamterer(String name) 
+       //根据参数名称获取参数值 username=1&amp;password=2
+2.String[]  getParamtererValues(String name)
+      //根据参数名称获取参数值与数组  hobby=1&amp; hobby=2
+3.getParameterNames()
+      //获取所有请求的参数名称
+4.Map&lt;String,String[]&gt; getParameterMap()
+        //获取所有集合的Map集合</code></pre><p>乱码问题：</p>
+<pre><code>设置流的字符集：
+            在获取参数前，设置request.setcharacterEncoding(&quot;utf-8&quot;);</code></pre><h2 id="3-请求转发"><a href="#3-请求转发" class="headerlink" title="3.请求转发"></a>3.请求转发</h2><p>一种在服务器内部的资源跳转方式<br><img src="https://img-blog.csdnimg.cn/20200816162354892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="转发"></p>
+<h3 id="3-1步骤"><a href="#3-1步骤" class="headerlink" title="3.1步骤:"></a>3.1步骤:</h3><pre><code>1.通过request对象获取请求转发器对象
+   RequestDispatcher  getRequestDispatcher(String path)
+2.使用 RequestDispatcher对象进行转发
+  forward(ServletRequest  request,ServletResponse response)</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式1</span></span><br><span class="line"> RequestDispatcher rd = request.getRequestDispatcher(<span class="string">"/Demo3"</span>);</span><br><span class="line"> rd.forward(request,response);        </span><br><span class="line"> <span class="comment">//方式2</span></span><br><span class="line"> request.getRequestDispatcher(<span class="string">"/Demo3"</span>).forward(request,response);</span><br></pre></td></tr></table></figure>
+<h3 id="3-2特点"><a href="#3-2特点" class="headerlink" title="3.2特点"></a>3.2特点</h3><pre><code>1.浏览器地址栏路径不发生变化
+2. 只能转发到当前服务器内部资源中
+3. 转发是一次请求</code></pre><h2 id="4-共享数据"><a href="#4-共享数据" class="headerlink" title="4.共享数据"></a>4.共享数据</h2><h3 id="4-1域对象"><a href="#4-1域对象" class="headerlink" title="4.1域对象"></a>4.1域对象</h3><p>一个作用范围的对象，可以在范围内共享数据。</p>
+<pre><code>request域：
+         代表一次请求，一般用于请求转发的多个资源中共享数据
+方法：
+    1.setAttrbute(String name,Oject obj):存储数据
+    2.Object getAttrbute(String name)   :通过键获取数据
+    3.void removeAttrbute(String name ):通过键移除键值对</code></pre><p>​        </p>
 
- user=zhaoyun</code></pre>
       
     </div>
     
@@ -382,13 +397,13 @@ Cache-Control: max-age=0
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/08/16/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/">速解HTTP协议之请求消息</a></p>
+        <p><span>本文标题:</span><a  href="/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/">HTTP协议之Request对象</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年08月16日 - 10时24分</p>
-        <p><span>最后更新:</span>2020年08月16日 - 10时26分</p>
+        <p><span>发布时间:</span>2020年08月18日 - 11时16分</p>
+        <p><span>最后更新:</span>2020年08月25日 - 12时01分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/08/16/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/" title="速解HTTP协议之请求消息">https://oldaz.github.io/2020/08/16/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/16/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/" title="HTTP协议之Request对象">https://oldaz.github.io/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -399,18 +414,18 @@ Cache-Control: max-age=0
 
 <nav id="article-nav">
   
-    <a  href="/2020/08/18/%E8%AE%B0%E5%BD%95%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7--beanutils%E5%8C%85/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/08/19/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          记录“偷懒”实用小技巧--beanutils包
+          速解HTTP协议之响应消息
         
       </div>
     </a>
   
   
-    <a  href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaWeb知识核心--Servlet体系结构</div>
+    <a  href="/2020/08/18/%E8%AE%B0%E5%BD%95%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7--beanutils%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记录“偷懒”实用小技巧--beanutils包</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -422,7 +437,7 @@ Cache-Control: max-age=0
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#超文本传输协议"><span class="toc-number">1.1.</span> <span class="toc-text">超文本传输协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特点"><span class="toc-number">1.2.</span> <span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请求消息数据格式"><span class="toc-number">2.</span> <span class="toc-text">请求消息数据格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求行"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.请求行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-请求头"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.请求头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-请求空行"><span class="toc-number">2.1.3.</span> <span class="toc-text">3.请求空行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-请求体（正文）"><span class="toc-number">2.1.4.</span> <span class="toc-text">4.请求体（正文）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串格式"><span class="toc-number">2.1.5.</span> <span class="toc-text">字符串格式</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#request对象"><span class="toc-number">1.</span> <span class="toc-text">request对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Request对象继承体系结构"><span class="toc-number">2.</span> <span class="toc-text">Request对象继承体系结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#request功能"><span class="toc-number">3.</span> <span class="toc-text">request功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-获取请求消息"><span class="toc-number">3.1.</span> <span class="toc-text">1.获取请求消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1获取请求行数据"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.1获取请求行数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2获取请求头数据"><span class="toc-number">3.1.2.</span> <span class="toc-text">1.2获取请求头数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-其他功能"><span class="toc-number">3.2.</span> <span class="toc-text">2.其他功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1获取请求参数-的通用方式"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.1获取请求参数 的通用方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-请求转发"><span class="toc-number">3.3.</span> <span class="toc-text">3.请求转发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1步骤"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.1步骤:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2特点"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.2特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-共享数据"><span class="toc-number">3.4.</span> <span class="toc-text">4.共享数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1域对象"><span class="toc-number">3.4.1.</span> <span class="toc-text">4.1域对象</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -495,18 +510,18 @@ Cache-Control: max-age=0
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/08/18/%E8%AE%B0%E5%BD%95%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7--beanutils%E5%8C%85/" title="上一篇: 记录“偷懒”实用小技巧--beanutils包">
+            <a  href="/2020/08/19/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF/" title="上一篇: 速解HTTP协议之响应消息">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" title="下一篇: JavaWeb知识核心--Servlet体系结构">
+            <a  href="/2020/08/18/%E8%AE%B0%E5%BD%95%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7--beanutils%E5%8C%85/" title="下一篇: 记录“偷懒”实用小技巧--beanutils包">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/18/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/">速解HTTP协议之Request对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/18/%E8%AE%B0%E5%BD%95%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7--beanutils%E5%8C%85/">记录“偷懒”实用小技巧--beanutils包</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/%E9%80%9F%E8%A7%A3HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/">速解HTTP协议之请求消息</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">JavaWeb知识核心--Servlet体系结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/">JavaWeb知识核心--Servlet周期和注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">JavaWeb知识核心--Servlet快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/">xml解析--Jsoup快捷查询方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">xml解析--Jsoup快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/">来看看XML到底是个啥--xml解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/">来看看XML到底是个啥--xml约束文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">来看看XML到底是个啥--xml快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/">阿哲学了就来聊——Java反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JavaScript%E5%9F%BA%E7%A1%80_1/">JavaScript基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/">HTML基础_14</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_13/">HTML基础_13</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_12/">HTML基础_12</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/">HTML基础_11</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_10/">HTML基础_10</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_9/">HTML基础_9</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_8/">HTML基础_8</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/">HTML基础_7</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/">HTML基础_6</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/">HTML基础_5</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/">安卓开发之线性布局（超级详细属性）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/HTML%E5%9F%BA%E7%A1%80_3/">HTML基础_3</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/HTML%E5%9F%BA%E7%A1%80_2/">HTML基础_2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/HTML%E5%9F%BA%E7%A1%80_1/">HTML基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Java安装jdk和配置环境</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8Bresponse%E5%AF%B9%E8%B1%A1/">HTTP协议之response对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF/">速解HTTP协议之响应消息</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/">HTTP协议之Request对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/18/%E8%AE%B0%E5%BD%95%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7--beanutils%E5%8C%85/">记录“偷懒”实用小技巧--beanutils包</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/">速解HTTP协议之请求消息</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">JavaWeb知识核心--Servlet体系结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/">JavaWeb知识核心--Servlet周期和注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">JavaWeb知识核心--Servlet快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/">xml解析--Jsoup快捷查询方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">xml解析--Jsoup快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/">来看看XML到底是个啥--xml解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/">来看看XML到底是个啥--xml约束文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">来看看XML到底是个啥--xml快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/">阿哲学了就来聊——Java反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JavaScript%E5%9F%BA%E7%A1%80_1/">JavaScript基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/">HTML基础_14</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_13/">HTML基础_13</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_12/">HTML基础_12</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/">HTML基础_11</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_10/">HTML基础_10</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_9/">HTML基础_9</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_8/">HTML基础_8</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/">HTML基础_7</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/">HTML基础_6</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/">HTML基础_5</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/">安卓开发之线性布局（超级详细属性）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/HTML%E5%9F%BA%E7%A1%80_3/">HTML基础_3</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/HTML%E5%9F%BA%E7%A1%80_2/">HTML基础_2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/HTML%E5%9F%BA%E7%A1%80_1/">HTML基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Java安装jdk和配置环境</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
