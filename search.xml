@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>HTTP协议之ServletContent对象</title>
+      <link href="/2020/08/26/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BServletContent%E5%AF%B9%E8%B1%A1/"/>
+      <url>/2020/08/26/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BServletContent%E5%AF%B9%E8%B1%A1/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20200826174813647.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><pre><code>代表整个web应用，可以和程序的容器（服务器）来通讯</code></pre><a id="more"></a><h1 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h1><p>1.通过request对象获取</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.getServletContext();</span><br></pre></td></tr></table></figure><p>2.通过HttpServlet来获取 </p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.getServletContext();</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20200826170922826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><h2 id="1-获取MIME类型（互联网中文件的类型）"><a href="#1-获取MIME类型（互联网中文件的类型）" class="headerlink" title="1.获取MIME类型（互联网中文件的类型）"></a>1.获取MIME类型（互联网中文件的类型）</h2><pre><code>*MIME类型：在互联网通讯过程中定义的一种文件数据类型    *格式： 大类型/小类型   text/html     image/jpg</code></pre><p><img src="https://img-blog.csdnimg.cn/2020082617103990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><h2 id="2-域对象：共享数据"><a href="#2-域对象：共享数据" class="headerlink" title="2.域对象：共享数据"></a>2.域对象：共享数据</h2><pre><code>方法：1.setAttribute(String name,Object value)2.getAttribute(String name)3.removeAttribute(String name)范围*ServletContext对象范围：        所有用户请求的数据声明周期长，慎用，否则导致内存压力。</code></pre><h2 id="3-获取文件的真实（服务器路径）路径"><a href="#3-获取文件的真实（服务器路径）路径" class="headerlink" title="3.获取文件的真实（服务器路径）路径"></a>3.获取文件的真实（服务器路径）路径</h2><pre><code>1. 方法： String getRealPath(&quot;&quot;);</code></pre><p><img src="https://img-blog.csdnimg.cn/20200826174234185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTTP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTTP协议之response对象</title>
       <link href="/2020/08/25/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8Bresponse%E5%AF%B9%E8%B1%A1/"/>
       <url>/2020/08/25/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8Bresponse%E5%AF%B9%E8%B1%A1/</url>
@@ -45,9 +70,9 @@
       
         <tags>
             
-            <tag> 快速入门 </tag>
-            
             <tag> HTTP </tag>
+            
+            <tag> 快速入门 </tag>
             
         </tags>
       
@@ -126,9 +151,9 @@
       
         <tags>
             
-            <tag> 快速入门 </tag>
-            
             <tag> HTTP </tag>
+            
+            <tag> 快速入门 </tag>
             
         </tags>
       
@@ -207,9 +232,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 快速入门 </tag>
+            
+            <tag> Java </tag>
             
             <tag> Servlet </tag>
             
@@ -236,11 +261,11 @@
       
         <tags>
             
+            <tag> 快速入门 </tag>
+            
             <tag> Java </tag>
             
             <tag> xml </tag>
-            
-            <tag> 快速入门 </tag>
             
             <tag> Jsoup </tag>
             
@@ -267,11 +292,11 @@
       
         <tags>
             
+            <tag> 快速入门 </tag>
+            
             <tag> Java </tag>
             
             <tag> xml </tag>
-            
-            <tag> 快速入门 </tag>
             
             <tag> Jsoup </tag>
             
@@ -352,11 +377,11 @@
       
         <tags>
             
+            <tag> 快速入门 </tag>
+            
             <tag> Java </tag>
             
             <tag> xml </tag>
-            
-            <tag> 快速入门 </tag>
             
         </tags>
       
