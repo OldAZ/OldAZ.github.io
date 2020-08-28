@@ -7,22 +7,23 @@
   
   
   
-  <title>HTML基础_6 | Mr.AZ</title>
+  <title>JavaEE会话技术之cookie案例 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇幅主要介绍表单的的一些元素属性">
+  <meta name="description" content="需求1.  访问一个servlet，如果第一次访问，则提示：您好！欢迎首次访问 2. 如果不是第一次访问，则提示：欢迎回来，您上次到访时间为：显示时间字符串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML基础_6">
-<meta property="og:url" content="https://oldaz.github.io/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/index.html">
+<meta property="og:title" content="JavaEE会话技术之cookie案例">
+<meta property="og:url" content="https://oldaz.github.io/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="本篇幅主要介绍表单的的一些元素属性">
+<meta property="og:description" content="需求1.  访问一个servlet，如果第一次访问，则提示：您好！欢迎首次访问 2. 如果不是第一次访问，则提示：欢迎回来，您上次到访时间为：显示时间字符串">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200525230655299.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-05-25T15:09:14.000Z">
-<meta property="article:modified_time" content="2020-05-25T15:37:17.358Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200828183545603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200828182648435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200828183054423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-08-28T10:42:44.527Z">
+<meta property="article:modified_time" content="2020-08-28T10:44:25.338Z">
 <meta property="article:author" content="Mr.AZ">
-<meta property="article:tag" content="HTML">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200525230655299.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200828183545603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -283,11 +284,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-HTML基础_6" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaEE会话技术之cookie案例" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/" class="article-date">
-      <time datetime="2020-05-25T15:09:14.000Z" itemprop="datePublished">2020-05-25</time>
+      <a  href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/" class="article-date">
+      <time datetime="2020-08-28T10:42:44.527Z" itemprop="datePublished">2020-08-28</time>
 </a>
 
     </div>
@@ -301,7 +302,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      HTML基础_6
+      JavaEE会话技术之cookie案例
     </h1>
   
 
@@ -311,15 +312,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/HTML/">HTML</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -327,93 +324,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="https://img-blog.csdnimg.cn/20200525230655299.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="HTML基础_6"><br>本篇幅主要介绍表单的的一些元素属性</p>
-<a id="more"></a>
-<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a>HTML 表单</h1><pre><code>HTML 表单用于搜集不同类型的用户输入</code></pre><h2 id="60-form-gt-元素"><a href="#60-form-gt-元素" class="headerlink" title="&#60;form&gt; 元素"></a>&#60;form&gt; 元素</h2><p>   HTML 表单用于收集用户输入。</p>
-<ul>
-<li><form> 元素定义 HTML 表单：
-
-<p>   实例</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">    </span><br><span class="line">   form elements</span><br><span class="line">    </span><br><span class="line">   &lt;<span class="regexp">/form&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="HTML-表单包含表单元素"><a href="#HTML-表单包含表单元素" class="headerlink" title="HTML 表单包含表单元素"></a>HTML 表单包含表单元素</h2><p>表单元素指的是不同类型的 input 元素、复选框、单选按钮、提交按钮等等。</p>
-<h2 id="60-input-gt-元素"><a href="#60-input-gt-元素" class="headerlink" title="&#60;input&gt; 元素"></a>&#60;input&gt; 元素</h2></h2><ul>
-<li>&#60;input&gt; 元素是最重要的表单元素。</li>
-<li>&#60;input&gt; 元素有很多形态，根据不同的 type 属性。</li>
-</ul>
-<h2 id="文本输入"><a href="#文本输入" class="headerlink" title="文本输入"></a>文本输入</h2><pre><code>&amp;#60;input type=&quot;text&quot;&gt; 定义用于文本输入的单行输入字段：</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line"> First name:<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></span><br><span class="line">&lt;input type="text" name="firstname"&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line"> Last name:&lt;br&gt;</span><br><span class="line">&lt;input type="text" name="lastname"&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注释：表单本身并不可见。还要注意文本字段的默认宽度是 20 个字符</p>
-<h2 id="单选按钮输入"><a href="#单选按钮输入" class="headerlink" title="单选按钮输入"></a>单选按钮输入</h3></h2><p>&#60;input type=”radio”&gt; 定义单选按钮。</p>
-<pre><code>单选按钮允许用户在有限数量的选项中选择其中之一：</code></pre><p>实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">&lt;input type=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"male"</span> checked&gt;Male</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;input type=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"female"</span>&gt;Female</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="提交按钮"><a href="#提交按钮" class="headerlink" title="提交按钮"></a>提交按钮</h3></h2><p>   &#60;input type=”submit”&gt; 定义用于向表单处理程序（form-handler）提交表单的按钮。</p>
-<pre><code>表单处理程序通常是包含用来处理输入数据的脚本的服务器页面。</code></pre><p>表单处理程序在表单的 action 属性中指定：<br>实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"action_page.php"</span>&gt;</span><br><span class="line">First name:<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></span><br><span class="line">&lt;input type="text" name="firstname" value="Mickey"&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">Last name:&lt;br&gt;</span><br><span class="line">&lt;input type="text" name="lastname" value="Mouse"&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;input type="submit" value="Submit"&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Action-属性"><a href="#Action-属性" class="headerlink" title="Action 属性"></a>Action 属性</h1><pre><code>action 属性定义在提交表单时执行的动作。
-向服务器提交表单的通常做法是使用提交按钮。
-通常，表单会被提交到 web 服务器上的网页。
-指定了某个服务器脚本来处理被提交表单：</code></pre><p>&#60;form action=”action_page.php”&gt;</p>
-<p><strong>如果省略 action 属性，则 action 会被设置为当前页面。</strong></p>
-<h1 id="Method-属性"><a href="#Method-属性" class="headerlink" title="Method 属性"></a>Method 属性</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：</span><br><span class="line">&lt;form action=<span class="string">"action_page.php"</span> method=<span class="string">"GET"</span>&gt;</span><br><span class="line">或：</span><br><span class="line">&lt;form action=<span class="string">"action_page.php"</span> method=<span class="string">"POST"</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="何时使用-GET？"><a href="#何时使用-GET？" class="headerlink" title="何时使用 GET？"></a>何时使用 GET？</h2><pre><code>您能够使用 GET（默认方法）：
-
-如果表单提交是被动的（比如搜索引擎查询），并且没有敏感信息。
-当您使用 GET 时，表单数据在页面地址栏中是可见的：
-action_page.php?firstname=Mickey&amp;lastname=Mouse
-注释：GET 最适合少量数据的提交。浏览器会设定容量限制。</code></pre><h2 id="何时使用-POST？"><a href="#何时使用-POST？" class="headerlink" title="何时使用 POST？"></a>何时使用 POST？</h2></h2><pre><code>您应该使用 POST：
-如果表单正在更新数据，或者包含敏感信息（例如密码）。
-POST 的安全性更加，因为在页面地址栏中被提交的数据是不可见的。</code></pre><h1 id="Name-属性"><a href="#Name-属性" class="headerlink" title="Name 属性"></a>Name 属性</h1><pre><code>如果要正确地被提交，每个输入字段必须设置一个 name 属性。</code></pre><p>   本例只会提交 “Last name” 输入字段：<br>实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"action_page.php"</span>&gt;</span><br><span class="line">First name:<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></span><br><span class="line">&lt;input type="text" value="Mickey"&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">Last name:&lt;br&gt;</span><br><span class="line">&lt;input type="text" name="lastname" value="Mouse"&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;input type="submit" value="Submit"&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="用-60-fieldset-gt-组合表单数据"><a href="#用-60-fieldset-gt-组合表单数据" class="headerlink" title="用&#60;fieldset&gt; 组合表单数据"></a>用&#60;fieldset&gt; 组合表单数据</h2></h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;fieldset&gt; 元素组合表单中的相关数据</span><br><span class="line">   &lt;legend&gt; 元素为 &lt;fieldset&gt; 元素定义标题。</span><br><span class="line">       &lt;form action=<span class="string">"action_page.php"</span>&gt;</span><br><span class="line">           &lt;fieldset&gt;</span><br><span class="line">           &lt;legend&gt;Personal information:&lt;<span class="regexp">/legend&gt;</span></span><br><span class="line"><span class="regexp">           First name:&lt;br&gt;</span></span><br><span class="line"><span class="regexp">           &lt;input type="text" name="firstname" value="Mickey"&gt;</span></span><br><span class="line"><span class="regexp">           &lt;br&gt;</span></span><br><span class="line"><span class="regexp">           Last name:&lt;br&gt;</span></span><br><span class="line"><span class="regexp">           &lt;input type="text" name="lastname" value="Mouse"&gt;</span></span><br><span class="line"><span class="regexp">           &lt;br&gt;&lt;br&gt;</span></span><br><span class="line"><span class="regexp">           &lt;input type="submit" value="Submit"&gt;&lt;/</span>fieldset&gt;</span><br><span class="line">           &lt;<span class="regexp">/form&gt;</span></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>accept-charset</td>
-<td>规定在被提交表单中使用的字符集（默认：页面字符集）。</td>
-</tr>
-<tr>
-<td>action</td>
-<td>规定向何处提交表单的地址（URL）（提交页面）。</td>
-</tr>
-<tr>
-<td>autocomplete</td>
-<td>规定浏览器应该自动完成表单（默认：开启）。</td>
-</tr>
-<tr>
-<td>enctype</td>
-<td>规定被提交数据的编码（默认：url-encoded）。</td>
-</tr>
-<tr>
-<td>method</td>
-<td>规定在提交表单时所用的 HTTP 方法（默认：GET）。</td>
-</tr>
-<tr>
-<td>name</td>
-<td>规定识别表单的名称（对于 DOM 使用：document.forms.name）。</td>
-</tr>
-<tr>
-<td>novalidate</td>
-<td>规定浏览器不验证表单。</td>
-</tr>
-<tr>
-<td>target</td>
-<td>规定 action 属性中地址的目标（默认：_self）。</td>
-</tr>
-</tbody></table>
+        <p><img src="https://img-blog.csdnimg.cn/20200828183545603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><pre><code>1.  访问一个servlet，如果第一次访问，则提示：您好！欢迎首次访问
+2. 如果不是第一次访问，则提示：欢迎回来，您上次到访时间为：显示时间字符串</code></pre><a id="more"></a>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><pre><code>1.  可以采用cookie完成
+2. 在服务器中的servlet判断是否有一个名字为lastTime的cookie
+    1. 有：不是第一次访问
+        1. 响应数据：欢迎回来，您上次的访问时间为：时间
+        2.  写回cookie：lastTime=时间
+    2. 没有：是第一次访问
+        1. 响应数据：您好，欢迎首次访问
+        2. 写回cookie：lastTime=时间</code></pre><h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p><img src="https://img-blog.csdnimg.cn/20200828182648435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/20200828183054423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.web.cookie;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.Cookie;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URLDecoder;</span><br><span class="line"><span class="keyword">import</span> java.net.URLEncoder;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*1.  可以采用cookie完成</span></span><br><span class="line"><span class="comment">            2. 在服务器中的servlet判断是否有一个名字为lastTime的cookie</span></span><br><span class="line"><span class="comment">            1. 有：不是第一次访问</span></span><br><span class="line"><span class="comment">            1. 响应数据：欢迎回来，您上次的访问时间为：时间</span></span><br><span class="line"><span class="comment">            2.  写回cookie：lastTime=时间</span></span><br><span class="line"><span class="comment">            2. 没有：是第一次访问</span></span><br><span class="line"><span class="comment">            1. 响应数据：您好，欢迎首次访问</span></span><br><span class="line"><span class="comment">            2. 写回cookie：lastTime=时间</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/CookieTest"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CookieTest</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  <span class="comment">//设置响应消息体的数据格式</span></span><br><span class="line">        response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.获取所有的cookie</span></span><br><span class="line">        Cookie[] cookies = request.getCookies();</span><br><span class="line">        Boolean flag = <span class="keyword">false</span>;    <span class="comment">//没有cookie为last time</span></span><br><span class="line">        <span class="comment">//2.遍历数组</span></span><br><span class="line">        <span class="keyword">if</span> (cookies != <span class="keyword">null</span>&amp;&amp; cookies.length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span> (Cookie cookie : cookies) &#123;</span><br><span class="line">                <span class="comment">//3.获取cookie的名称</span></span><br><span class="line">                String name = cookie.getName();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (<span class="string">"lastTime"</span>.equals(name))&#123;</span><br><span class="line">                    <span class="comment">//有该cookie，表示不是第一次访问</span></span><br><span class="line">                    flag = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="comment">//设置cookie的value</span></span><br><span class="line">                    Date date = <span class="keyword">new</span> Date();</span><br><span class="line">                    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日  HH:mm:ss"</span>);</span><br><span class="line">                    String str_date = sdf.format(date);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    System.out.println(<span class="string">"编码前："</span>+str_date);</span><br><span class="line">                    str_date = URLEncoder.encode(str_date, <span class="string">"utf-8"</span>);</span><br><span class="line">                    System.out.println(<span class="string">"编码后："</span>+str_date);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    cookie.setValue(str_date);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">//设置cookie的存活时间</span></span><br><span class="line">                    cookie.setMaxAge(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>);<span class="comment">//一个月</span></span><br><span class="line">                    response.addCookie(cookie);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">//响应数据</span></span><br><span class="line">                    <span class="comment">//获取cookie的value，时间</span></span><br><span class="line">                    String value = cookie.getValue();</span><br><span class="line">                    System.out.println(<span class="string">"解码前："</span>+value);</span><br><span class="line">                    value = URLDecoder.decode(value,<span class="string">"utf-8"</span>);</span><br><span class="line">                    System.out.println(<span class="string">"解码后："</span>+value);</span><br><span class="line">                    response.getWriter().write(<span class="string">"&lt;h1&gt;欢迎回来，您上次的访问时间为："</span>+value+<span class="string">"&lt;/h1&gt;"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (cookies==<span class="keyword">null</span> || cookies.length==<span class="number">0</span>||flag==<span class="keyword">false</span>)&#123;</span><br><span class="line">            <span class="comment">//没有，第一次访问</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//设置cookie的value</span></span><br><span class="line">            Date date = <span class="keyword">new</span> Date();</span><br><span class="line">            SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日  HH:mm:ss"</span>);</span><br><span class="line">            String str_date = sdf.format(date);</span><br><span class="line">            str_date = URLEncoder.encode(str_date, <span class="string">"utf-8"</span>);</span><br><span class="line">            Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"lastTime"</span>,str_date);</span><br><span class="line">            <span class="comment">//设置cookie的存活时间</span></span><br><span class="line">            cookie.setMaxAge(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>);  <span class="comment">//一个月</span></span><br><span class="line">            response.addCookie(cookie);</span><br><span class="line"></span><br><span class="line">            response.getWriter().write(<span class="string">"&lt;h1&gt;您好，欢迎首次访问&lt;/h1&gt;"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -422,13 +345,13 @@ POST 的安全性更加，因为在页面地址栏中被提交的数据是不可
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/">HTML基础_6</a></p>
+        <p><span>本文标题:</span><a  href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/">JavaEE会话技术之cookie案例</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年05月25日 - 23时09分</p>
-        <p><span>最后更新:</span>2020年05月25日 - 23时37分</p>
+        <p><span>发布时间:</span>2020年08月28日 - 18时42分</p>
+        <p><span>最后更新:</span>2020年08月28日 - 18时44分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/" title="HTML基础_6">https://oldaz.github.io/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/" title="JavaEE会话技术之cookie案例">https://oldaz.github.io/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -439,18 +362,9 @@ POST 的安全性更加，因为在页面地址栏中被提交的数据是不可
 
 <nav id="article-nav">
   
-    <a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          HTML基础_7
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML基础_5</div>
+    <a  href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BCookie/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaEE会话技术之Cookie</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -462,7 +376,7 @@ POST 的安全性更加，因为在页面地址栏中被提交的数据是不可
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-表单"><span class="toc-number">1.</span> <span class="toc-text">HTML 表单</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#60-form-gt-元素"><span class="toc-number">1.1.</span> <span class="toc-text">&amp;#60;form&gt; 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-表单包含表单元素"><span class="toc-number">1.2.</span> <span class="toc-text">HTML 表单包含表单元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#60-input-gt-元素"><span class="toc-number">1.3.</span> <span class="toc-text">&amp;#60;input&gt; 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本输入"><span class="toc-number">1.4.</span> <span class="toc-text">文本输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单选按钮输入"><span class="toc-number">1.5.</span> <span class="toc-text">单选按钮输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交按钮"><span class="toc-number">1.6.</span> <span class="toc-text">提交按钮</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Action-属性"><span class="toc-number">2.</span> <span class="toc-text">Action 属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method-属性"><span class="toc-number">3.</span> <span class="toc-text">Method 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#何时使用-GET？"><span class="toc-number">3.1.</span> <span class="toc-text">何时使用 GET？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#何时使用-POST？"><span class="toc-number">3.2.</span> <span class="toc-text">何时使用 POST？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Name-属性"><span class="toc-number">4.</span> <span class="toc-text">Name 属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用-60-fieldset-gt-组合表单数据"><span class="toc-number">5.</span> <span class="toc-text">用&amp;#60;fieldset&gt; 组合表单数据</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分析"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-number">4.</span> <span class="toc-text">代码</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -535,13 +449,11 @@ POST 的安全性更加，因为在页面地址栏中被提交的数据是不可
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/" title="上一篇: HTML基础_7">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/" title="下一篇: HTML基础_5">
+            <a  href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BCookie/" title="下一篇: JavaEE会话技术之Cookie">
                 <i class="fa fa-angle-right"></i>
             </a>
         
