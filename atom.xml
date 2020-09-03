@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://oldaz.github.io/"/>
-  <updated>2020-09-03T04:24:14.763Z</updated>
+  <updated>2020-09-03T04:28:50.827Z</updated>
   <id>https://oldaz.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>20200903122318</title>
+    <title>JavaEE会话技术之Session</title>
     <link href="https://oldaz.github.io/2020/09/03/20200903122318/"/>
     <id>https://oldaz.github.io/2020/09/03/20200903122318/</id>
     <published>2020-09-03T04:23:18.000Z</published>
-    <updated>2020-09-03T04:24:14.763Z</updated>
+    <updated>2020-09-03T04:28:50.827Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/202009031222016.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><pre><code>服务器端会话技术，在一次会话的多次请求间共享数据，将数据保存在服务器端的对象中。Httpsession</code></pre><a id="more"></a><h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><pre><code>1. 获取Httpsession对象：     HttpSession session = request.getSession();2. 使用Httpsession对象：    object  getAttribute(String name)    void  setAttribute(String name,Object value)    void  removeAttribute(String name)</code></pre><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><pre><code>Session的实现是依赖于Cookie的。</code></pre><p><img src="https://img-blog.csdnimg.cn/20200903101153442.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="原理"></p><h1 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h1><ol><li><p>当客户端关闭后，服务器不关闭，两次获取的Session是否为同一个？</p><pre><code>默认情况下，不是。* 如果需要相同，则可以创建Cookie，键为JSESSIONID，设置最大存活时间，让Cookie持久化保存。</code></pre></li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"JSESSIONID"</span>,session.getId());</span><br><span class="line">cookie.setMaxAge(<span class="number">60</span>*<span class="number">60</span>);</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure><ol start="2"><li><p>客户端不关闭，两次获取的session是同一个吗？</p><pre><code>不是同一个，但是要确保数据不丢失。   1. session钝化         在服务器正常关闭之前，将seesion对象序列化到硬盘上。（在tomcat的项目里面的work目录下）   2. session活化       在服务器启动后，将session 文件转化为session对象即可。       （IDEA中实现不了活化，因为在启动服务器的过程中，会先删除work目录，       再创建，上一次的session数据会被删除。无法读取活化）</code></pre></li></ol><p><strong><em>不过本地的Tomcat已经实现了这个过程，以后部署项目时不用考虑这个问题。</em></strong></p><ol start="3"><li>Session的什么时候被销毁？<ol><li>服务器被关闭。</li><li>session对象调用invalidate()。</li><li>session默认失效时间为30分钟。</li></ol></li></ol><pre><code>在所有项目的配置文件web.xml 就可以修改默认的失效时间</code></pre><p><img src="https://img-blog.csdnimg.cn/20200903121013194.png#pic_center" alt="失效时间"></p><h1 id="Session特点"><a href="#Session特点" class="headerlink" title="Session特点"></a>Session特点</h1><ol><li><p>session 用于储存一次会话的多次请求的数据，存在服务器端。</p></li><li><p>session 可以存储任意类型，任意大小的数据。</p></li><li><p>session和cokie的区别：</p><pre><code>1. session存储在服务器端，Cookie在客户端。2. seesion没有数据大小的限制，cookie有3. session数据安全，Cookie相对不安全。</code></pre></li></ol><p>注：session的体量会大一些，Cookie小一些。可以从翻译理解，session翻译为主菜，cookie翻译为小饼干！！！</p>]]></content>
     
