@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>JavaEE页面技术之JSTL标签&amp;小案例 | Mr.AZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概念JavaServer Pages Tag Library   ：  JSP标准标签库 * 是由Apache组织提供的开源的免费的JSP标签作用用户简化和替换JSP页面上的Java代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaEE页面技术之JSTL标签&amp;小案例">
+<meta property="og:url" content="https://oldaz.github.io/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%8A%80%E6%9C%AF%E4%B9%8BJSTL%E6%A0%87%E7%AD%BE&%E5%B0%8F%E6%A1%88%E4%BE%8B/index.html">
+<meta property="og:site_name" content="Mr.AZ">
+<meta property="og:description" content="概念JavaServer Pages Tag Library   ：  JSP标准标签库 * 是由Apache组织提供的开源的免费的JSP标签作用用户简化和替换JSP页面上的Java代码">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200904213132605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200904212510245.png#pic_center">
+<meta property="article:published_time" content="2020-09-04T13:32:43.000Z">
+<meta property="article:modified_time" content="2020-09-04T13:33:49.652Z">
+<meta property="article:author" content="Mr.AZ">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="JSTL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200904213132605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+  
+    <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Mr.AZ</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/Java">迷路Java</a></li>
+                        
+                            <li><a  href="/categories/HTML">挑战前端</a></li>
+                        
+                            <li><a  href="/categories/Algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/categories/Android">Android</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cookie/" style="font-size: 11.43px;">Cookie</a> <a href="/tags/EL/" style="font-size: 10px;">EL</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 15.71px;">HTTP</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JSTL/" style="font-size: 10px;">JSTL</a> <a href="/tags/Java/" style="font-size: 18.57px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 17.14px;">JavaEE</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jsoup/" style="font-size: 11.43px;">Jsoup</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Servlet/" style="font-size: 12.86px;">Servlet</a> <a href="/tags/Session/" style="font-size: 11.43px;">Session</a> <a href="/tags/xml/" style="font-size: 14.29px;">xml</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 10px;">工具类</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" style="font-size: 15.71px;">快速入门</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 11.43px;">经验之谈</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.csdn.net/qq_43370892">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/xxxxx">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">还未毕业，勇敢向前。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Mr.AZ</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Mr.AZ</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/Java">迷路Java</a></li>
+                
+                    <li><a href="/categories/HTML">挑战前端</a></li>
+                
+                    <li><a href="/categories/Algorithm">算法学习</a></li>
+                
+                    <li><a href="/categories/Android">Android</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://oldaz.github.io/" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-JavaEE页面技术之JSTL标签&amp;小案例" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%8A%80%E6%9C%AF%E4%B9%8BJSTL%E6%A0%87%E7%AD%BE&%E5%B0%8F%E6%A1%88%E4%BE%8B/" class="article-date">
+      <time datetime="2020-09-04T13:32:43.000Z" itemprop="datePublished">2020-09-04</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaEE页面技术之JSTL标签&amp;小案例
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSTL/" rel="tag">JSTL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="https://img-blog.csdnimg.cn/20200904213132605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><pre><code>JavaServer Pages Tag Library   ：  JSP标准标签库
+* 是由Apache组织提供的开源的免费的JSP标签</code></pre><h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><pre><code>用户简化和替换JSP页面上的Java代码</code></pre><a id="more"></a>
+<h1 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h1><pre><code>1. 导入JSTL相关的jar包
+2. 引入标签库： taglib指令 &lt;%@ taglib =&quot;&quot; prefix=&quot;&quot;%&gt;
+3. 使用标签</code></pre><h1 id="常用的JSTL标签"><a href="#常用的JSTL标签" class="headerlink" title="常用的JSTL标签"></a>常用的JSTL标签</h1><ol>
+<li><p>if  </p>
+<pre><code>相当于Java代码的if语句</code></pre><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%--</span></span></span><br><span class="line"><span class="tag">        <span class="attr">1.test</span> 必须属性，接受<span class="attr">boolean</span>表达式</span></span><br><span class="line"><span class="tag">          如果表达式为<span class="attr">true</span>，则显示<span class="attr">if</span>标签体内容，如果为<span class="attr">false</span>，则不显示标签体内容。</span></span><br><span class="line"><span class="tag">          一般情况下，<span class="attr">test</span>属性值会结合<span class="attr">el</span>表达式一起使用</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line">        2.没有else，若是想用else，则只能再写一份&lt;c:if ...&gt;</span><br><span class="line"></span><br><span class="line">    --%&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">        我是真...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span></span></span><br><span class="line"><span class="tag">        //判断<span class="attr">request</span>域中一个<span class="attr">list</span>集合为空，如果不为空，则显示遍历集合</span></span><br><span class="line"><span class="tag">        <span class="attr">List</span> <span class="attr">list</span> = <span class="string">new</span> <span class="attr">ArrayList</span>();</span></span><br><span class="line"><span class="tag">        <span class="attr">list.add</span>("<span class="attr">aaa</span>");</span></span><br><span class="line"><span class="tag">        <span class="attr">request.setAttribute</span>("<span class="attr">number</span>",<span class="attr">3</span>);</span></span><br><span class="line"><span class="tag">        <span class="attr">request.setAttribute</span>("<span class="attr">list</span>",<span class="attr">list</span>);</span></span><br><span class="line"><span class="tag">    %&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;not empty list&#125;"</span>&gt;</span></span><br><span class="line">        遍历集合</span><br><span class="line">    <span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;number % 2 !=0&#125;"</span>&gt;</span></span><br><span class="line">        $&#123;number&#125;为奇数</span><br><span class="line">    <span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;number % 2 ==0&#125;"</span>&gt;</span></span><br><span class="line">        $&#123;number&#125;为偶数</span><br><span class="line">    <span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>choose </p>
+<p>   相当于 Java代码的switch</p>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">        &lt;%--</span><br><span class="line">        完成对应数字编号对应星期几的案例</span><br><span class="line">            <span class="number">1</span>. 域中c储存一数字</span><br><span class="line">            <span class="number">2</span>. 使用choose标签取出数字，        相当于<span class="keyword">switch</span>声明</span><br><span class="line">            <span class="number">3</span>. 使用when标签做出判断，          相当于<span class="keyword">case</span></span><br><span class="line">            <span class="number">4</span>. otherwise标签做其他情况的声明 ，相当于<span class="keyword">default</span></span><br><span class="line">        --%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">request.setAttribute(<span class="string">"number"</span>,<span class="number">3</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test="number==1"&gt;星期一&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test="number==2"&gt;星期二&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test="number==3"&gt;星期三&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test="number==4"&gt;星期四&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test="number==5"&gt;星期五&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test="number==6"&gt;星期六&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test="number==7"&gt;星期天&lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;输入有误&lt;/c:otherwise&gt;</span><br><span class="line"></span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>foreach  </p>
+<pre><code>相当于Java代码的for语句</code></pre></li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    &lt;%--</span><br><span class="line">    foreach:相当Java的<span class="keyword">for</span>语句</span><br><span class="line">    <span class="number">1</span>. 完成重复的操作</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;\</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">     属性：</span><br><span class="line">        begin：开始值</span><br><span class="line">        end：结束值</span><br><span class="line">        <span class="keyword">var</span>：临时变量</span><br><span class="line">        step：步长</span><br><span class="line">        varStatus:循环对象</span><br><span class="line">            包含俩对象</span><br><span class="line">            index：容器中循环的索引，从<span class="number">0</span>开始</span><br><span class="line">            count：循环次数，从<span class="number">1</span>开始</span><br><span class="line"></span><br><span class="line">    <span class="number">2</span>，遍历容器</span><br><span class="line">    Lis&lt;User&gt; list;</span><br><span class="line">    <span class="keyword">for</span>(User user : list)&#123;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    --%&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:forEach begin=<span class="string">"1"</span> end=<span class="string">"10"</span> <span class="keyword">var</span>=<span class="string">"1"</span> step=<span class="string">"1"</span> varStatus=<span class="string">"s"</span>&gt;</span><br><span class="line">        $&#123;i&#125;&lt;br/&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line"></span><br><span class="line">&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">    List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    list.add(<span class="string">"aaa"</span>);</span><br><span class="line">    list.add(<span class="string">"bbb"</span>);</span><br><span class="line">    list.add(<span class="string">"ccc"</span>);</span><br><span class="line"></span><br><span class="line">    request.setAttribute(<span class="string">"list"</span>,list);</span><br><span class="line"></span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:forEach items=<span class="string">"$&#123;list&#125;"</span> <span class="keyword">var</span>=<span class="string">"str"</span> varStatus=<span class="string">"s"</span>&gt;</span><br><span class="line"></span><br><span class="line">        $&#123;s.index&#125; $&#123;s.count&#125; $&#123;str&#125;&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="小案例"><a href="#小案例" class="headerlink" title="小案例"></a>小案例</h1><pre><code>需求：
+        在request域中有一个存有User对象的List集合。
+        需要使用jstl +el 将集合数据展示到JSP页面的表格table中</code></pre><p><img src="https://img-blog.csdnimg.cn/20200904212510245.png#pic_center" alt=""></p>
+<p>JSP代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"com.web.domain.User"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.ArrayList"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.List"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.Date"</span> %&gt;&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: OldAZ-PC</span><br><span class="line">  Date: <span class="number">2020</span>/<span class="number">9</span>/<span class="number">4</span></span><br><span class="line">  Time: <span class="number">21</span>:<span class="number">04</span></span><br><span class="line">  To change <span class="keyword">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;案例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;%</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        list.add(<span class="keyword">new</span> User(<span class="string">"张三"</span>,<span class="number">23</span>,<span class="keyword">new</span> Date()));</span><br><span class="line">        list.add(<span class="keyword">new</span> User(<span class="string">"李四"</span>,<span class="number">25</span>,<span class="keyword">new</span> Date()));</span><br><span class="line">        list.add(<span class="keyword">new</span> User(<span class="string">"王老五"</span>,<span class="number">26</span>,<span class="keyword">new</span> Date()));</span><br><span class="line">        request.setAttribute(<span class="string">"list"</span>,list);</span><br><span class="line"></span><br><span class="line">    %&gt;</span><br><span class="line"></span><br><span class="line">&lt;table border=<span class="string">"1px"</span> width=<span class="string">"500"</span> align=<span class="string">"center"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;编号&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;姓名&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;年龄&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;日期&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;c:forEach items=<span class="string">"$&#123;list&#125;"</span> <span class="keyword">var</span>=<span class="string">"user"</span> varStatus=<span class="string">"s"</span>&gt;</span><br><span class="line">        &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;s.count%2==0&#125;"</span>&gt;</span><br><span class="line">        &lt;tr bgcolor=<span class="string">"#d2691e"</span>&gt;</span><br><span class="line">            &lt;td&gt;$&#123;s.count&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;user.name&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;user.age&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;user.birStr&#125;&lt;/td&gt;</span><br><span class="line">        &lt;/c:if&gt;</span><br><span class="line"></span><br><span class="line">        &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;s.count%2!=0&#125;"</span>&gt;</span><br><span class="line">        &lt;tr bgcolor=<span class="string">"#00ffff"</span>&gt;</span><br><span class="line">            &lt;td&gt;$&#123;s.count&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;user.name&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;user.age&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;user.birStr&#125;&lt;/td&gt;</span><br><span class="line">        &lt;/c:if&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>User代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.web.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> Date birthday;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//逻辑视图</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String name, <span class="keyword">int</span> age, Date birthday)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.birthday = birthday;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getBirStr</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (birthday != <span class="keyword">null</span>) &#123;</span><br><span class="line">            SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-mm-dd  HH:mm:ss"</span>);</span><br><span class="line">            <span class="keyword">return</span> sdf.format(birthday);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getBirthday</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> birthday;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBirthday</span><span class="params">(Date birthday)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.birthday = birthday;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%8A%80%E6%9C%AF%E4%B9%8BJSTL%E6%A0%87%E7%AD%BE&%E5%B0%8F%E6%A1%88%E4%BE%8B/">JavaEE页面技术之JSTL标签&amp;小案例</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
+        <p><span>发布时间:</span>2020年09月04日 - 21时32分</p>
+        <p><span>最后更新:</span>2020年09月04日 - 21时33分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%8A%80%E6%9C%AF%E4%B9%8BJSTL%E6%A0%87%E7%AD%BE&%E5%B0%8F%E6%A1%88%E4%BE%8B/" title="JavaEE页面技术之JSTL标签&amp;小案例">https://oldaz.github.io/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%8A%80%E6%9C%AF%E4%B9%8BJSTL%E6%A0%87%E7%AD%BE&amp;%E5%B0%8F%E6%A1%88%E4%BE%8B/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%8A%80%E6%9C%AF%E4%B9%8BJSTL%E6%A0%87%E7%AD%BE&amp;%E5%B0%8F%E6%A1%88%E4%BE%8B/　　作者: Mr.AZ" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaEE页面显示技术之EL表达式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作用"><span class="toc-number">2.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用步骤"><span class="toc-number">3.</span> <span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用的JSTL标签"><span class="toc-number">4.</span> <span class="toc-text">常用的JSTL标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小案例"><span class="toc-number">5.</span> <span class="toc-text">小案例</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="下一篇: JavaEE页面显示技术之EL表达式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%8A%80%E6%9C%AF%E4%B9%8BJSTL%E6%A0%87%E7%AD%BE&%E5%B0%8F%E6%A1%88%E4%BE%8B/">JavaEE页面技术之JSTL标签&小案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">JavaEE页面显示技术之EL表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/">JavaEE开发模式之MVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/">Java EE页显示技术之JSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/03/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BSession%E6%A1%88%E4%BE%8B/">JavaEE会话技术之Session案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/03/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BSession/">JavaEE会话技术之Session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/">JavaEE会话技术之cookie案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BCookie/">JavaEE会话技术之Cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/28/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E6%A1%88%E4%BE%8B/">HTTP协议之文件下载案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BServletContent%E5%AF%B9%E8%B1%A1/">HTTP协议之ServletContent对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8Bresponse%E5%AF%B9%E8%B1%A1/">HTTP协议之response对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E5%93%8D%E5%BA%94%E6%B6%88%E6%81%AF/">速解HTTP协议之响应消息</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/18/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8BRequest%E5%AF%B9%E8%B1%A1/">HTTP协议之Request对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/18/%E8%AE%B0%E5%BD%95%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7--beanutils%E5%8C%85/">记录“偷懒”实用小技巧--beanutils包</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/HTTP%E5%8D%8F%E8%AE%AE%E4%B9%8B%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/">速解HTTP协议之请求消息</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">JavaWeb知识核心--Servlet体系结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/">JavaWeb知识核心--Servlet周期和注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">JavaWeb知识核心--Servlet快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/">xml解析--Jsoup快捷查询方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">xml解析--Jsoup快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/12/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E8%A7%A3%E6%9E%90/">来看看XML到底是个啥--xml解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E7%BA%A6%E6%9D%9F%E6%96%87%E6%A1%A3/">来看看XML到底是个啥--xml约束文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/%E6%9D%A5%E7%9C%8B%E7%9C%8BXML%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E5%95%A5--xml%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">来看看XML到底是个啥--xml快速入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/09/%E9%98%BF%E5%93%B2%E5%AD%A6%E4%BA%86%E5%B0%B1%E6%9D%A5%E8%81%8A%E2%80%94%E2%80%94Java%E5%8F%8D%E5%B0%84/">阿哲学了就来聊——Java反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JavaScript%E5%9F%BA%E7%A1%80_1/">JavaScript基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/29/HTML%E5%9F%BA%E7%A1%80_14/">HTML基础_14</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_13/">HTML基础_13</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/HTML%E5%9F%BA%E7%A1%80_12/">HTML基础_12</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_11/">HTML基础_11</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/HTML%E5%9F%BA%E7%A1%80_10/">HTML基础_10</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_9/">HTML基础_9</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80_8/">HTML基础_8</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_7/">HTML基础_7</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_6/">HTML基础_6</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/">HTML基础_5</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/">安卓开发之线性布局（超级详细属性）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/HTML%E5%9F%BA%E7%A1%80_3/">HTML基础_3</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/HTML%E5%9F%BA%E7%A1%80_2/">HTML基础_2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/HTML%E5%9F%BA%E7%A1%80_1/">HTML基础_1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/Java%E5%AE%89%E8%A3%85jdk%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Java安装jdk和配置环境</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Mr.AZ
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 3;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
