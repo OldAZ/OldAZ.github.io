@@ -7,34 +7,25 @@
   
   
   
-  <title>JavaWeb知识核心--Servlet快速入门 | Mr.AZ</title>
+  <title>JavaEE页面显示技术之EL表达式 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概念全名叫server  applet ，运行在服务端的小程序    servlet就是一个接口，定义了Java类被浏览器访问到（tomcat识别）的规则。    *将来我们自己定义一个类，实现Servlet接口，复写方法">
+  <meta name="description" content="概念Expression Language 表达式语言 作用替换和简化JSP页面中的Java代码的编写">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaWeb知识核心--Servlet快速入门">
-<meta property="og:url" content="https://oldaz.github.io/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="JavaEE页面显示技术之EL表达式">
+<meta property="og:url" content="https://oldaz.github.io/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="概念全名叫server  applet ，运行在服务端的小程序    servlet就是一个接口，定义了Java类被浏览器访问到（tomcat识别）的规则。    *将来我们自己定义一个类，实现Servlet接口，复写方法">
+<meta property="og:description" content="概念Expression Language 表达式语言 作用替换和简化JSP页面中的Java代码的编写">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814174407679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814161110256.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814165340757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020081416561531.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814165711754.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020081416593896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814170326191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814170546478.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814171624727.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814171706243.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200814173455443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="article:published_time" content="2020-08-14T09:45:45.000Z">
-<meta property="article:modified_time" content="2020-08-14T09:47:11.429Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200904162743801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200904095410773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200904100310100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-09-04T08:28:32.000Z">
+<meta property="article:modified_time" content="2020-09-04T08:29:09.997Z">
 <meta property="article:author" content="Mr.AZ">
-<meta property="article:tag" content="快速入门">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="Servlet">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="EL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200814174407679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200904162743801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -295,11 +286,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-JavaWeb知识核心--Servlet快速入门" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaEE页面显示技术之EL表达式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="article-date">
-      <time datetime="2020-08-14T09:45:45.000Z" itemprop="datePublished">2020-08-14</time>
+      <a  href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+      <time datetime="2020-09-04T08:28:32.000Z" itemprop="datePublished">2020-09-04</time>
 </a>
 
     </div>
@@ -313,7 +304,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaWeb知识核心--Servlet快速入门
+      JavaEE页面显示技术之EL表达式
     </h1>
   
 
@@ -329,7 +320,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="tag">快速入门</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EL/" rel="tag">EL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -339,36 +330,55 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="https://img-blog.csdnimg.cn/20200814174407679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="servlet快速入门"></p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><pre><code>全名叫server  applet ，运行在服务端的小程序
-   servlet就是一个接口，定义了Java类被浏览器访问到（tomcat识别）的规则。
-   *将来我们自己定义一个类，实现Servlet接口，复写方法</code></pre><a id="more"></a>
+        <p><img src="https://img-blog.csdnimg.cn/20200904162743801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>Expression Language 表达式语言</p>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>替换和简化JSP页面中的Java代码的编写</p>
+<a id="more"></a>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>${表达式}</p>
+<pre><code>注意：
+1. JSP页面中默认支持EL表达式
+2. 忽略EL表达式：设置jsp的Page指令中：isELIgnored=&quot;true&quot;
+3. 忽略单句EL表达式：加一个反斜线  \</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
+<li><p>运算</p>
+<pre><code>1. 算数运算符： + - * /(div)  %(mod)
+2. 比较运算符： &gt;  &lt;   &gt;=  ==  !=
+3. 逻辑运算符： &amp;&amp;  ||   ！
+4. 空运算符：empty
+    功能：用于判断字符串，集合，数组对象是否 为null并且长度是否为0
 
+    ${empty list}：
+          判断是否为null或者长度为0
 
-<p><img src="https://img-blog.csdnimg.cn/20200814161110256.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="servlet"></p>
-<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><ol>
-<li>创建JavaEE项目</li>
-<li>定义一个类，实现Servlet接口</li>
-<li>实现接口中的抽象方法</li>
-<li>配置Servlet</li>
+    ${not empty list}:
+          判断是否不为null并且长度大于0</code></pre></li>
+<li><p>获取值</p>
+<pre><code>1. el表达式只能从域对象中获取值</code></pre><h1 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h1></li>
 </ol>
-<h2 id="创建JavaEE项目"><a href="#创建JavaEE项目" class="headerlink" title="创建JavaEE项目"></a>创建JavaEE项目</h2><p><img src="https://img-blog.csdnimg.cn/20200814165340757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""><br>点击next以后，输入项目名称。点击finish。即可完成创建。</p>
-<h2 id="定义一个类，实现Servlet接口"><a href="#定义一个类，实现Servlet接口" class="headerlink" title="定义一个类，实现Servlet接口"></a>定义一个类，实现Servlet接口</h2><p><img src="https://img-blog.csdnimg.cn/2020081416561531.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""><br>创建一个类，实现接口Servlet。<br><img src="https://img-blog.csdnimg.cn/20200814165711754.png#pic_center" alt=""><br>如果servlet没有导入就去添加以下Tomcat的依赖：<br><img src="https://img-blog.csdnimg.cn/2020081416593896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="1"><br><img src="https://img-blog.csdnimg.cn/20200814170326191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
-<h2 id="实现接口中的抽象方法"><a href="#实现接口中的抽象方法" class="headerlink" title="实现接口中的抽象方法"></a>实现接口中的抽象方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.web.servlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> * Servlet快速入门</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletDemo1</span> <span class="keyword">implements</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig servletConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span><span class="comment">//提供服务的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello Servlet"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-域名称-键名"><a href="#1-域名称-键名" class="headerlink" title="1. $域名称.键名}"></a>1. $域名称.键名}</h2><pre><code>从指定的域中获取指键的值。
 
-<h2 id="配置Servlet"><a href="#配置Servlet" class="headerlink" title="配置Servlet"></a>配置Servlet</h2><p>在web/wei-inf 文件夹下面的xml文件里面配置servlet<br><img src="https://img-blog.csdnimg.cn/20200814170546478.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="配置"></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    配置servlet标签--&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">&lt;!--    配置servlet标签--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        这是配置名称为Demo1的文件路径--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.web.servlet.ServletDemo1<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        这是给名称demo1配置访问路径/demo1--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/demo1<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="启动小案例"><a href="#启动小案例" class="headerlink" title="启动小案例"></a>启动小案例</h1><p>点击启动后<br>在浏览器访问/demo1<br><img src="https://img-blog.csdnimg.cn/20200814171624727.png#pic_center" alt=""><br>控制台会出现</p>
-<p><img src="https://img-blog.csdnimg.cn/20200814171706243.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="控制台"></p>
-<pre><code>出现了hello Servlet
-*里面出现的红色字体，是tomcat服务器的信息，不是报错。</code></pre><h1 id="Servlet执行原理"><a href="#Servlet执行原理" class="headerlink" title="Servlet执行原理"></a>Servlet执行原理</h1><ol>
-<li>当服务器接收到客户端的请求后，会解析请求URL路径，获取访问的Servlet的资源路径。</li>
-<li>查找web.xml文件，是否有对应的标签<url-pattern>内容。</li>
-<li>如果有，则找到对应的<serclet-class>对应的全类名</li>
-<li>tomcat会将字节码文件加载进内存，并且创建其对象。</li>
-<li>调用其方法。<br><img src="https://img-blog.csdnimg.cn/20200814173455443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="原理"></li>
+    域名称：
+     1. PageScope      --&gt;   pageContext
+     2. requestScope   --&gt;  request
+     3. sessionScope   --&gt;  session
+     4. applicationScope --&gt; application(ServletContext) 
+        举例：在request域中存储了name=张三
+        获取：$(request.name)</code></pre><p><img src="https://img-blog.csdnimg.cn/20200904095410773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h2 id="2-键名"><a href="#2-键名" class="headerlink" title="2. ${键名}"></a>2. ${键名}</h2><p>表示依次从最小的域中查找是否有该键对应的值，直到找到为止。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200904100310100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h2 id="3-获取对象"><a href="#3-获取对象" class="headerlink" title="3. 获取对象"></a>3. 获取对象</h2><p>获取LIst集合，Map集合的值</p>
+<ol>
+<li><p>对象：    </p>
+<pre><code>${域对象.键名.属性名}    
+本质上是会去调用对象的getter方法 </code></pre></li>
+<li><p>List集合：</p>
+<pre><code>${域名.键名[索引]}    （EL中索引越界，不显示）</code></pre></li>
+<li><p>Map集合：</p>
+<pre><code>${域名称.键名.key名称}    
+${域名称.键名[&quot;key名称&quot;]}    </code></pre></li>
 </ol>
+<h2 id="4-隐式对象"><a href="#4-隐式对象" class="headerlink" title="4. 隐式对象"></a>4. 隐式对象</h2><pre><code>pageContext:
+  获取jsp其他8个内置对象
+${pageContext.request.contextPath}:动态获取虚拟目录</code></pre><p>注：EL表达式一共有11个隐式对象</p>
 
       
     </div>
@@ -377,13 +387,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">JavaWeb知识核心--Servlet快速入门</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">JavaEE页面显示技术之EL表达式</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年08月14日 - 17时45分</p>
-        <p><span>最后更新:</span>2020年08月14日 - 17时47分</p>
+        <p><span>发布时间:</span>2020年09月04日 - 16时28分</p>
+        <p><span>最后更新:</span>2020年09月04日 - 16时29分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="JavaWeb知识核心--Servlet快速入门">https://oldaz.github.io/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="JavaEE页面显示技术之EL表达式">https://oldaz.github.io/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -394,18 +404,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JavaWeb知识核心--Servlet周期和注解
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">xml解析--Jsoup快捷查询方式</div>
+    <a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaEE开发模式之MVC</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -417,7 +418,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快速入门"><span class="toc-number">2.</span> <span class="toc-text">快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建JavaEE项目"><span class="toc-number">2.1.</span> <span class="toc-text">创建JavaEE项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义一个类，实现Servlet接口"><span class="toc-number">2.2.</span> <span class="toc-text">定义一个类，实现Servlet接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现接口中的抽象方法"><span class="toc-number">2.3.</span> <span class="toc-text">实现接口中的抽象方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置Servlet"><span class="toc-number">2.4.</span> <span class="toc-text">配置Servlet</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动小案例"><span class="toc-number">3.</span> <span class="toc-text">启动小案例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet执行原理"><span class="toc-number">4.</span> <span class="toc-text">Servlet执行原理</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作用"><span class="toc-number">2.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-number">3.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法："><span class="toc-number">5.</span> <span class="toc-text">语法：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-域名称-键名"><span class="toc-number">5.1.</span> <span class="toc-text">1. $域名称.键名}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-键名"><span class="toc-number">5.2.</span> <span class="toc-text">2. ${键名}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-获取对象"><span class="toc-number">5.3.</span> <span class="toc-text">3. 获取对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-隐式对象"><span class="toc-number">5.4.</span> <span class="toc-text">4. 隐式对象</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -490,13 +491,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/" title="上一篇: JavaWeb知识核心--Servlet周期和注解">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/" title="下一篇: xml解析--Jsoup快捷查询方式">
+            <a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" title="下一篇: JavaEE开发模式之MVC">
                 <i class="fa fa-angle-right"></i>
             </a>
         

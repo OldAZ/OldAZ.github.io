@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JavaEE页面显示技术之EL表达式</title>
+      <link href="/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+      <url>/2020/09/04/JavaEE%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BEL%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20200904162743801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>Expression Language 表达式语言</p><h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>替换和简化JSP页面中的Java代码的编写</p><a id="more"></a><h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>${表达式}</p><pre><code>注意：1. JSP页面中默认支持EL表达式2. 忽略EL表达式：设置jsp的Page指令中：isELIgnored=&quot;true&quot;3. 忽略单句EL表达式：加一个反斜线  \</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol><li><p>运算</p><pre><code>1. 算数运算符： + - * /(div)  %(mod)2. 比较运算符： &gt;  &lt;   &gt;=  ==  !=3. 逻辑运算符： &amp;&amp;  ||   ！4. 空运算符：empty    功能：用于判断字符串，集合，数组对象是否 为null并且长度是否为0    ${empty list}：          判断是否为null或者长度为0    ${not empty list}:          判断是否不为null并且长度大于0</code></pre></li><li><p>获取值</p><pre><code>1. el表达式只能从域对象中获取值</code></pre><h1 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h1></li></ol><h2 id="1-域名称-键名"><a href="#1-域名称-键名" class="headerlink" title="1. $域名称.键名}"></a>1. $域名称.键名}</h2><pre><code>从指定的域中获取指键的值。    域名称：     1. PageScope      --&gt;   pageContext     2. requestScope   --&gt;  request     3. sessionScope   --&gt;  session     4. applicationScope --&gt; application(ServletContext)         举例：在request域中存储了name=张三        获取：$(request.name)</code></pre><p><img src="https://img-blog.csdnimg.cn/20200904095410773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h2 id="2-键名"><a href="#2-键名" class="headerlink" title="2. ${键名}"></a>2. ${键名}</h2><p>表示依次从最小的域中查找是否有该键对应的值，直到找到为止。</p><p><img src="https://img-blog.csdnimg.cn/20200904100310100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h2 id="3-获取对象"><a href="#3-获取对象" class="headerlink" title="3. 获取对象"></a>3. 获取对象</h2><p>获取LIst集合，Map集合的值</p><ol><li><p>对象：    </p><pre><code>${域对象.键名.属性名}    本质上是会去调用对象的getter方法 </code></pre></li><li><p>List集合：</p><pre><code>${域名.键名[索引]}    （EL中索引越界，不显示）</code></pre></li><li><p>Map集合：</p><pre><code>${域名称.键名.key名称}    ${域名称.键名[&quot;key名称&quot;]}    </code></pre></li></ol><h2 id="4-隐式对象"><a href="#4-隐式对象" class="headerlink" title="4. 隐式对象"></a>4. 隐式对象</h2><pre><code>pageContext:  获取jsp其他8个内置对象${pageContext.request.contextPath}:动态获取虚拟目录</code></pre><p>注：EL表达式一共有11个隐式对象</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaEE </tag>
+            
+            <tag> EL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaEE开发模式之MVC</title>
       <link href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/"/>
       <url>/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/</url>
