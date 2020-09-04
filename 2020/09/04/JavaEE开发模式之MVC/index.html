@@ -7,22 +7,24 @@
   
   
   
-  <title>HTML基础_4 | Mr.AZ</title>
+  <title>JavaEE开发模式之MVC | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这一部分介绍一下几个关于HTML的重要的基本信息">
+  <meta name="description" content="JSP演变史1. 早期只有servlet，只能使用response输出标签数据，非常麻烦 2. 后来有了JSP，简化的Servlet开发，如果过度使用JSP，在jsp中写了大量的Java代码，又写html表，造成维护困难，难于分工合作 3. 再后来，Java的web开发，借鉴MVC开发模式，使得程序的设计更加合理性。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML基础_4">
-<meta property="og:url" content="https://oldaz.github.io/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/index.html">
+<meta property="og:title" content="JavaEE开发模式之MVC">
+<meta property="og:url" content="https://oldaz.github.io/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="这一部分介绍一下几个关于HTML的重要的基本信息">
+<meta property="og:description" content="JSP演变史1. 早期只有servlet，只能使用response输出标签数据，非常麻烦 2. 后来有了JSP，简化的Servlet开发，如果过度使用JSP，在jsp中写了大量的Java代码，又写html表，造成维护困难，难于分工合作 3. 再后来，Java的web开发，借鉴MVC开发模式，使得程序的设计更加合理性。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200418203501584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-04-18T12:38:47.000Z">
-<meta property="article:modified_time" content="2020-04-18T12:42:15.239Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200904092017301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200904090640849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-09-04T01:20:46.000Z">
+<meta property="article:modified_time" content="2020-09-04T01:21:26.784Z">
 <meta property="article:author" content="Mr.AZ">
-<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="MVC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200418203501584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200904092017301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -283,11 +285,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-HTML基础_4" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaEE开发模式之MVC" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/" class="article-date">
-      <time datetime="2020-04-18T12:38:47.000Z" itemprop="datePublished">2020-04-18</time>
+      <a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" class="article-date">
+      <time datetime="2020-09-04T01:20:46.000Z" itemprop="datePublished">2020-09-04</time>
 </a>
 
     </div>
@@ -301,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      HTML基础_4
+      JavaEE开发模式之MVC
     </h1>
   
 
@@ -311,13 +313,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/HTML/">HTML</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -327,37 +329,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p> <img src="https://img-blog.csdnimg.cn/20200418203501584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="HTML基础_4"><br> <strong>这一部分介绍一下几个关于HTML的重要的基本信息</strong><br> <a id="more"></a></p>
-<h1 id="HTML-统一资源定位器"><a href="#HTML-统一资源定位器" class="headerlink" title="HTML 统一资源定位器"></a>HTML 统一资源定位器</h1><p>   <strong><em>URL 也被称为网址。</em></strong><br>    <strong>URL - Uniform Resource Locator</strong><br>当您点击 HTML 页面中的某个链接时，对应的 <strong>&#60;a&gt;</strong> 标签指向万维网上的一个地址。<br>    统一资源定位器（URL）用于定位万维网上的文档（或其他数据）。<br>    网址，比如 <a href="http://www.baidu.com，遵守以下的语法规则：">http://www.baidu.com，遵守以下的语法规则：</a><br>    scheme://host.domain:port/path/filename<br>    解释：</p>
-<blockquote>
-<p>scheme - 定义因特网服务的类型。最常见的类型是 http<br>    host - 定义域主机（http 的默认主机是 www）<br>    domain - 定义因特网域名，比如 w3school.com.cn<br>    :port - 定义主机上的端口号（http 的默认端口号是 80）<br>    path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。<br>    filename - 定义文档/资源的名称</p>
-</blockquote>
-<h1 id="HTML-URL-字符编码"><a href="#HTML-URL-字符编码" class="headerlink" title="HTML URL 字符编码"></a>HTML URL 字符编码</h1><blockquote>
-<p>URL 编码会将字符转换为可通过因特网传输的格式。<br>URL 编码<br>URL 只能使用 ASCII 字符集来通过因特网进行发送。<br>由于 URL 常常会包含 ASCII 集合之外的字符，URL 必须转换为有效的 ASCII 格式。<br>URL 编码使用 “%” 其后跟随两位的十六进制数来替换非 ASCII 字符。<br>URL 不能包含空格。URL 编码通常使用 + 来替换空格。</p>
-</blockquote>
-<h1 id="HTML-Web-Server"><a href="#HTML-Web-Server" class="headerlink" title="HTML Web Server"></a>HTML Web Server</h1><p><strong><em>如果希望向世界发布您的网站，那么您必须把它存放在 web 服务器上。<br>托管自己的网站</em></strong></p>
-<p>在自己的服务器上托管网站始终是一个选项。有几点需要考虑：</p>
-<ol>
-<li><strong>硬件支出</strong><br>如果要运行“真正”的网站，您不得不购买强大的服务器硬件。不要指望低价的 PC 能够应付这些工作。<code>您还需要稳定的（一天 24 小时）高速连接。</code></li>
-<li>软件支出<br>请记住，服务器授权通常比客户端授权更昂贵。同时请注意，服务器授权也许有用户数量限制。</li>
-<li><strong>人工费</strong><br>不要指望低廉的人工费用。您必须安装自己的硬件和软件。您同时要处理漏洞和病毒，以确保您的服务器时刻正常地运行于一个“任何事都可能发生”的环境中。<br>使用因特网服务提供商（ISP）<br>从 ISP 租用服务器也很常见。<br>大多数小公司会把网站存放到由 ISP 提供的服务器上。其优势有以下几点：</li>
-<li><strong>连接速度</strong><br>大多数 ISP 都拥有连接因特网的高速连接。</li>
-<li><strong>强大的硬件</strong><br>ISP 的 web 服务器通常强大到能够由若干网站分享资源。您还要看一下 ISP 是否提供高效的负载平衡，以及必要的备份服务器。</li>
-<li><strong>安全性和可靠性</strong><br>ISP 是网站托管方面的专家。他们应该提供 99% 以上的在线时间，最新的软件补丁，以及最好的病毒防护。</li>
-</ol>
-<p><strong>选择 ISP 时的注意事项</strong> </p>
-<ul>
-<li>24 小时支持<br><code>确保 ISP 提供 24 小时支持。</code>不要使自己置于无法解决严重问题的尴尬境地，同时还必须等待第二个工作日。如果您不希望支付长途电话费，那么免费电话服务也是必要的。<ul>
-<li>每日备份<br>确保 ISP 会执行每日备份的例行工作，否则您有可能损失有价值的数据。</li>
-<li>流量<br><code>研究一下 ISP 的流量限制。</code>如果出现由于网站受欢迎而激增的不可预期的访问量，那么您要确保不会因此支付额外费用。</li>
-<li>带宽或内容限制<br><code>研究一下 ISP 的带宽和内容限制。</code>如果您计划发布图片或播出视频或音频，请确保您有此权限。</li>
-<li>E-mail 功能<br><code>请确保 ISP 支持您需要的 e-mail 功能。</code></li>
-<li>数据库访问<br>如果您计划使用网站数据库中的数据，那么请<code>确保您的 ISP 支持您需要的数据库访问。</code></li>
+        <p><img src="https://img-blog.csdnimg.cn/20200904092017301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="JSP演变史"><a href="#JSP演变史" class="headerlink" title="JSP演变史"></a>JSP演变史</h1><pre><code>1. 早期只有servlet，只能使用response输出标签数据，非常麻烦
+2. 后来有了JSP，简化的Servlet开发，如果过度使用JSP，在jsp中写了大量的Java代码，又写html表，造成维护困难，难于分工合作
+3. 再后来，Java的web开发，借鉴MVC开发模式，使得程序的设计更加合理性。</code></pre><a id="more"></a>
+<h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><pre><code>1. M：model ，模型 （JavaBean）
+    *完成具体的业务
+
+2. V:view ,控制器  （JSP）
+    *展示数据
+
+3. C：Controller，控制器 （Servlet）
+    * 用户获取输入
+    * 调用模型
+    * 将数据交给视图进行展示</code></pre><p><img src="https://img-blog.csdnimg.cn/20200904090640849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="MVC特点"><a href="#MVC特点" class="headerlink" title="MVC特点"></a>MVC特点</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>耦合性低，方便维护，利于分工合作。</li>
+<li>重用性高<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2></li>
+<li>使得项目架构变得复杂，对开发人员要求较高</li>
 </ul>
-</li>
-</ul>
-<h1 id="HTML-60-DOCTYPE-gt"><a href="#HTML-60-DOCTYPE-gt" class="headerlink" title="HTML &#60;!DOCTYPE&gt;"></a>HTML &#60;!DOCTYPE&gt;</h1><p><strong>*&lt;!DOCTYPE&gt; 声明<br>Web 世界中存在许多不同的文档。只有了解文档的类型，浏览器才能正确地显示文档。*</strong><br>HTML 也有多个不同的版本，只有完全明白页面中使用的确切 HTML 版本，浏览器才能完全正确地显示出 HTML 页面。这就是 &lt;!DOCTYPE&gt; 的用处。</p>
-<p>==<strong>&#60;!DOCTYPE&gt; 不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。</strong>==</p>
 
       
     </div>
@@ -366,13 +356,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/">JavaEE开发模式之MVC</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年04月18日 - 20时38分</p>
-        <p><span>最后更新:</span>2020年04月18日 - 20时42分</p>
+        <p><span>发布时间:</span>2020年09月04日 - 09时20分</p>
+        <p><span>最后更新:</span>2020年09月04日 - 09时21分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/" title="HTML基础_4">https://oldaz.github.io/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" title="JavaEE开发模式之MVC">https://oldaz.github.io/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -383,18 +373,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          关于华为云的域名认证问题
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">安卓开发之线性布局（超级详细属性）</div>
+    <a  href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java EE页显示技术之JSP</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -406,7 +387,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-统一资源定位器"><span class="toc-number">1.</span> <span class="toc-text">HTML 统一资源定位器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-URL-字符编码"><span class="toc-number">2.</span> <span class="toc-text">HTML URL 字符编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-Web-Server"><span class="toc-number">3.</span> <span class="toc-text">HTML Web Server</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-60-DOCTYPE-gt"><span class="toc-number">4.</span> <span class="toc-text">HTML &amp;#60;!DOCTYPE&gt;</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JSP演变史"><span class="toc-number">1.</span> <span class="toc-text">JSP演变史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC"><span class="toc-number">2.</span> <span class="toc-text">MVC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC特点"><span class="toc-number">3.</span> <span class="toc-text">MVC特点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-number">3.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-number">3.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -479,13 +460,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/" title="上一篇: 关于华为云的域名认证问题">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/" title="下一篇: 安卓开发之线性布局（超级详细属性）">
+            <a  href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/" title="下一篇: Java EE页显示技术之JSP">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -7,22 +7,28 @@
   
   
   
-  <title>HTML基础_4 | Mr.AZ</title>
+  <title>Java EE页显示技术之JSP | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这一部分介绍一下几个关于HTML的重要的基本信息">
+  <meta name="description" content="JSP1.概念： * Java Server Pages:Java服务器页面     * 可以理解为一个特殊的页面，     * 其中既可以定义html标签，又可以定义java代码     用于简化书写">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML基础_4">
-<meta property="og:url" content="https://oldaz.github.io/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/index.html">
+<meta property="og:title" content="Java EE页显示技术之JSP">
+<meta property="og:url" content="https://oldaz.github.io/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="这一部分介绍一下几个关于HTML的重要的基本信息">
+<meta property="og:description" content="JSP1.概念： * Java Server Pages:Java服务器页面     * 可以理解为一个特殊的页面，     * 其中既可以定义html标签，又可以定义java代码     用于简化书写">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200418203501584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-04-18T12:38:47.000Z">
-<meta property="article:modified_time" content="2020-04-18T12:42:15.239Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020090408471826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200902091143184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200902091512601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200902103835170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200903232938742.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200903233041508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-09-04T00:48:48.000Z">
+<meta property="article:modified_time" content="2020-09-04T01:21:13.076Z">
 <meta property="article:author" content="Mr.AZ">
-<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="JSP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200418203501584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020090408471826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -283,11 +289,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-HTML基础_4" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java-EE页显示技术之JSP" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/" class="article-date">
-      <time datetime="2020-04-18T12:38:47.000Z" itemprop="datePublished">2020-04-18</time>
+      <a  href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/" class="article-date">
+      <time datetime="2020-09-04T00:48:48.000Z" itemprop="datePublished">2020-09-04</time>
 </a>
 
     </div>
@@ -301,7 +307,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      HTML基础_4
+      Java EE页显示技术之JSP
     </h1>
   
 
@@ -311,13 +317,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/HTML/">HTML</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -327,37 +333,126 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p> <img src="https://img-blog.csdnimg.cn/20200418203501584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="HTML基础_4"><br> <strong>这一部分介绍一下几个关于HTML的重要的基本信息</strong><br> <a id="more"></a></p>
-<h1 id="HTML-统一资源定位器"><a href="#HTML-统一资源定位器" class="headerlink" title="HTML 统一资源定位器"></a>HTML 统一资源定位器</h1><p>   <strong><em>URL 也被称为网址。</em></strong><br>    <strong>URL - Uniform Resource Locator</strong><br>当您点击 HTML 页面中的某个链接时，对应的 <strong>&#60;a&gt;</strong> 标签指向万维网上的一个地址。<br>    统一资源定位器（URL）用于定位万维网上的文档（或其他数据）。<br>    网址，比如 <a href="http://www.baidu.com，遵守以下的语法规则：">http://www.baidu.com，遵守以下的语法规则：</a><br>    scheme://host.domain:port/path/filename<br>    解释：</p>
-<blockquote>
-<p>scheme - 定义因特网服务的类型。最常见的类型是 http<br>    host - 定义域主机（http 的默认主机是 www）<br>    domain - 定义因特网域名，比如 w3school.com.cn<br>    :port - 定义主机上的端口号（http 的默认端口号是 80）<br>    path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。<br>    filename - 定义文档/资源的名称</p>
-</blockquote>
-<h1 id="HTML-URL-字符编码"><a href="#HTML-URL-字符编码" class="headerlink" title="HTML URL 字符编码"></a>HTML URL 字符编码</h1><blockquote>
-<p>URL 编码会将字符转换为可通过因特网传输的格式。<br>URL 编码<br>URL 只能使用 ASCII 字符集来通过因特网进行发送。<br>由于 URL 常常会包含 ASCII 集合之外的字符，URL 必须转换为有效的 ASCII 格式。<br>URL 编码使用 “%” 其后跟随两位的十六进制数来替换非 ASCII 字符。<br>URL 不能包含空格。URL 编码通常使用 + 来替换空格。</p>
-</blockquote>
-<h1 id="HTML-Web-Server"><a href="#HTML-Web-Server" class="headerlink" title="HTML Web Server"></a>HTML Web Server</h1><p><strong><em>如果希望向世界发布您的网站，那么您必须把它存放在 web 服务器上。<br>托管自己的网站</em></strong></p>
-<p>在自己的服务器上托管网站始终是一个选项。有几点需要考虑：</p>
+        <p><img src="https://img-blog.csdnimg.cn/2020090408471826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><p>1.概念：</p>
+<pre><code>* Java Server Pages:Java服务器页面
+    * 可以理解为一个特殊的页面，
+    * 其中既可以定义html标签，又可以定义java代码
+    用于简化书写</code></pre><a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200902091143184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="概念"></p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><img src="https://img-blog.csdnimg.cn/20200902091512601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="原理"></p>
 <ol>
-<li><strong>硬件支出</strong><br>如果要运行“真正”的网站，您不得不购买强大的服务器硬件。不要指望低价的 PC 能够应付这些工作。<code>您还需要稳定的（一天 24 小时）高速连接。</code></li>
-<li>软件支出<br>请记住，服务器授权通常比客户端授权更昂贵。同时请注意，服务器授权也许有用户数量限制。</li>
-<li><strong>人工费</strong><br>不要指望低廉的人工费用。您必须安装自己的硬件和软件。您同时要处理漏洞和病毒，以确保您的服务器时刻正常地运行于一个“任何事都可能发生”的环境中。<br>使用因特网服务提供商（ISP）<br>从 ISP 租用服务器也很常见。<br>大多数小公司会把网站存放到由 ISP 提供的服务器上。其优势有以下几点：</li>
-<li><strong>连接速度</strong><br>大多数 ISP 都拥有连接因特网的高速连接。</li>
-<li><strong>强大的硬件</strong><br>ISP 的 web 服务器通常强大到能够由若干网站分享资源。您还要看一下 ISP 是否提供高效的负载平衡，以及必要的备份服务器。</li>
-<li><strong>安全性和可靠性</strong><br>ISP 是网站托管方面的专家。他们应该提供 99% 以上的在线时间，最新的软件补丁，以及最好的病毒防护。</li>
+<li>本质上一个Servlet</li>
 </ol>
-<p><strong>选择 ISP 时的注意事项</strong> </p>
-<ul>
-<li>24 小时支持<br><code>确保 ISP 提供 24 小时支持。</code>不要使自己置于无法解决严重问题的尴尬境地，同时还必须等待第二个工作日。如果您不希望支付长途电话费，那么免费电话服务也是必要的。<ul>
-<li>每日备份<br>确保 ISP 会执行每日备份的例行工作，否则您有可能损失有价值的数据。</li>
-<li>流量<br><code>研究一下 ISP 的流量限制。</code>如果出现由于网站受欢迎而激增的不可预期的访问量，那么您要确保不会因此支付额外费用。</li>
-<li>带宽或内容限制<br><code>研究一下 ISP 的带宽和内容限制。</code>如果您计划发布图片或播出视频或音频，请确保您有此权限。</li>
-<li>E-mail 功能<br><code>请确保 ISP 支持您需要的 e-mail 功能。</code></li>
-<li>数据库访问<br>如果您计划使用网站数据库中的数据，那么请<code>确保您的 ISP 支持您需要的数据库访问。</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="HTML-60-DOCTYPE-gt"><a href="#HTML-60-DOCTYPE-gt" class="headerlink" title="HTML &#60;!DOCTYPE&gt;"></a>HTML &#60;!DOCTYPE&gt;</h1><p><strong>*&lt;!DOCTYPE&gt; 声明<br>Web 世界中存在许多不同的文档。只有了解文档的类型，浏览器才能正确地显示文档。*</strong><br>HTML 也有多个不同的版本，只有完全明白页面中使用的确切 HTML 版本，浏览器才能完全正确地显示出 HTML 页面。这就是 &lt;!DOCTYPE&gt; 的用处。</p>
-<p>==<strong>&#60;!DOCTYPE&gt; 不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。</strong>==</p>
+<h1 id="Jsp的脚本"><a href="#Jsp的脚本" class="headerlink" title="Jsp的脚本"></a>Jsp的脚本</h1><pre><code>Jsp定义Java代码的方式
+  1.  &lt;%| 代码%&gt; ：
+        定义的Java代码在Service方法中。
+        Servce方法中可以定义什么，该脚本中就可以定义什么 。
+  2.  &lt;%！ 代码%&gt;： 
+        定义的java代码在JSP转换后的Java类的成员位置。
+        一般使用 安全问题
+  3.  &lt;%= 代码%&gt;：
+         定义Java代码，会输出在页面上。
+         输出语句可以定义什么，该脚本就可以定义什么。</code></pre><h1 id="Jsp的内置对象"><a href="#Jsp的内置对象" class="headerlink" title="Jsp的内置对象"></a>Jsp的内置对象</h1><pre><code>* 在JSP页面不需要获取和创建，可以直接使用的对象
+* JSP一共有九个内置对象。
+* 3个常用 ：
+        1. request
+        2. response 
+        3. out :
+           字符的输出流，可以将数据输出到页面上。
+           和reponse.getWriter类似。
+           * 二者区别： 在Tomcat 服务器真正给客户端做出响应之前，
+                     会先找出response缓冲区数据，再找出out数据缓冲区数据。
+             response.getWriter()数据永远在out.write()之前。
+
+             尽量只用out输出。</code></pre><p><img src="https://img-blog.csdnimg.cn/20200902103835170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="区别"></p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><pre><code>*作用：用于JSP页面，导入资源文件
+
+* 格式
+    &lt;% 指令名称 属性名称 属性名称1=属性值1 属性名称2=属性值2 .. %&gt;</code></pre><p>分类：<br>          1. page：配置JSP页面的</p>
+<pre><code>*contentType：等同于response.setContentType()
+     1. 设置响应体的mime类型以及字符集
+     2. 设置当前JSP页面的编码（只能是高级的IDE才能生效，
+        如果使用低级工具，则需要设置pageEncoding属性设置当前页面的字符集）
+
+     *import：导包
+
+     * errorPage：当页面发生错误后跳转的页面。
+     * isErrorPage：标识当前页面是否为错误页面。
+       1. true：是，可以使用内置对象exception
+       2. false：否，默认值。不可以使用内置对象exception</code></pre><ol start="2">
+<li>include<pre><code>页面包含的。导入页面的资源文件</code></pre><img src="https://img-blog.csdnimg.cn/20200903232938742.png#pic_center" alt=""><br><img src="https://img-blog.csdnimg.cn/20200903233041508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></li>
+</ol>
+<ol start="3">
+<li><p>taglib</p>
+<pre><code>     导入资源（JSTL标签库）
+
+&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
+  * rprefix:前缀，自定义的</code></pre></li>
+</ol>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ol>
+<li><p>html注释： </p>
+<pre><code>&lt;!--  --&gt;:只能注释html代码片段（会发送到页面，但是不解析）。</code></pre></li>
+<li><p>JSP注释：推荐使用</p>
+<pre><code>&lt;%--  --%&gt;:可以注释所有。（不会将注释内容发送到页面）</code></pre></li>
+</ol>
+<h1 id="所有内置对象"><a href="#所有内置对象" class="headerlink" title="所有内置对象"></a>所有内置对象</h1><p>在JSP页面中不需要创建，直接使用的对象</p>
+<p>一共有九个：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>真实类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pageContext</td>
+<td>pageContext</td>
+<td>当前页面共享数据，获取其他8个内置对象</td>
+</tr>
+<tr>
+<td>request</td>
+<td>HttpServletRequest</td>
+<td>一次请求访问多个资源（转发）</td>
+</tr>
+<tr>
+<td>session</td>
+<td>HttpSession</td>
+<td>一次会话的多个请求</td>
+</tr>
+<tr>
+<td>application</td>
+<td>ServletContext</td>
+<td>所有用户间共享数据</td>
+</tr>
+<tr>
+<td>response</td>
+<td>HttpServletResponse</td>
+<td>响应对象</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Object</td>
+<td>当前页面的（Servlet）对象 this</td>
+</tr>
+<tr>
+<td>out</td>
+<td>JspWriter</td>
+<td>输出对象，数据输出到页面上</td>
+</tr>
+<tr>
+<td>config</td>
+<td>SerletConfig</td>
+<td>Servlet的配置对象</td>
+</tr>
+<tr>
+<td>excepton</td>
+<td>Throwable</td>
+<td>异常对象</td>
+</tr>
+</tbody></table>
+<p>后面五个为域对象</p>
 
       
     </div>
@@ -366,13 +461,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/">HTML基础_4</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/">Java EE页显示技术之JSP</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年04月18日 - 20时38分</p>
-        <p><span>最后更新:</span>2020年04月18日 - 20时42分</p>
+        <p><span>发布时间:</span>2020年09月04日 - 08时48分</p>
+        <p><span>最后更新:</span>2020年09月04日 - 09时21分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/" title="HTML基础_4">https://oldaz.github.io/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/" title="Java EE页显示技术之JSP">https://oldaz.github.io/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -383,18 +478,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          关于华为云的域名认证问题
+          JavaEE开发模式之MVC
         
       </div>
     </a>
   
   
-    <a  href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">安卓开发之线性布局（超级详细属性）</div>
+    <a  href="/2020/09/03/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BSession%E6%A1%88%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaEE会话技术之Session案例</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -406,7 +501,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-统一资源定位器"><span class="toc-number">1.</span> <span class="toc-text">HTML 统一资源定位器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-URL-字符编码"><span class="toc-number">2.</span> <span class="toc-text">HTML URL 字符编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-Web-Server"><span class="toc-number">3.</span> <span class="toc-text">HTML Web Server</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-60-DOCTYPE-gt"><span class="toc-number">4.</span> <span class="toc-text">HTML &amp;#60;!DOCTYPE&gt;</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JSP"><span class="toc-number">1.</span> <span class="toc-text">JSP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jsp的脚本"><span class="toc-number">3.</span> <span class="toc-text">Jsp的脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jsp的内置对象"><span class="toc-number">4.</span> <span class="toc-text">Jsp的内置对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令"><span class="toc-number">5.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注释"><span class="toc-number">6.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#所有内置对象"><span class="toc-number">7.</span> <span class="toc-text">所有内置对象</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -479,13 +574,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/" title="上一篇: 关于华为云的域名认证问题">
+            <a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" title="上一篇: JavaEE开发模式之MVC">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/04/18/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%88%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E5%B1%9E%E6%80%A7%EF%BC%89/" title="下一篇: 安卓开发之线性布局（超级详细属性）">
+            <a  href="/2020/09/03/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BSession%E6%A1%88%E4%BE%8B/" title="下一篇: JavaEE会话技术之Session案例">
                 <i class="fa fa-angle-right"></i>
             </a>
         
