@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://oldaz.github.io/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/</loc>
+    <lastmod>2020-09-10</lastmod>
+  </url>  <url>
     <loc>https://oldaz.github.io/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BFilter%E6%A1%88%E4%BE%8B/</loc>
     <lastmod>2020-09-10</lastmod>
   </url>  <url>

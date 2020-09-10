@@ -7,28 +7,24 @@
   
   
   
-  <title>Java EE页显示技术之JSP | Mr.AZ</title>
+  <title>JavaEE核心技术之Listener监听器 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JSP1.概念： * Java Server Pages:Java服务器页面     * 可以理解为一个特殊的页面，     * 其中既可以定义html标签，又可以定义java代码     用于简化书写">
+  <meta name="description" content="概念   web的三大组件之一。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java EE页显示技术之JSP">
-<meta property="og:url" content="https://oldaz.github.io/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/index.html">
+<meta property="og:title" content="JavaEE核心技术之Listener监听器">
+<meta property="og:url" content="https://oldaz.github.io/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="JSP1.概念： * Java Server Pages:Java服务器页面     * 可以理解为一个特殊的页面，     * 其中既可以定义html标签，又可以定义java代码     用于简化书写">
+<meta property="og:description" content="概念   web的三大组件之一。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020090408471826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200902091143184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200902091512601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200902103835170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200903232938742.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200903233041508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="article:published_time" content="2020-09-04T00:48:48.000Z">
-<meta property="article:modified_time" content="2020-09-04T01:21:13.076Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200910164225960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200910163939842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-09-10T08:44:02.000Z">
+<meta property="article:modified_time" content="2020-09-10T08:44:52.014Z">
 <meta property="article:author" content="Mr.AZ">
 <meta property="article:tag" content="JavaEE">
-<meta property="article:tag" content="JSP">
+<meta property="article:tag" content="Listener">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020090408471826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200910164225960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -289,11 +285,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Java-EE页显示技术之JSP" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaEE核心技术之Listener监听器" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/" class="article-date">
-      <time datetime="2020-09-04T00:48:48.000Z" itemprop="datePublished">2020-09-04</time>
+      <a  href="/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/" class="article-date">
+      <time datetime="2020-09-10T08:44:02.000Z" itemprop="datePublished">2020-09-10</time>
 </a>
 
     </div>
@@ -307,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java EE页显示技术之JSP
+      JavaEE核心技术之Listener监听器
     </h1>
   
 
@@ -323,7 +319,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Listener/" rel="tag">Listener</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -333,126 +329,36 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="https://img-blog.csdnimg.cn/2020090408471826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
-<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><p>1.概念：</p>
-<pre><code>* Java Server Pages:Java服务器页面
-    * 可以理解为一个特殊的页面，
-    * 其中既可以定义html标签，又可以定义java代码
-    用于简化书写</code></pre><a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200902091143184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="概念"></p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><img src="https://img-blog.csdnimg.cn/20200902091512601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="原理"></p>
-<ol>
-<li>本质上一个Servlet</li>
+        <p><img src="https://img-blog.csdnimg.cn/20200910164225960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>   web的三大组件之一。</p>
+<a id="more"></a>
+<pre><code>事件监听机制：
+    * 事件：一件事情
+    * 事件源：事情发生的地方
+    * 监听器：一个对象
+    * 注册监听：将事件、事件源、监听器绑定在一起。
+         当事件源发生发生某个事件后，执行监视器代码。</code></pre><h1 id="ServletContextListener"><a href="#ServletContextListener" class="headerlink" title="ServletContextListener"></a>ServletContextListener</h1><p>监听ServletContext对象的创建和销毁</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><pre><code>void contextDestoryed(ServletContextEvent  sce)：
+                    ServletContext对象销毁之前会调用此方法。
+
+void contextInitialized(ServletContextEvent sce) ：
+                    ServletContext对象创建前会调用此方法。</code></pre><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>定义一个类，实现ServletContextListener接口</p>
+</li>
+<li><p>复写方法</p>
+</li>
+<li><p>配置</p>
+<pre><code>1. web.xml</code></pre><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置监听器--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>com.web.listener.ContextLoaderLitsener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--指定初始化参数--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/classes/applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注解设置<br>同Servlet和Filter一样在前面加入注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@webListener</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
 </ol>
-<h1 id="Jsp的脚本"><a href="#Jsp的脚本" class="headerlink" title="Jsp的脚本"></a>Jsp的脚本</h1><pre><code>Jsp定义Java代码的方式
-  1.  &lt;%| 代码%&gt; ：
-        定义的Java代码在Service方法中。
-        Servce方法中可以定义什么，该脚本中就可以定义什么 。
-  2.  &lt;%！ 代码%&gt;： 
-        定义的java代码在JSP转换后的Java类的成员位置。
-        一般使用 安全问题
-  3.  &lt;%= 代码%&gt;：
-         定义Java代码，会输出在页面上。
-         输出语句可以定义什么，该脚本就可以定义什么。</code></pre><h1 id="Jsp的内置对象"><a href="#Jsp的内置对象" class="headerlink" title="Jsp的内置对象"></a>Jsp的内置对象</h1><pre><code>* 在JSP页面不需要获取和创建，可以直接使用的对象
-* JSP一共有九个内置对象。
-* 3个常用 ：
-        1. request
-        2. response 
-        3. out :
-           字符的输出流，可以将数据输出到页面上。
-           和reponse.getWriter类似。
-           * 二者区别： 在Tomcat 服务器真正给客户端做出响应之前，
-                     会先找出response缓冲区数据，再找出out数据缓冲区数据。
-             response.getWriter()数据永远在out.write()之前。
+<h2 id="监听器代码"><a href="#监听器代码" class="headerlink" title="监听器代码"></a>监听器代码</h2><p>加载配置文件进内存<br><img src="https://img-blog.csdnimg.cn/20200910163939842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.web.listener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletContext;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletContextEvent;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletContextListener;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextLoaderLitsener</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">    <span class="comment">//监听ServletContext对象创建的。ServletContext对服务器启动后自动创建。</span></span><br><span class="line">    <span class="comment">//在服务器自动启动后被调用</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent servletContextEvent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//加载资源</span></span><br><span class="line">        <span class="comment">//1. 获取ServletContext对象</span></span><br><span class="line">        ServletContext servletContext = servletContextEvent.getServletContext();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 加载资源文件</span></span><br><span class="line">        String contextConfigLocation = servletContext.getInitParameter(<span class="string">"contextConfigLocation"</span>);</span><br><span class="line">        <span class="comment">//3.获取真实路径</span></span><br><span class="line">        String realPath = servletContext.getRealPath(contextConfigLocation);</span><br><span class="line">        <span class="comment">//4.加载进内存</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileInputStream fis = <span class="keyword">new</span> FileInputStream(realPath);</span><br><span class="line">            System.out.println(fis);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"ServletContext被创建了。。。"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在服务器关闭后，ServletContext对象被销毁，当服务器正常关闭后该方法被调用</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent sce)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"ServletContext被销毁了。。。"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-             尽量只用out输出。</code></pre><p><img src="https://img-blog.csdnimg.cn/20200902103835170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="区别"></p>
-<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><pre><code>*作用：用于JSP页面，导入资源文件
-
-* 格式
-    &lt;% 指令名称 属性名称 属性名称1=属性值1 属性名称2=属性值2 .. %&gt;</code></pre><p>分类：<br>          1. page：配置JSP页面的</p>
-<pre><code>*contentType：等同于response.setContentType()
-     1. 设置响应体的mime类型以及字符集
-     2. 设置当前JSP页面的编码（只能是高级的IDE才能生效，
-        如果使用低级工具，则需要设置pageEncoding属性设置当前页面的字符集）
-
-     *import：导包
-
-     * errorPage：当页面发生错误后跳转的页面。
-     * isErrorPage：标识当前页面是否为错误页面。
-       1. true：是，可以使用内置对象exception
-       2. false：否，默认值。不可以使用内置对象exception</code></pre><ol start="2">
-<li>include<pre><code>页面包含的。导入页面的资源文件</code></pre><img src="https://img-blog.csdnimg.cn/20200903232938742.png#pic_center" alt=""><br><img src="https://img-blog.csdnimg.cn/20200903233041508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></li>
-</ol>
-<ol start="3">
-<li><p>taglib</p>
-<pre><code>     导入资源（JSTL标签库）
-
-&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
-  * rprefix:前缀，自定义的</code></pre></li>
-</ol>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ol>
-<li><p>html注释： </p>
-<pre><code>&lt;!--  --&gt;:只能注释html代码片段（会发送到页面，但是不解析）。</code></pre></li>
-<li><p>JSP注释：推荐使用</p>
-<pre><code>&lt;%--  --%&gt;:可以注释所有。（不会将注释内容发送到页面）</code></pre></li>
-</ol>
-<h1 id="所有内置对象"><a href="#所有内置对象" class="headerlink" title="所有内置对象"></a>所有内置对象</h1><p>在JSP页面中不需要创建，直接使用的对象</p>
-<p>一共有九个：</p>
-<table>
-<thead>
-<tr>
-<th>变量名</th>
-<th>真实类型</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pageContext</td>
-<td>pageContext</td>
-<td>当前页面共享数据，获取其他8个内置对象</td>
-</tr>
-<tr>
-<td>request</td>
-<td>HttpServletRequest</td>
-<td>一次请求访问多个资源（转发）</td>
-</tr>
-<tr>
-<td>session</td>
-<td>HttpSession</td>
-<td>一次会话的多个请求</td>
-</tr>
-<tr>
-<td>application</td>
-<td>ServletContext</td>
-<td>所有用户间共享数据</td>
-</tr>
-<tr>
-<td>response</td>
-<td>HttpServletResponse</td>
-<td>响应对象</td>
-</tr>
-<tr>
-<td>page</td>
-<td>Object</td>
-<td>当前页面的（Servlet）对象 this</td>
-</tr>
-<tr>
-<td>out</td>
-<td>JspWriter</td>
-<td>输出对象，数据输出到页面上</td>
-</tr>
-<tr>
-<td>config</td>
-<td>SerletConfig</td>
-<td>Servlet的配置对象</td>
-</tr>
-<tr>
-<td>excepton</td>
-<td>Throwable</td>
-<td>异常对象</td>
-</tr>
-</tbody></table>
-<p>后面五个为域对象</p>
 
       
     </div>
@@ -461,13 +367,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/">Java EE页显示技术之JSP</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/">JavaEE核心技术之Listener监听器</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年09月04日 - 08时48分</p>
-        <p><span>最后更新:</span>2020年09月04日 - 09时21分</p>
+        <p><span>发布时间:</span>2020年09月10日 - 16时44分</p>
+        <p><span>最后更新:</span>2020年09月10日 - 16时44分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/" title="Java EE页显示技术之JSP">https://oldaz.github.io/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/04/Java-EE%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%8A%80%E6%9C%AF%E4%B9%8BJSP/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/" title="JavaEE核心技术之Listener监听器">https://oldaz.github.io/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -478,18 +384,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JavaEE开发模式之MVC
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/09/03/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BSession%E6%A1%88%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaEE会话技术之Session案例</div>
+    <a  href="/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BFilter%E6%A1%88%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaEE核心技术之Filter案例</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -501,7 +398,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JSP"><span class="toc-number">1.</span> <span class="toc-text">JSP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jsp的脚本"><span class="toc-number">3.</span> <span class="toc-text">Jsp的脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jsp的内置对象"><span class="toc-number">4.</span> <span class="toc-text">Jsp的内置对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令"><span class="toc-number">5.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注释"><span class="toc-number">6.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#所有内置对象"><span class="toc-number">7.</span> <span class="toc-text">所有内置对象</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ServletContextListener"><span class="toc-number">2.</span> <span class="toc-text">ServletContextListener</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法"><span class="toc-number">2.1.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">2.2.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#监听器代码"><span class="toc-number">2.3.</span> <span class="toc-text">监听器代码</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -574,13 +471,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/09/04/JavaEE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVC/" title="上一篇: JavaEE开发模式之MVC">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/09/03/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BSession%E6%A1%88%E4%BE%8B/" title="下一篇: JavaEE会话技术之Session案例">
+            <a  href="/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BFilter%E6%A1%88%E4%BE%8B/" title="下一篇: JavaEE核心技术之Filter案例">
                 <i class="fa fa-angle-right"></i>
             </a>
         
