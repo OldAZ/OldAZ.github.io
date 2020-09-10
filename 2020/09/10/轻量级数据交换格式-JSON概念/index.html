@@ -7,25 +7,24 @@
   
   
   
-  <title>xml解析--Jsoup快捷查询方式 | Mr.AZ</title>
+  <title>轻量级数据交换格式-JSON概念 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引入以前当我们想获取&lt;student&gt; -&gt; &lt;name&gt;  -&gt;   &lt;xing&gt; -&gt; &quot;张&quot; 时，我们需要先依次获取对应的标签。在获取内容    我们希望有一种快捷的方式，一下子就能定位到这里。    因此就有了快捷查询方式。">
+  <meta name="description" content="@TOC 概念JavaScript Object Notation ：JavaScript对象表示法 JSON现在对于存储和交换信息的语法 进行数据的传输 JSON 比 XML 更小、更快、更易解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xml解析--Jsoup快捷查询方式">
-<meta property="og:url" content="https://oldaz.github.io/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:title" content="轻量级数据交换格式-JSON概念">
+<meta property="og:url" content="https://oldaz.github.io/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="引入以前当我们想获取&lt;student&gt; -&gt; &lt;name&gt;  -&gt;   &lt;xing&gt; -&gt; &quot;张&quot; 时，我们需要先依次获取对应的标签。在获取内容    我们希望有一种快捷的方式，一下子就能定位到这里。    因此就有了快捷查询方式。">
+<meta property="og:description" content="@TOC 概念JavaScript Object Notation ：JavaScript对象表示法 JSON现在对于存储和交换信息的语法 进行数据的传输 JSON 比 XML 更小、更快、更易解析">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200813152407270.png#pic_center">
-<meta property="article:published_time" content="2020-08-13T08:18:35.000Z">
-<meta property="article:modified_time" content="2020-08-13T08:21:55.237Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200910211111465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200910210403228.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-09-10T13:12:20.000Z">
+<meta property="article:modified_time" content="2020-09-10T13:12:57.196Z">
 <meta property="article:author" content="Mr.AZ">
-<meta property="article:tag" content="快速入门">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="xml">
-<meta property="article:tag" content="Jsoup">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="JSON">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200813152407270.png#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200910211111465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -286,11 +285,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-xml解析--Jsoup快捷查询方式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-轻量级数据交换格式-JSON概念" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/" class="article-date">
-      <time datetime="2020-08-13T08:18:35.000Z" itemprop="datePublished">2020-08-13</time>
+      <a  href="/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/" class="article-date">
+      <time datetime="2020-09-10T13:12:20.000Z" itemprop="datePublished">2020-09-10</time>
 </a>
 
     </div>
@@ -304,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      xml解析--Jsoup快捷查询方式
+      轻量级数据交换格式-JSON概念
     </h1>
   
 
@@ -320,7 +319,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jsoup/" rel="tag">Jsoup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xml/" rel="tag">xml</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" rel="tag">快速入门</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSON/" rel="tag">JSON</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -330,23 +329,39 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="https://img-blog.csdnimg.cn/20200813152407270.png#pic_center" alt="查询"></p>
-<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><pre><code>以前当我们想获取&lt;student&gt; -&gt; &lt;name&gt;  -&gt;   &lt;xing&gt; -&gt; &quot;张&quot;
-时，我们需要先依次获取对应的标签。在获取内容
-   我们希望有一种快捷的方式，一下子就能定位到这里。
-   因此就有了快捷查询方式。</code></pre><a id="more"></a>
-<h1 id="快捷查询方式"><a href="#快捷查询方式" class="headerlink" title="快捷查询方式"></a>快捷查询方式</h1><h2 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h2><pre><code>选择器查询
-  使用方法：Elements select(String cssQuery) </code></pre><h3 id="selector语法"><a href="#selector语法" class="headerlink" title="selector语法"></a>selector语法</h3><p> 参考selector中定义的语法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xml.jsoup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsoup.Jsoup;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Document;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Element;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.select.Elements;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> * 选择器查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1 获取student。xml的路径</span></span><br><span class="line">        String path = JsoupDemo2.class.getResource("student.xml").getPath();</span><br><span class="line">        <span class="comment">//2.获取Document对象</span></span><br><span class="line">        Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">//3.查询name标签</span></span><br><span class="line">        Elements elements = document.select(<span class="string">"name"</span>);</span><br><span class="line">        System.out.println(elements);</span><br><span class="line">        System.out.println(<span class="string">"---------------"</span>);</span><br><span class="line">        <span class="comment">//4.查询id值为id01的元素</span></span><br><span class="line">        Elements elements1 = document.select(<span class="string">"#id01"</span>);</span><br><span class="line">        System.out.println(elements1);</span><br><span class="line">        System.out.println(<span class="string">"---------------"</span>);</span><br><span class="line">        <span class="comment">//5.获取student标签并且number属性值为xml_0001的age子标签</span></span><br><span class="line">          <span class="comment">//5.1获取student标签并且number属性为xml_0001</span></span><br><span class="line">        Elements elements2 = document.select(<span class="string">"student[number='xml_0001']"</span>);</span><br><span class="line">        System.out.println(elements2);</span><br><span class="line">        System.out.println(<span class="string">"---------------"</span>);</span><br><span class="line">          <span class="comment">//5.2获取student标签并且number属性值为xml_0001的age子标签</span></span><br><span class="line">        Elements elements3 = document.select(<span class="string">"student[number='xml_0001']&gt;age"</span>);</span><br><span class="line">        System.out.println(elements3);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>@<a href="轻量级数据交换格式-JSON入门">TOC</a><br><img src="https://img-blog.csdnimg.cn/20200910211111465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>JavaScript Object Notation ：JavaScript对象表示法</p>
+<pre><code>JSON现在对于存储和交换信息的语法
+进行数据的传输
+JSON 比 XML 更小、更快、更易解析</code></pre><a id="more"></a>    
 
-<h2 id="XPath"><a href="#XPath" class="headerlink" title="XPath"></a>XPath</h2><p> w3c定义的一种语法</p>
-<pre><code> XPath即为XML路径语言（XML Path Language），
- 它是一种用来确定XML文档中某部分位置的语言。
-XPath基于XML的树状结构，提供在数据结构树中找寻节点的能力。
-起初XPath的提出的初衷是将其作为一个通用的、介于XPointer与XSL间的语法模型。
-但是XPath很快的被开发者采用来当作小型查询语言。</code></pre><p><strong>使用Jsoup的XPath需要导入额外的jar包</strong></p>
-<pre><code>JsoupXpath-0.3.2.jar</code></pre><p>参考w3c的<a href="https://www.w3school.com.cn/xpath/xpath_syntax.asp" target="_blank" rel="noopener">XPath语法文档</a>来使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xml.jsoup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.wanghaomiao.xpath.model.JXDocument;</span><br><span class="line"><span class="keyword">import</span> cn.wanghaomiao.xpath.model.JXNode;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.Jsoup;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Document;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> OldAZ-PC</span></span><br><span class="line"><span class="comment"> * XPath查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo6</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1 获取student。xml的路径</span></span><br><span class="line">        String path = JsoupDemo2.class.getResource("student.xml").getPath();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.获取Document对象</span></span><br><span class="line">        Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">//3.根据document对象，创建JXDocument对象</span></span><br><span class="line">        JXDocument jxDocument = <span class="keyword">new</span> JXDocument(document);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.1结合xpath语法查询所有的student标签</span></span><br><span class="line">        List&lt;JXNode&gt; jxNodes = jxDocument.selN(<span class="string">"//student"</span>);</span><br><span class="line">        <span class="keyword">for</span> (JXNode jxNode:jxNodes)&#123;</span><br><span class="line">        System.out.println(jxNode);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"==================="</span>);</span><br><span class="line">        <span class="comment">//4.2查询所有的student标签下的那么标签</span></span><br><span class="line">        List&lt;JXNode&gt; jxNodes2 = jxDocument.selN(<span class="string">"//student/name"</span>);</span><br><span class="line">        <span class="keyword">for</span> (JXNode jxNode:jxNodes2)&#123;</span><br><span class="line">            System.out.println(jxNode);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"==================="</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.3查询student标签下带有属性的name标签</span></span><br><span class="line">        List&lt;JXNode&gt; jxNodes3 = jxDocument.selN(<span class="string">"//student/name[@id]"</span>);</span><br><span class="line">        <span class="keyword">for</span> (JXNode jxNode:jxNodes3)&#123;</span><br><span class="line">            System.out.println(jxNode);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"==================="</span>);</span><br><span class="line">        <span class="comment">//4.3查询student标签下带有属性的name标签,并且id的属性值为id01</span></span><br><span class="line">        List&lt;JXNode&gt; jxNodes4 = jxDocument.selN(<span class="string">"//student/name[@id='id01']"</span>);</span><br><span class="line">        <span class="keyword">for</span> (JXNode jxNode:jxNodes4)&#123;</span><br><span class="line">            System.out.println(jxNode);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"==================="</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>作用（早期）<br>在Java中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> person();</span><br><span class="line">p.setName(<span class="string">"张三"</span>)；</span><br><span class="line">p.setAge(<span class="number">23</span>);</span><br><span class="line">p.setGender(<span class="string">"男"</span>)；</span><br></pre></td></tr></table></figure>
+
+<p>在JavaScript中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p =&#123;<span class="string">"name"</span>:<span class="string">"张三"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>,<span class="string">"gender"</span>:<span class="string">"男"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h2><pre><code>1. 数据在名称/值对中：JSON数据是由键值对构成的
+        * 键用引号（单双都行）引起来，也可以不使用引号
+        * 值的取值类型：
+            1. 数字（整数和浮点数）
+            2. 字符串（在双引号中）
+            3. 逻辑值（true和false）
+            4. 数组（在方括号中）{&quot;person&quot;:[{1},{2}]}
+            5. 对象（在华括号中）{&quot;address&quot;:{&quot;provice&quot;:&quot;陕西...&quot;}}
+            6. null
+
+
+2. 数据由逗号分隔：多个键值对由逗号分隔
+
+3. 花括号保存对象：使用{}定义JSON格式
+4. 
+5. 方括号保存数组：[]</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 定义基本格式</span></span><br><span class="line">  <span class="keyword">var</span> person = &#123;<span class="string">"name"</span>:<span class="string">"张三"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;</span><br><span class="line">  <span class="comment">//alert(person);</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//2.嵌套格式&#123;&#125;-&gt;[]</span></span><br><span class="line">  <span class="keyword">var</span> person = &#123;<span class="string">"person"</span>:[</span><br><span class="line">          &#123;<span class="string">"name"</span>:<span class="string">"张三"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">          &#123;<span class="string">"name"</span>:<span class="string">"李四"</span>,<span class="string">"age"</span>:<span class="string">"24"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">          &#123;<span class="string">"name"</span>:<span class="string">"王五"</span>,<span class="string">"age"</span>:<span class="string">"21"</span>,<span class="string">"gender"</span>:<span class="string">"false"</span>&#125;]&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//alert(persons);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">//2.嵌套格式 [] --&gt; &#123;&#125;</span></span><br><span class="line">   <span class="keyword">var</span> ps = [</span><br><span class="line">       &#123;<span class="string">"name"</span>:<span class="string">"张三"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">       &#123;<span class="string">"name"</span>:<span class="string">"李四"</span>,<span class="string">"age"</span>:<span class="string">"24"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">       &#123;<span class="string">"name"</span>:<span class="string">"王五"</span>,<span class="string">"age"</span>:<span class="string">"21"</span>,<span class="string">"gender"</span>:<span class="string">"false"</span>&#125;]</span><br><span class="line">   <span class="comment">//alert(ps);</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><pre><code>1. JSON对象： 对象.键名
+2. JSON对象[&quot;键名&quot;]
+3. 数组对象[索引]</code></pre><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 定义基本格式</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;<span class="string">"name"</span>:<span class="string">"张三"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;</span><br><span class="line"><span class="comment">//alert(person);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//获取name值</span></span><br><span class="line"><span class="comment">// var name = person.name;</span></span><br><span class="line"><span class="keyword">var</span> name = person[<span class="string">"name"</span>];</span><br><span class="line"><span class="built_in">console</span>.log(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.嵌套格式&#123;&#125;-&gt;[]</span></span><br><span class="line"><span class="keyword">var</span> persons = &#123;<span class="string">"person"</span>:[</span><br><span class="line">        &#123;<span class="string">"name"</span>:<span class="string">"张三"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"name"</span>:<span class="string">"李四"</span>,<span class="string">"age"</span>:<span class="string">"24"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"name"</span>:<span class="string">"王五"</span>,<span class="string">"age"</span>:<span class="string">"21"</span>,<span class="string">"gender"</span>:<span class="string">"false"</span>&#125;]&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//alert(persons);</span></span><br><span class="line"> <span class="comment">//获取王五值</span></span><br><span class="line"><span class="keyword">var</span> name2 = persons.person[<span class="number">2</span>].name;</span><br><span class="line"><span class="built_in">console</span>.log(name2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">//2.嵌套格式 [] --&gt; &#123;&#125;</span></span><br><span class="line"> <span class="keyword">var</span> ps = [</span><br><span class="line">     &#123;<span class="string">"name"</span>:<span class="string">"张三"</span>,<span class="string">"age"</span>:<span class="string">"23"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">     &#123;<span class="string">"name"</span>:<span class="string">"李四"</span>,<span class="string">"age"</span>:<span class="string">"24"</span>,<span class="string">"gender"</span>:<span class="string">"true"</span>&#125;,</span><br><span class="line">     &#123;<span class="string">"name"</span>:<span class="string">"王五"</span>,<span class="string">"age"</span>:<span class="string">"21"</span>,<span class="string">"gender"</span>:<span class="string">"false"</span>&#125;]</span><br><span class="line"> <span class="comment">//alert(ps);</span></span><br><span class="line"><span class="comment">//获取李四值</span></span><br><span class="line"> <span class="built_in">console</span>.log(ps[<span class="number">1</span>].name)</span><br><span class="line"></span><br><span class="line"> <span class="comment">//获取ps[1]对象中所有的键和值</span></span><br><span class="line"> <span class="comment">//for in 循环</span></span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> ps[<span class="number">1</span>])&#123;</span><br><span class="line"></span><br><span class="line">     <span class="built_in">console</span>.log(key+<span class="string">":"</span>+ps[<span class="number">1</span>][key]);</span><br><span class="line">     <span class="comment">//这样的方式不行，相当于person."name"</span></span><br><span class="line">     <span class="built_in">console</span>.log(key+<span class="string">":"</span>+ps[<span class="number">1</span>].key);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">//获取ps的数组i</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= ps.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> p = ps[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> p)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(key+<span class="string">"="</span>+p[key]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="取数据结果"><a href="#取数据结果" class="headerlink" title="取数据结果"></a>取数据结果</h3><p><img src="https://img-blog.csdnimg.cn/20200910210403228.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
 
       
     </div>
@@ -355,13 +370,13 @@ XPath基于XML的树状结构，提供在数据结构树中找寻节点的能力
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/">xml解析--Jsoup快捷查询方式</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/">轻量级数据交换格式-JSON概念</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年08月13日 - 16时18分</p>
-        <p><span>最后更新:</span>2020年08月13日 - 16时21分</p>
+        <p><span>发布时间:</span>2020年09月10日 - 21时12分</p>
+        <p><span>最后更新:</span>2020年09月10日 - 21时12分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/" title="xml解析--Jsoup快捷查询方式">https://oldaz.github.io/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E6%8D%B7%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/" title="轻量级数据交换格式-JSON概念">https://oldaz.github.io/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -372,18 +387,9 @@ XPath基于XML的树状结构，提供在数据结构树中找寻节点的能力
 
 <nav id="article-nav">
   
-    <a  href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JavaWeb知识核心--Servlet快速入门
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">xml解析--Jsoup快速入门</div>
+    <a  href="/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaEE核心技术之Listener监听器</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -395,7 +401,7 @@ XPath基于XML的树状结构，提供在数据结构树中找寻节点的能力
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引入"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快捷查询方式"><span class="toc-number">2.</span> <span class="toc-text">快捷查询方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#selector"><span class="toc-number">2.1.</span> <span class="toc-text">selector</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#selector语法"><span class="toc-number">2.1.1.</span> <span class="toc-text">selector语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XPath"><span class="toc-number">2.2.</span> <span class="toc-text">XPath</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概念"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-number">2.</span> <span class="toc-text">语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本规则"><span class="toc-number">2.1.</span> <span class="toc-text">基本规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取数据"><span class="toc-number">2.2.</span> <span class="toc-text">获取数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">2.2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取数据结果"><span class="toc-number">2.2.2.</span> <span class="toc-text">取数据结果</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -468,13 +474,11 @@ XPath基于XML的树状结构，提供在数据结构树中找寻节点的能力
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/08/14/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="上一篇: JavaWeb知识核心--Servlet快速入门">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/08/13/xml%E8%A7%A3%E6%9E%90--Jsoup%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="下一篇: xml解析--Jsoup快速入门">
+            <a  href="/2020/09/10/JavaEE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B9%8BListener%E7%9B%91%E5%90%AC%E5%99%A8/" title="下一篇: JavaEE核心技术之Listener监听器">
                 <i class="fa fa-angle-right"></i>
             </a>
         

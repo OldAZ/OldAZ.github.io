@@ -200,7 +200,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cookie/" style="font-size: 11.67px;">Cookie</a> <a href="/tags/EL/" style="font-size: 10px;">EL</a> <a href="/tags/Filter/" style="font-size: 11.67px;">Filter</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 16.67px;">HTTP</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JSTL/" style="font-size: 10px;">JSTL</a> <a href="/tags/Java/" style="font-size: 18.33px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 18.33px;">JavaEE</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jsoup/" style="font-size: 11.67px;">Jsoup</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Servlet/" style="font-size: 13.33px;">Servlet</a> <a href="/tags/Session/" style="font-size: 11.67px;">Session</a> <a href="/tags/xml/" style="font-size: 15px;">xml</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 10px;">工具类</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" style="font-size: 16.67px;">快速入门</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 11.67px;">经验之谈</a>
+                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cookie/" style="font-size: 11.43px;">Cookie</a> <a href="/tags/EL/" style="font-size: 10px;">EL</a> <a href="/tags/Filter/" style="font-size: 11.43px;">Filter</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 15.71px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JSTL/" style="font-size: 10px;">JSTL</a> <a href="/tags/Java/" style="font-size: 17.14px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 18.57px;">JavaEE</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jsoup/" style="font-size: 11.43px;">Jsoup</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Servlet/" style="font-size: 12.86px;">Servlet</a> <a href="/tags/Session/" style="font-size: 11.43px;">Session</a> <a href="/tags/xml/" style="font-size: 14.29px;">xml</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 10px;">工具类</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" style="font-size: 15.71px;">快速入门</a> <a href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" style="font-size: 11.43px;">经验之谈</a>
                     </div>
                 </section>
                 
@@ -280,6 +280,78 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-JavaEE会话技术之cookie案例" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/" class="article-date">
+      <time datetime="2020-08-28T10:42:44.000Z" itemprop="datePublished">2020-08-28</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/">JavaEE会话技术之cookie案例</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><img src="https://img-blog.csdnimg.cn/20200828183545603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><pre><code>1.  访问一个servlet，如果第一次访问，则提示：您好！欢迎首次访问
+2. 如果不是第一次访问，则提示：欢迎回来，您上次到访时间为：显示时间字符串</code></pre>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cookie/" rel="tag">Cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a   href="/2020/08/28/JavaEE%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8Bcookie%E6%A1%88%E4%BE%8B/#more">查看全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-JavaEE会话技术之Cookie" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -920,83 +992,6 @@ HttpServlet       --抽象类</code></pre>
       
         <p class="article-more-link">
           <a   href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JavaWeb知识核心--Servlet周期和注解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/" class="article-date">
-      <time datetime="2020-08-15T03:06:28.000Z" itemprop="datePublished">2020-08-15</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/">JavaWeb知识核心--Servlet周期和注解</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="https://img-blog.csdnimg.cn/20200815110437717.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt="servlet"></p>
-<h1 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h1><h2 id="最重要的三个方法"><a href="#最重要的三个方法" class="headerlink" title="最重要的三个方法"></a>最重要的三个方法</h2><ol>
-<li><p>被创建</p>
-<pre><code>执行init()方法只执行一次</code></pre></li>
-<li><p>提供服务</p>
-<pre><code>执行Service方法，执行多次</code></pre></li>
-<li><p>被销毁</p>
-<pre><code>执行Destory()方法，只执行一次</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2020/08/15/JavaWeb%E7%9F%A5%E8%AF%86%E6%A0%B8%E5%BF%83--Servlet%E5%91%A8%E6%9C%9F%E5%92%8C%E6%B3%A8%E8%A7%A3/#more">查看全文 >></a>
         </p>
       
       <div class="clearfix"></div>
