@@ -7,27 +7,29 @@
   
   
   
-  <title>关于华为云的域名认证问题 | Mr.AZ</title>
+  <title>轻量级数据交换格式-JSON解析器 | Mr.AZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于华为云的域名认证问题最近的华为域名福利大放送 ，top域名只需要一元就能使用一年。搭建博客的话只需要实名认证，不需要备案就可以用！真香！！">
+  <meta name="description" content="JSON解析器一些封装好的工具  常见的解析器：Jsonlib，Gson，fastjson，jackson（今天学习的）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于华为云的域名认证问题">
-<meta property="og:url" content="https://oldaz.github.io/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="轻量级数据交换格式-JSON解析器">
+<meta property="og:url" content="https://oldaz.github.io/2020/09/11/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E8%A7%A3%E6%9E%90%E5%99%A8/index.html">
 <meta property="og:site_name" content="Mr.AZ">
-<meta property="og:description" content="关于华为云的域名认证问题最近的华为域名福利大放送 ，top域名只需要一元就能使用一年。搭建博客的话只需要实名认证，不需要备案就可以用！真香！！">
+<meta property="og:description" content="JSON解析器一些封装好的工具  常见的解析器：Jsonlib，Gson，fastjson，jackson（今天学习的）">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426204215183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426204549165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426204558414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426205103422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020042620594117.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426210323327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-04-26T13:11:44.000Z">
-<meta property="article:modified_time" content="2020-04-26T13:14:19.402Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200910212459413.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200911085742104.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200910230110856.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200910230126187.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200911090257259.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200911092227246.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200911092258914.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-09-11T02:16:24.000Z">
+<meta property="article:modified_time" content="2020-09-11T02:17:43.908Z">
 <meta property="article:author" content="Mr.AZ">
-<meta property="article:tag" content="经验之谈">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="JSON">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200426204215183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200910212459413.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="Mr.AZ" type="application/atom+xml">
   
@@ -288,11 +290,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-关于华为云的域名认证问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-轻量级数据交换格式-JSON解析器" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/" class="article-date">
-      <time datetime="2020-04-26T13:11:44.000Z" itemprop="datePublished">2020-04-26</time>
+      <a  href="/2020/09/11/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E8%A7%A3%E6%9E%90%E5%99%A8/" class="article-date">
+      <time datetime="2020-09-11T02:16:24.000Z" itemprop="datePublished">2020-09-11</time>
 </a>
 
     </div>
@@ -306,7 +308,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于华为云的域名认证问题
+      轻量级数据交换格式-JSON解析器
     </h1>
   
 
@@ -315,10 +317,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/" rel="tag">经验之谈</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSON/" rel="tag">JSON</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -328,14 +334,55 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="关于华为云的域名认证问题"><a href="#关于华为云的域名认证问题" class="headerlink" title="关于华为云的域名认证问题"></a>关于华为云的域名认证问题</h1><p>最近的华为域名福利大放送 ，top域名只需要一元就能使用一年。<br>搭建博客的话只需要实名认证，不需要备案就可以用！真香！！</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200426204215183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="1元一年域名"><br>简直白嫖呀。</p>
-<h1 id="关于实名认证的问题"><a href="#关于实名认证的问题" class="headerlink" title="关于实名认证的问题"></a>关于实名认证的问题</h1><p>但是很多人买来都会遇到一个实名认证的问题。<br>就是注册新用户的时候就已经实名认证了，但是购买域名以后再一次认证就一直失败！像下面这样：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200426204549165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt=""><br><img src="https://img-blog.csdnimg.cn/20200426204558414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt=""><br>这里就和大家说一说，怎么跳过这个坑！！！（博主已为你们踩了不少坑）<br><img src="https://img-blog.csdnimg.cn/20200426205103422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt=""><br><strong>到这里  ，大家先点自己的域名！查看信息！</strong><br><img src="https://img-blog.csdnimg.cn/2020042620594117.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200426210323327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<blockquote>
-<p> 直接去认证，认证失败的原因就是域名所属人为 个人信息模板！！！<br> 因此这个就是一个坑！！不明白华为的这些操作逻辑，有点不人性化，哈哈哈，个人感觉哈（不要喷我，有可能是自己太菜）</p>
-</blockquote>
+        <p><img src="https://img-blog.csdnimg.cn/20200910212459413.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<h1 id="JSON解析器"><a href="#JSON解析器" class="headerlink" title="JSON解析器"></a>JSON解析器</h1><pre><code>一些封装好的工具
+
+常见的解析器：Jsonlib，Gson，fastjson，jackson（今天学习的）</code></pre><a id="more"></a>
+<h1 id="JSON转换为Java对象"><a href="#JSON转换为Java对象" class="headerlink" title="JSON转换为Java对象"></a>JSON转换为Java对象</h1><h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
+<li>导入Jackson的相关jar包</li>
+<li>创建Jackson核心对象ObjectMapper</li>
+<li>调用ObjectMapper的相关方法进行转换</li>
+</ol>
+<ul>
+<li><p>转换方法：</p>
+<pre><code>readValue (json字符串数据，class)</code></pre></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//演示： JSON字符串转换为Java对象</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1.初始化JSON字符串</span></span><br><span class="line">    String json = <span class="string">"&#123;\"name\":\"张三\",\"age\":23,\"gender\":\"男\",\"birthday\":\"2020-09-11\"&#125;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2. 创建ObjectMapper对象</span></span><br><span class="line">    ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 转换为Java对象 Pertson对象</span></span><br><span class="line">    Person person = mapper.readValue(json, Person<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    System.out.println(person);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Java对象转换为JSON"><a href="#Java对象转换为JSON" class="headerlink" title="Java对象转换为JSON"></a>Java对象转换为JSON</h1><h2 id="使用步骤-1"><a href="#使用步骤-1" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
+<li>导入Jackson的相关jar包</li>
+<li>创建Jackson核心对象ObjectMapper</li>
+<li>调用ObjectMapper的相关方法进行转换</li>
+</ol>
+<ul>
+<li><p>转换方法：</p>
+<pre><code>writeValue(参数1，obj)
+    参数1：
+     File：将obj对象转换为JSON字符串，并保存到指定的文件中
+   writer：将obj对象转换为JSON字符串，并将json数据填充到字符输出流中
+    OutputStream：将obj对象转换为JSON字符串，并将json数据填充到字节输出流中
+
+writeValueAsString(obj):
+        将对象转换为json字符串</code></pre></li>
+<li><p>注解 </p>
+<pre><code>1. @JsonIgnore：排除属性
+2. @JsonFormat ：属性值的格式化
+  (使用时都是加在私有属性上方)</code></pre></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200911085742104.png#pic_center" alt=""></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>不包含person实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.web.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"><span class="keyword">import</span> com.web.domain.Person;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JacksonTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">//Java 对象转为JSON字符串</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建person对象</span></span><br><span class="line">        Person p = <span class="keyword">new</span> Person();</span><br><span class="line">        p.setName(<span class="string">"张三"</span>);</span><br><span class="line">        p.setAge(<span class="number">23</span>);</span><br><span class="line">        p.setGender(<span class="string">"男"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.创建Jackson的核心对象  ObjectMapper</span></span><br><span class="line">        ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.转换</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        *   转换方法：</span></span><br><span class="line"><span class="comment">        *        writeValue(参数1，obj)</span></span><br><span class="line"><span class="comment">        *          参数1：</span></span><br><span class="line"><span class="comment">        *               File：将obj对象转换为JSON字符串，并保存到指定的文件中</span></span><br><span class="line"><span class="comment">        *               writer：将obj对象转换为JSON字符串，并将json数据填充到字符输出流中</span></span><br><span class="line"><span class="comment">        *               OutputStream：将obj对象转换为JSON字符串，并将json数据填充到字节输出流中</span></span><br><span class="line"><span class="comment">        *       writeValueAsString(obj):将对象转换为json字符串</span></span><br><span class="line"><span class="comment">        *</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line"></span><br><span class="line">        String json = mapper.writeValueAsString(p);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//&#123;"name":"张三","age":23,"gender":"男"&#125;</span></span><br><span class="line">        System.out.println(json);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//writeValue.将数据写到中F:/JavaCode/JavaEE/7-JSON/src/a.txt文件中</span></span><br><span class="line">        mapper.writeValue(<span class="keyword">new</span> File(<span class="string">"F:/JavaCode/JavaEE/7-JSON/src/a.txt"</span>),p);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//writeValue.将数据关联到writer中</span></span><br><span class="line">        mapper.writeValue(<span class="keyword">new</span> FileWriter(<span class="string">"F:/JavaCode/JavaEE/7-JSON/src/b.txt"</span>),p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建person对象</span></span><br><span class="line">        Person p = <span class="keyword">new</span> Person();</span><br><span class="line">        p.setName(<span class="string">"张三"</span>);</span><br><span class="line">        p.setAge(<span class="number">23</span>);</span><br><span class="line">        p.setGender(<span class="string">"男"</span>);</span><br><span class="line">        p.setBirthday(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.转换</span></span><br><span class="line"></span><br><span class="line">        ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        String json = mapper.writeValueAsString(p);</span><br><span class="line">        System.out.println(json);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>运行结果：<br><img src="https://img-blog.csdnimg.cn/20200910230110856.png#pic_center" alt=""><br>test1：<img src="https://img-blog.csdnimg.cn/20200910230126187.png#pic_center" alt=""><br>test2：<br><img src="https://img-blog.csdnimg.cn/20200911090257259.png#pic_center" alt=""></p>
+<h2 id="复杂Java对象转换"><a href="#复杂Java对象转换" class="headerlink" title="复杂Java对象转换"></a>复杂Java对象转换</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ol>
+<li>List集合：数组</li>
+<li>Map集合 ：对象格式一致</li>
+</ol>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//创建person对象</span></span><br><span class="line">    Person p = <span class="keyword">new</span> Person();</span><br><span class="line">    p.setName(<span class="string">"张三"</span>);</span><br><span class="line">    p.setAge(<span class="number">23</span>);</span><br><span class="line">    p.setGender(<span class="string">"男"</span>);</span><br><span class="line">    p.setBirthday(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">    Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line">    p1.setName(<span class="string">"张三"</span>);</span><br><span class="line">    p1.setAge(<span class="number">23</span>);</span><br><span class="line">    p1.setGender(<span class="string">"男"</span>);</span><br><span class="line">    p1.setBirthday(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">    Person p2 = <span class="keyword">new</span> Person();</span><br><span class="line">    p2.setName(<span class="string">"张三"</span>);</span><br><span class="line">    p2.setAge(<span class="number">23</span>);</span><br><span class="line">    p2.setGender(<span class="string">"男"</span>);</span><br><span class="line">    p2.setBirthday(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建List集合</span></span><br><span class="line">    List&lt;Person&gt; ps = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line">    ps.add(p);</span><br><span class="line">    ps.add(p1);</span><br><span class="line">    ps.add(p2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.转换</span></span><br><span class="line">    ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">    String json = mapper.writeValueAsString(ps);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//[&#123;"name":"张三","age":23,"gender":"男","birthday":"2020-09-11"&#125;,&#123;"name":"张三","age":23,"gender":"男","birthday":"2020-09-11"&#125;,&#123;"name":"张三","age":23,"gender":"男","birthday":"2020-09-11"&#125;]</span></span><br><span class="line">    System.out.println(json);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//创建map对象</span></span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">    map.put(<span class="string">"name"</span>,<span class="string">"李四"</span>);</span><br><span class="line">    map.put(<span class="string">"age"</span>,<span class="number">23</span>);</span><br><span class="line">    map.put(<span class="string">"gender"</span>,<span class="string">"男"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2.转换</span></span><br><span class="line"></span><br><span class="line">    ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">    String json = mapper.writeValueAsString(map);</span><br><span class="line"></span><br><span class="line">    System.out.println(json);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>test3：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200911092227246.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""><br>test4：<br><img src="https://img-blog.csdnimg.cn/20200911092258914.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
 
       
     </div>
@@ -344,13 +391,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/">关于华为云的域名认证问题</a></p>
+        <p><span>本文标题:</span><a  href="/2020/09/11/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E8%A7%A3%E6%9E%90%E5%99%A8/">轻量级数据交换格式-JSON解析器</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Mr.AZ 的个人博客">Mr.AZ</a></p>
-        <p><span>发布时间:</span>2020年04月26日 - 21时11分</p>
-        <p><span>最后更新:</span>2020年04月26日 - 21时14分</p>
+        <p><span>发布时间:</span>2020年09月11日 - 10时16分</p>
+        <p><span>最后更新:</span>2020年09月11日 - 10时17分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/" title="关于华为云的域名认证问题">https://oldaz.github.io/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/04/26/%E5%85%B3%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98/　　作者: Mr.AZ" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/11/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E8%A7%A3%E6%9E%90%E5%99%A8/" title="轻量级数据交换格式-JSON解析器">https://oldaz.github.io/2020/09/11/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E8%A7%A3%E6%9E%90%E5%99%A8/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oldaz.github.io/2020/09/11/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E8%A7%A3%E6%9E%90%E5%99%A8/　　作者: Mr.AZ" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -361,18 +408,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          HTML基础_5
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML基础_4</div>
+    <a  href="/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">轻量级数据交换格式-JSON概念</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -384,7 +422,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于华为云的域名认证问题"><span class="toc-number">1.</span> <span class="toc-text">关于华为云的域名认证问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于实名认证的问题"><span class="toc-number">2.</span> <span class="toc-text">关于实名认证的问题</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JSON解析器"><span class="toc-number">1.</span> <span class="toc-text">JSON解析器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JSON转换为Java对象"><span class="toc-number">2.</span> <span class="toc-text">JSON转换为Java对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.1.</span> <span class="toc-text">使用步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java对象转换为JSON"><span class="toc-number">3.</span> <span class="toc-text">Java对象转换为JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤-1"><span class="toc-number">3.1.</span> <span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">3.2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂Java对象转换"><span class="toc-number">3.3.</span> <span class="toc-text">复杂Java对象转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型"><span class="toc-number">3.3.1.</span> <span class="toc-text">类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-number">3.3.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -457,13 +495,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/05/25/HTML%E5%9F%BA%E7%A1%80_5/" title="上一篇: HTML基础_5">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/04/18/HTML%E5%9F%BA%E7%A1%80_4/" title="下一篇: HTML基础_4">
+            <a  href="/2020/09/10/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F-JSON%E6%A6%82%E5%BF%B5/" title="下一篇: 轻量级数据交换格式-JSON概念">
                 <i class="fa fa-angle-right"></i>
             </a>
         
