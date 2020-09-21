@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>NOSQL非关系型数据库-Redis持久化</title>
+      <link href="/2020/09/21/NOSQL%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-Redis%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+      <url>/2020/09/21/NOSQL%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-Redis%E6%8C%81%E4%B9%85%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20200921145842265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h1 id="持久化概念"><a href="#持久化概念" class="headerlink" title="持久化概念"></a>持久化概念</h1><p> redis是一个内存数据库，当redis服务器重启，或者电脑重启，数据就会丢失，我们可以将redis内存中的数据库持久化保存到硬盘文件中。</p><a id="more"></a><h1 id="持久化机制"><a href="#持久化机制" class="headerlink" title="持久化机制"></a>持久化机制</h1><h2 id="1-RDB"><a href="#1-RDB" class="headerlink" title="1. RDB"></a>1. RDB</h2><p>默认模式，不需要进行配置，默认就是使用这种机制（对性能影响比较小）</p><pre><code>在一定的时间间隔中，检测key的变化情况，然后进行持久化数据，</code></pre><h3 id="1-编辑按包目录下的redis-windows-conf文件"><a href="#1-编辑按包目录下的redis-windows-conf文件" class="headerlink" title="1. 编辑按包目录下的redis.windows.conf文件"></a>1. 编辑按包目录下的redis.windows.conf文件</h3><p><img src="https://img-blog.csdnimg.cn/20200920161144146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""><br><img src="https://img-blog.csdnimg.cn/20200920161701545.png#pic_center" alt=""></p><h3 id="2-编辑内容"><a href="#2-编辑内容" class="headerlink" title="2. 编辑内容"></a>2. 编辑内容</h3><pre><code>- after 900 sec (15 min) if at least 1 key changed      save 900 1- after 300 sec (5 min) if at least 10 keys changed      save 300 10- after 60 sec if at least 10000 keys changed      save 60 10000</code></pre><h3 id="3-启动服务器"><a href="#3-启动服务器" class="headerlink" title="3. 启动服务器"></a>3. 启动服务器</h3><p>用命令行的方式启动 指定配置文件名称<br> <code>redis-sever.exe redis.windows.conf</code><br><img src="https://img-blog.csdnimg.cn/20200920163141807.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h2 id="2-AOF"><a href="#2-AOF" class="headerlink" title="2. AOF"></a>2. AOF</h2><p>日志记录方式，可以记录每一条命令操作。可以每一次命令操作后，持久化数据。（对性能影响比较大）</p><h3 id="1-编辑按包目录下的redis-windows-conf文件-1"><a href="#1-编辑按包目录下的redis-windows-conf文件-1" class="headerlink" title="1. 编辑按包目录下的redis.windows.conf文件"></a>1. 编辑按包目录下的redis.windows.conf文件</h3><p><img src="https://img-blog.csdnimg.cn/20200920161144146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h3 id="2-开启AOF持久化"><a href="#2-开启AOF持久化" class="headerlink" title="2.  开启AOF持久化"></a>2.  开启AOF持久化</h3><pre><code>默认是：appendonly no （代表关闭AOF）改为 appendonly yes （开启AOF机制）</code></pre><p><img src="https://img-blog.csdnimg.cn/20200921143627181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h3 id="3-配置持久化方式"><a href="#3-配置持久化方式" class="headerlink" title="3. 配置持久化方式"></a>3. 配置持久化方式</h3><p>每一次操作都进行持久化</p><pre><code># appendfsync always</code></pre><p>每隔一秒进行一持久化（默认）</p><pre><code>appendfsync everysec</code></pre><p>不进行持久化</p><pre><code># appendfsync no</code></pre><p><img src="https://img-blog.csdnimg.cn/20200921144513592.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""></p><h3 id="3-启动服务器-1"><a href="#3-启动服务器-1" class="headerlink" title="3. 启动服务器"></a>3. 启动服务器</h3><p>用命令行的方式启动 指定配置文件名称<br> <code>redis-sever.exe redis.windows.conf</code><br><img src="https://img-blog.csdnimg.cn/20200920163141807.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzcwODky,size_16,color_FFFFFF,t_70#pic_center" alt=""><br>这样的数据库实习上也不是绝对的安全，要安全还是要一些关系型数据库。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>NOSQL非关系型数据库-Redis快速入门</title>
       <link href="/2020/09/20/NOSQL%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-Redis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
       <url>/2020/09/20/NOSQL%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-Redis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</url>
