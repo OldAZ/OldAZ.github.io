@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://oldaz.github.io/2020/09/22/NOSQL%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-Redis%E7%BC%93%E5%AD%98%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/</loc>
+    
+    <lastmod>2020-09-22T14:20:34.764Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://oldaz.github.io/2020/09/22/NOSQL%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-Jedis%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
     
     <lastmod>2020-09-22T06:12:52.017Z</lastmod>
